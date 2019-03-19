@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class InteractionHandlersProvider : MonoBehaviour
+public abstract class InteractionHandlerProvider : MonoBehaviour
 {
     public abstract InteractionHandler ProvideHandler();
 }

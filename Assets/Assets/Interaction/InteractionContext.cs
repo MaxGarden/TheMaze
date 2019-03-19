@@ -1,3 +1,6 @@
-﻿public class InteractionContext
+﻿using UnityEngine;
+
+public class InteractionContext
 {
+    public Transform PerformerTransform;
 }
