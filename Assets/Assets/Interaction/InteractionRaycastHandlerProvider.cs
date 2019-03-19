@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public sealed class InteractionRaycastHandlersProvider : InteractionHandlersProvider
+public sealed class InteractionRaycastHandlerProvider : InteractionHandlerProvider
 {
     [SerializeField]
     private float m_raycastDistance = 10.0f;
