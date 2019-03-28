@@ -17,7 +17,7 @@ public abstract class InteractionHandler : MonoBehaviour
     {
         if (!m_audioSource)
         {
-            Debug.LogWarning("Tried to play interaction sound, but audio source is null!");
+            AudioSource.PlayClipAtPoint(clip, transform.position);
             return;
         }
 

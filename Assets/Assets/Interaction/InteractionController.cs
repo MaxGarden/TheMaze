@@ -6,6 +6,9 @@ public sealed class InteractionController : MonoBehaviour
 {
     const string s_interactButtonName = "Interact";
 
+    [SerializeField]
+    private Inventory m_inventory = null;
+
     private InteractionHandlerProvider m_interactionHandlersProvider;
     private InteractionHandler m_possibleInteraction;
 
@@ -42,7 +45,8 @@ public sealed class InteractionController : MonoBehaviour
     {
         return new InteractionContext()
         {
-            PerformerTransform = transform
+            PerformerTransform = transform,
+            Inventory = m_inventory
         };
     }
 }
