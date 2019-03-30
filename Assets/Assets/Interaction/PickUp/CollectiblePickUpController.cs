@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CollectibleInstance))]
+[RequireComponent(typeof(Collectible))]
 public sealed class CollectiblePickUpController : PickUpController
 {
-    private CollectibleInstance m_collectible;
+    private Collectible m_collectible;
 
     public override string PickUpName => m_collectible.Template.Name;
 
     private void Awake()
     {
-        m_collectible = GetComponent<CollectibleInstance>();
+        m_collectible = GetComponent<Collectible>();
     }
 
     public override void OnPickUp(Inventory inventory)

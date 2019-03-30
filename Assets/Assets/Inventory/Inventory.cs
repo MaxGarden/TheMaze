@@ -4,10 +4,10 @@ using UnityEngine;
 
 public sealed class Inventory : MonoBehaviour
 {
-    private readonly Dictionary<ItemTemplate.ItemType, ItemInstance> m_items = new Dictionary<ItemTemplate.ItemType, ItemInstance>();
+    private readonly Dictionary<EquipmentTemplate.EquipmentType, Equipment> m_equipment = new Dictionary<EquipmentTemplate.EquipmentType, Equipment>();
     private readonly Dictionary<CollectibleTemplate, int> m_collectibles = new Dictionary<CollectibleTemplate, int>();
 
-    public void AddCollectible(CollectibleInstance collectible)
+    public void AddCollectible(Collectible collectible)
     {
         var template = collectible.Template;
         if (!m_collectibles.ContainsKey(template))
@@ -16,8 +16,8 @@ public sealed class Inventory : MonoBehaviour
         m_collectibles[template] += template.CollectIncrement;
     }
 
-    public void SetItem(ItemInstance item)
+    public void SetEquipment(Equipment equipment)
     {
-        m_items[item.Template.Type] = item;
+        m_equipment[equipment.Template.Type] = equipment;
     }
 }

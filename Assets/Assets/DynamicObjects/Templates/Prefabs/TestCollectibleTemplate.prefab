@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_name: Test collectible
-  m_instancePrefab: {fileID: 5330943999250255000, guid: 0a76c0950e1c48f45ba0b4cfb8490f4c,
+  m_colliderPrefab: {fileID: 9215257674622289858, guid: b58a900918a6ada4eb387b82aa8033df,
     type: 3}
+  m_icon: {fileID: 0}
   m_collectIncrement: 1

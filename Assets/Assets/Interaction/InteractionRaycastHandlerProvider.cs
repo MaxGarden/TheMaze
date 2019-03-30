@@ -16,6 +16,6 @@ public sealed class InteractionRaycastHandlerProvider : InteractionHandlerProvid
         if (!Physics.Raycast(m_originTransform.position, m_originTransform.forward, out raycastResult, m_raycastDistance))
             return null;
 
-        return raycastResult.transform.GetComponent<InteractionHandler>();
+        return raycastResult.transform.GetComponentInParent<InteractionHandler>();
     }
 }
