@@ -46,5 +46,5 @@ MonoBehaviour:
   m_name: Test collectible
   m_colliderPrefab: {fileID: 9215257674622289858, guid: b58a900918a6ada4eb387b82aa8033df,
     type: 3}
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_collectIncrement: 1
