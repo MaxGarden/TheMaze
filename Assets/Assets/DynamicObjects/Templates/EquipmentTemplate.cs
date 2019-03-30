@@ -11,4 +11,8 @@ public class EquipmentTemplate : InventoryObjectTemplate
     [SerializeField]
     private EquipmentType m_type = EquipmentType.Primary;
     public EquipmentType Type => m_type;
+
+    [SerializeField]
+    private EquipmentController m_controllerPrefab = null;
+    public EquipmentController ControllerPrefab => m_controllerPrefab;
 }

@@ -7,6 +7,6 @@ public class InteractiveObjectTemplate : DynamicObjectTemplate
     public string Name => m_name;
 
     [SerializeField]
-    private Collider m_colliderPrefab = null;
-    public Collider ColliderPrefab => m_colliderPrefab;
+    private Collider m_interactionColliderPrefab = null;
+    public Collider InteractionColliderPrefab => m_interactionColliderPrefab;
 }
