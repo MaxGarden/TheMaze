@@ -7,6 +7,9 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     private readonly Dictionary<EquipmentTemplate.EquipmentType, Equipment> m_equipment = new Dictionary<EquipmentTemplate.EquipmentType, Equipment>();
     private readonly Dictionary<CollectibleTemplate, int> m_collectibles = new Dictionary<CollectibleTemplate, int>();
 
+    public event Action OnEquipmentChanged;
+    public event Action OnCollectiblesChanged;
+
     public Equipment SelectedEquipment { get; private set; }
 
     private EquipmentTemplate.EquipmentType m_selectedEquipmentType = EquipmentTemplate.EquipmentType.Primary;
@@ -16,7 +19,7 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
         set
         {
             m_selectedEquipmentType = value;
-            RefreshSelectedEquipment();
+            RefreshEquipment();
         }
     }
 
@@ -27,18 +30,22 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
             m_collectibles.Add(template, 0);
 
         m_collectibles[template] += template.CollectIncrement;
+
+        OnCollectiblesChanged?.Invoke();
     }
 
     public void SetEquipment(Equipment equipment)
     {
         m_equipment[equipment.Template.Type] = equipment;
-        RefreshSelectedEquipment();
+        RefreshEquipment();
     }
 
-    private void RefreshSelectedEquipment()
+    private void RefreshEquipment()
     {
         if (m_equipment.ContainsKey(SelectedEquipmentType))
             SelectedEquipment = m_equipment[SelectedEquipmentType];
+
+        OnEquipmentChanged?.Invoke();
     }
 
     void IInventoryInputHandler.ToggleEquipment()
@@ -60,6 +67,6 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     {
         //TODO
         m_equipment[SelectedEquipmentType] = null;
-        RefreshSelectedEquipment();
+        RefreshEquipment();
     }
 }
