@@ -9,15 +9,24 @@ public sealed class PlayerContext : MonoBehaviour
     public Inventory Inventory { get; private set; }
     public IInventoryInputHandler InventoryInputHandler => Inventory;
 
+    public InteractionController InteractionController { get; private set; }
+    public IInteractionInputHandler InteractionInputHandler => InteractionController;
+
+    public PlayerInputController InputController { get; private set; }
+
     private IList<IPlayerComponent> m_playerComponents = new List<IPlayerComponent>();
 
     private void EnsureComponents()
     {
         Inventory = EnsureComponent<Inventory>();
+        InteractionController = EnsureComponent<InteractionController>();
+        InputController = EnsureComponent<PlayerInputController>();
     }
 
     private void Awake()
     {
+        Initialize();
+
         if (MainPlayer)
             throw new InvalidOperationException("More than one main player!");
 
@@ -37,25 +46,20 @@ public sealed class PlayerContext : MonoBehaviour
             playerComponent.OnPlayerContextInitialized(this);
     }
 
-    private void Start()
-    {
-        foreach (var playerComponent in m_playerComponents)
-            playerComponent.OnPlayerContextStart();
-    }
-
     private T EnsureComponent<T>() where T : MonoBehaviour
     {
         var component = EnsureComponentInternal<T>();
 
         var playerComponent = component as IPlayerComponent;
-        m_playerComponents.Add(playerComponent);
+        if(playerComponent != null)
+            m_playerComponents.Add(playerComponent);
 
         return component;
     }
 
     private T EnsureComponentInternal<T>() where T : MonoBehaviour
     {
-        var component = GetComponent<T>();
+        var component = GetComponentInChildren<T>();
         if (!component)
             component = CreatePersistent<T>();
 
