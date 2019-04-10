@@ -50,8 +50,7 @@ public sealed class PlayerContext : MonoBehaviour
     {
         var component = EnsureComponentInternal<T>();
 
-        var playerComponent = component as IPlayerComponent;
-        if(playerComponent != null)
+        if (component is IPlayerComponent playerComponent)
             m_playerComponents.Add(playerComponent);
 
         return component;
