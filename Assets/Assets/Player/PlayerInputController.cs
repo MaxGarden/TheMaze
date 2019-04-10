@@ -9,6 +9,14 @@ public sealed class PlayerInputController : PlayerComponentBase
     private string m_interactButtonName = "Interact";
     public string InteractButtonName => m_interactButtonName;
 
+    [SerializeField]
+    private string m_toggleEquipmentButtonName = "ToggleEquipment";
+    public string ToggleEquipmentButtonName => m_toggleEquipmentButtonName;
+
+    [SerializeField]
+    private string m_dropEquipmentButtonName = "DropEquipment";
+    public string DropEquipmentButtonName => m_dropEquipmentButtonName;
+
     private Dictionary<string, Action> m_buttonHandlers;
 
     public PlayerInputController()
@@ -20,7 +28,9 @@ public sealed class PlayerInputController : PlayerComponentBase
     {
         buttonHandlers = new Dictionary<string, Action>()
         {
-            {InteractButtonName, () => PlayerContext.InteractionInputHandler.Interact() }
+            {InteractButtonName, () => PlayerContext.InteractionInputHandler.Interact() },
+            {ToggleEquipmentButtonName, () => PlayerContext.InventoryInputHandler.ToggleEquipment() },
+            {DropEquipmentButtonName, () => PlayerContext.InventoryInputHandler.DropEquipment() },
         };
     }
 
