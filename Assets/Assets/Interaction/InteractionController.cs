@@ -2,10 +2,8 @@
 using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(InteractionHandlerProvider))]
-public sealed class InteractionController : MonoBehaviour
+public sealed class InteractionController : MonoBehaviour, IInteractionInputHandler
 {
-    const string s_interactButtonName = "Interact";
-
     [SerializeField]
     private Inventory m_inventory = null;
 
@@ -25,16 +23,8 @@ public sealed class InteractionController : MonoBehaviour
         m_possibleInteraction = m_interactionHandlersProvider.ProvideHandler();
     }
 
-    private void Update()
+    void IInteractionInputHandler.Interact()
     {
-        HandleInteraction();
-    }
-
-    private void HandleInteraction()
-    {
-        if (!CrossPlatformInputManager.GetButtonDown(s_interactButtonName))
-            return;
-
         if (!m_possibleInteraction)
             return;
 
