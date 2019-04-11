@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class InteractiveObject : DynamicObject
 {
@@ -10,6 +11,11 @@ public class InteractiveObject : DynamicObject
     public override void Initialize(DynamicObjectTemplate template)
     {
         Template = (InteractiveObjectTemplate)template;
+
+        var interactionColliderPrefab = Template.InteractionColliderPrefab;
+        if (!interactionColliderPrefab)
+            throw new InvalidOperationException("Interaction collider prefab cannot be null!");
+
         m_interactionCollider = Instantiate(Template.InteractionColliderPrefab, transform);
     }
 }

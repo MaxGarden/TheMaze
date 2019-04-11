@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Equipment : InventoryObject
 {
@@ -11,8 +12,8 @@ public abstract class Equipment : InventoryObject
 
     public new EquipmentTemplate Template { get; private set; }
 
-    private EquipmentController m_controller;
-    public GameObject EquipmentRoot => m_controller.gameObject;
+    public EquipmentController Controller { get; private set; }
+    public GameObject EquipmentRoot => Controller.gameObject;
 
     private EquipmentState m_state = EquipmentState.Idle;
     public EquipmentState State
@@ -33,13 +34,20 @@ public abstract class Equipment : InventoryObject
         base.Initialize(template);
 
         Template = (EquipmentTemplate)template;
-        m_controller = Instantiate(Template.ControllerPrefab, transform);
-        m_controller.Initialize(this);
+
+        var controllerPrefab = Template.ControllerPrefab;
+        if (!controllerPrefab)
+            throw new InvalidOperationException("Controller prefab cannot be null!");
+
+        Controller = Instantiate(controllerPrefab, transform);
+        Controller.Initialize(this);
+
+        OnStateChanged();
     }
 
     public void Use()
     {
-        m_controller.OnUse();
+        Controller.OnUse();
     }
 
     private void OnStateChanged()

@@ -15,6 +15,9 @@ public abstract class InteractionHandler : MonoBehaviour
 
     protected void PlayInteractionSound(AudioClip clip)
     {
+        if (!clip)
+            return;
+
         if (!m_audioSource)
         {
             AudioSource.PlayClipAtPoint(clip, transform.position);
