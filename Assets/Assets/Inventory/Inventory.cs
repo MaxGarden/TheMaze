@@ -36,7 +36,10 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
 
     public void SetEquipment(Equipment equipment)
     {
-        m_equipment[equipment.Template.Type] = equipment;
+        var type = equipment.Template.Type;
+
+        DropEquipment(type);
+        m_equipment[type] = equipment;
         RefreshEquipment();
     }
 
@@ -46,6 +49,20 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
             SelectedEquipment = m_equipment[SelectedEquipmentType];
 
         OnEquipmentChanged?.Invoke();
+    }
+
+    private void DropEquipment(EquipmentTemplate.EquipmentType type)
+    {
+        Equipment selectedEquipment;
+        if (!m_equipment.TryGetValue(type, out selectedEquipment))
+            return;
+
+        if (!selectedEquipment)
+            return;
+
+        selectedEquipment.Controller.OnDrop(this);
+        m_equipment[type] = null;
+        RefreshEquipment();
     }
 
     void IInventoryInputHandler.ToggleEquipment()
@@ -65,8 +82,6 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
 
     void IInventoryInputHandler.DropEquipment()
     {
-        //TODO
-        m_equipment[SelectedEquipmentType] = null;
-        RefreshEquipment();
+        DropEquipment(SelectedEquipmentType);
     }
 }

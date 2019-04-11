@@ -1,9 +1,12 @@
-﻿public abstract class UtilityEquipmentController : EquipmentController
+﻿public abstract class UtilityEquipmentController : EquipmentControllerBase
 {
-    public UtilityEquipment Equipment { get; private set; }
+    public new UtilityEquipment Equipment { get; private set; }
+    public new UtilityEquipmentTemplate EquipmentTemplate => Equipment.Template;
 
-    public sealed override void Initialize(Equipment equipment)
+    public override void Initialize(Equipment equipment)
     {
+        base.Initialize(equipment);
+
         Equipment = (UtilityEquipment)equipment;
     }
 }

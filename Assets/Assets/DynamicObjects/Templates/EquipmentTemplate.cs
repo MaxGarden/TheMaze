@@ -8,6 +8,11 @@ public class EquipmentTemplate : InventoryObjectTemplate
         Secondary
     }
 
+
+    [SerializeField]
+    private AudioClip m_dropSound = null;
+    public AudioClip DropSound => m_dropSound;
+
     [SerializeField]
     private EquipmentType m_type = EquipmentType.Primary;
     public EquipmentType Type => m_type;

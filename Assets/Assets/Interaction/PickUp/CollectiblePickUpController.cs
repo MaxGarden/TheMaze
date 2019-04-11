@@ -6,6 +6,7 @@ public sealed class CollectiblePickUpController : PickUpController
     private Collectible m_collectible;
 
     public override string PickUpName => m_collectible.Template.Name;
+    public override AudioClip PickUpSound => m_collectible.Template.PickUpSound;
 
     private void Awake()
     {

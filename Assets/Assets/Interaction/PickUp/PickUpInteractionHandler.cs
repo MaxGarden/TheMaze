@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PickUpController))]
-public class PickUpIteractionHandler : InteractionHandler
+public class PickUpInteractionHandler : InteractionHandler
 {
     private PickUpController m_pickUpController;
 
     [SerializeField]
     private string m_interactionPrefix = "pick up - ";
-
-    [SerializeField]
-    private AudioClip m_pickUpSound = null;
 
     public override string InteractionDescription => m_interactionPrefix + m_pickUpController.PickUpName;
 
@@ -21,7 +18,7 @@ public class PickUpIteractionHandler : InteractionHandler
 
     public override void Interact(InteractionContext context)
     {
-        PlayInteractionSound(m_pickUpSound);
         m_pickUpController.OnPickUp(context.Inventory);
+        PlayInteractionSound(m_pickUpController.PickUpSound);
     }
 }

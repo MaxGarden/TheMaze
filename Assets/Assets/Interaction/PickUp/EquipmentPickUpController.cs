@@ -6,6 +6,7 @@ public sealed class EquipmentPickUpController : PickUpController
     private Equipment m_equipment;
 
     public override string PickUpName => m_equipment.Template.Name;
+    public override AudioClip PickUpSound => m_equipment.Template.PickUpSound;
 
     private void Awake()
     {
