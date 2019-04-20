@@ -697,9 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84507c07b14d0249af9dfbe17b17a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block1: {fileID: 100000, guid: 91d652779ec7140488b6b8e360497937, type: 3}
-  block2: {fileID: 100000, guid: de3b8c31d809a0442bdf5e22edaf92be, type: 3}
-  mapWidth: 3
+  mapWidth: 9
   mapHeight: 3
 --- !u!4 &518781773
 Transform:
@@ -709,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518781771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.750881, y: -11.088699, z: -4.432228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
