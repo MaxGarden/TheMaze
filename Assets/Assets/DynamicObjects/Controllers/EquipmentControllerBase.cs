@@ -36,10 +36,12 @@ public abstract class EquipmentControllerBase : EquipmentController
         TryPlayInteractionSound(EquipmentTemplate.DropSound);
 
         var inventoryTransform = transform.parent.transform;
-        var dropPosition = inventoryTransform.position + inventoryTransform.forward * 3.0f;
+        var forwardDirection = transform.parent.transform.TransformDirection(Vector3.forward);
+        var dropPosition = inventoryTransform.position + forwardDirection * 3.0f;
 
         Equipment.transform.SetParent(OriginalEquipmentParentTransform.transform, false);
 
+        Equipment.transform.localPosition = Vector3.zero;
         Equipment.transform.position = dropPosition;
         Equipment.State = Equipment.EquipmentState.Idle;
 
@@ -50,7 +52,7 @@ public abstract class EquipmentControllerBase : EquipmentController
         rigidbody.velocity = Vector3.zero;
         rigidbody.rotation = Quaternion.identity;
         rigidbody.position = dropPosition;
-        rigidbody.AddRelativeForce(inventoryTransform.forward * m_dropThrowForce, ForceMode.Impulse);
+        rigidbody.AddRelativeForce(forwardDirection * m_dropThrowForce, ForceMode.Impulse);
     }
 
     public override void OnEquipped()
