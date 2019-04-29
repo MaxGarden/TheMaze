@@ -16,6 +16,5 @@ public sealed class EquipmentPickUpController : PickUpController
     public override void OnPickUp(Inventory inventory)
     {
         inventory.SetEquipment(m_equipment);
-        m_equipment.State = Equipment.EquipmentState.Stored;
     }
 }
