@@ -10,7 +10,17 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     public event Action OnEquipmentChanged;
     public event Action OnCollectiblesChanged;
 
-    public Equipment SelectedEquipment { get; private set; }
+    private Equipment m_selectedEquipment;
+    public Equipment SelectedEquipment
+    {
+        get { return m_selectedEquipment; }
+        private set
+        {
+            m_selectedEquipment?.Controller.OnStored();
+            m_selectedEquipment = value;
+            m_selectedEquipment?.Controller.OnEquipped();
+        }
+    }
 
     private EquipmentTemplate.EquipmentType m_selectedEquipmentType = EquipmentTemplate.EquipmentType.Primary;
     public EquipmentTemplate.EquipmentType SelectedEquipmentType
@@ -40,6 +50,7 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
 
         DropEquipment(type);
         m_equipment[type] = equipment;
+        equipment.Controller.OnPickedUp(this);
         RefreshEquipment();
     }
 
@@ -60,9 +71,9 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
         if (!selectedEquipment)
             return;
 
-        selectedEquipment.Controller.OnDrop(this);
         m_equipment[type] = null;
         RefreshEquipment();
+        selectedEquipment.Controller.OnDrop();
     }
 
     void IInventoryInputHandler.ToggleEquipment()
