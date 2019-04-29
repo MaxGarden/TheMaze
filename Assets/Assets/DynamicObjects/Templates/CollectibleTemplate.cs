@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "CollectibleTemplate", menuName = "Templates/Collectible Template")]
 public sealed class CollectibleTemplate : InventoryObjectTemplate
 {
     [SerializeField]

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InventoryObjectTemplate : InteractiveObjectTemplate
+public abstract class InventoryObjectTemplate : InteractiveObjectTemplate
 {
     [SerializeField]
     private Sprite m_icon = null;

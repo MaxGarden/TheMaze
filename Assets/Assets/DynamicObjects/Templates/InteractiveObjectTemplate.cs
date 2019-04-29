@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "InteractiveObjectTemplate", menuName = "Templates/Interactive Object Template")]
 public class InteractiveObjectTemplate : DynamicObjectTemplate
 {
     [SerializeField]
