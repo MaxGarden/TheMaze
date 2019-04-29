@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EquipmentTemplate : InventoryObjectTemplate
+public abstract class EquipmentTemplate : InventoryObjectTemplate
 {
     public enum EquipmentType
     {

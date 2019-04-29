@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 
-public abstract class DynamicObjectTemplate : MonoBehaviour
+public abstract class DynamicObjectTemplate : ScriptableObject
 {
 }

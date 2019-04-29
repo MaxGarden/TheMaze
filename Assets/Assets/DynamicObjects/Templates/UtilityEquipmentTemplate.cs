@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "UtilityEquipmentTemplate", menuName = "Templates/Utility Equipment Template")]
 public class UtilityEquipmentTemplate : EquipmentTemplate
 {
     [SerializeField]
