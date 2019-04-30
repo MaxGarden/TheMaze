@@ -22,22 +22,13 @@ public class InventorySystem : MonoBehaviour
 
     void EquipmentChange()
     {
-        
-        for (int i = 0; i < items.Length; i++)
-        {   
-            if(items[i] == inventory.SelectedEquipment)           
-                return;
-            
+        foreach(var entry in inventory.Equipment)
+        {
+            var equipment = entry.Value;
+            var index = (int)entry.Key;
 
-            if (items[i] == null)
-            {
-                items[i] = inventory?.SelectedEquipment;
-                itemImages[i].sprite = inventory?.SelectedEquipment.Template.Icon;
-                itemImages[i].enabled = true;
-                return;
-            }
+            itemImages[index].sprite = equipment ? equipment.Template.Icon : null;
+            itemImages[index].enabled = !!equipment;
         }
-        
     }
-    
 }
