@@ -37,7 +37,7 @@ public abstract class EquipmentControllerBase : EquipmentController
 
         var inventoryTransform = transform.parent.transform;
         var forwardDirection = transform.parent.transform.TransformDirection(Vector3.forward);
-        var dropPosition = inventoryTransform.position + forwardDirection * 3.0f;
+        var dropPosition = inventoryTransform.position + forwardDirection;
 
         Equipment.transform.SetParent(OriginalEquipmentParentTransform.transform, false);
 
