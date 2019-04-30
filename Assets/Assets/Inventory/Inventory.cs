@@ -4,8 +4,8 @@ using UnityEngine;
 
 public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
 {
-    private readonly Dictionary<EquipmentTemplate.EquipmentType, Equipment> m_equipment = new Dictionary<EquipmentTemplate.EquipmentType, Equipment>();
-    private readonly Dictionary<CollectibleTemplate, int> m_collectibles = new Dictionary<CollectibleTemplate, int>();
+    public Dictionary<CollectibleTemplate, int> Collectibles { get; } = new Dictionary<CollectibleTemplate, int>();
+    public Dictionary<EquipmentTemplate.EquipmentType, Equipment> Equipment { get; } = new Dictionary<EquipmentTemplate.EquipmentType, Equipment>();
 
     public event Action OnEquipmentChanged;
     public event Action OnCollectiblesChanged;
@@ -36,10 +36,10 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     public void AddCollectible(Collectible collectible)
     {
         var template = collectible.Template;
-        if (!m_collectibles.ContainsKey(template))
-            m_collectibles.Add(template, 0);
+        if (!Collectibles.ContainsKey(template))
+            Collectibles.Add(template, 0);
 
-        m_collectibles[template] += template.CollectIncrement;
+        Collectibles[template] += template.CollectIncrement;
 
         OnCollectiblesChanged?.Invoke();
     }
@@ -49,15 +49,15 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
         var type = equipment.Template.Type;
 
         DropEquipment(type);
-        m_equipment[type] = equipment;
+        Equipment[type] = equipment;
         equipment.Controller.OnPickedUp(this);
         RefreshEquipment();
     }
 
     private void RefreshEquipment()
     {
-        if (m_equipment.ContainsKey(SelectedEquipmentType))
-            SelectedEquipment = m_equipment[SelectedEquipmentType];
+        if (Equipment.ContainsKey(SelectedEquipmentType))
+            SelectedEquipment = Equipment[SelectedEquipmentType];
 
         OnEquipmentChanged?.Invoke();
     }
@@ -65,13 +65,13 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     private void DropEquipment(EquipmentTemplate.EquipmentType type)
     {
         Equipment selectedEquipment;
-        if (!m_equipment.TryGetValue(type, out selectedEquipment))
+        if (!Equipment.TryGetValue(type, out selectedEquipment))
             return;
 
         if (!selectedEquipment)
             return;
 
-        m_equipment[type] = null;
+        Equipment[type] = null;
         RefreshEquipment();
         selectedEquipment.Controller.OnDrop();
     }
