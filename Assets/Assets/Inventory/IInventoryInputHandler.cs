@@ -2,4 +2,6 @@
 {
     void ToggleEquipment();
     void DropEquipment();
+
+    void UseEquipment();
 }
