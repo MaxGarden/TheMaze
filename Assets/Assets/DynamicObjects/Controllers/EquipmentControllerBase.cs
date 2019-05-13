@@ -23,15 +23,16 @@ public abstract class EquipmentControllerBase : EquipmentController
         OriginalEquipmentParentTransform = Equipment.transform.parent.transform;
     }
 
-    public override void OnPickedUp(Inventory inventory)
+    public sealed override void OnPickedUp(Inventory inventory)
     {
         Equipment.transform.SetParent(inventory.transform, false);
         Equipment.transform.localPosition = Vector3.zero;
 
         Equipment.State = Equipment.EquipmentState.Stored;
+        NotifyStateChanged();
     }
 
-    public override void OnDrop()
+    public sealed override void OnDrop()
     {
         TryPlayInteractionSound(EquipmentTemplate.DropSound);
 
@@ -44,6 +45,7 @@ public abstract class EquipmentControllerBase : EquipmentController
         Equipment.transform.localPosition = Vector3.zero;
         Equipment.transform.position = dropPosition;
         Equipment.State = Equipment.EquipmentState.Idle;
+        NotifyStateChanged();
 
         var rigidbody = Equipment.InteractionRoot.GetComponent<Rigidbody>();
         if (!rigidbody)
@@ -55,14 +57,26 @@ public abstract class EquipmentControllerBase : EquipmentController
         rigidbody.AddRelativeForce(forwardDirection * m_dropThrowForce, ForceMode.Impulse);
     }
 
-    public override void OnEquipped()
+    public sealed override void OnEquipped()
     {
         Equipment.State = Equipment.EquipmentState.Equipped;
+        NotifyStateChanged();
     }
 
-    public override void OnStored()
+    public sealed override void OnStored()
     {
         Equipment.State = Equipment.EquipmentState.Stored;
+        NotifyStateChanged();
+    }
+
+    private void NotifyStateChanged()
+    {
+        OnStateChanged(Equipment.State);
+    }
+
+    protected virtual void OnStateChanged(Equipment.EquipmentState state)
+    {
+        //to override
     }
 
     protected void TryPlayInteractionSound(AudioClip clip)
