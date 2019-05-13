@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapWidth: 9
-  mapHeight: 3
+  mapHeight: 9
 --- !u!4 &518781773
 Transform:
   m_ObjectHideFlags: 0
