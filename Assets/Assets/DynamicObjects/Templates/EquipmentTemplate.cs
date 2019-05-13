@@ -8,6 +8,7 @@ public abstract class EquipmentTemplate : InventoryObjectTemplate
         Secondary
     }
 
+    [Header("Equipment")]
 
     [SerializeField]
     private AudioClip m_dropSound = null;

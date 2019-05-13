@@ -2,6 +2,8 @@
 
 public abstract class InventoryObjectTemplate : InteractiveObjectTemplate
 {
+    [Header("Inventory object")]
+
     [SerializeField]
     private Sprite m_icon = null;
     public Sprite Icon => m_icon;

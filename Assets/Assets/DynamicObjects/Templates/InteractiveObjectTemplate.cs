@@ -3,6 +3,8 @@
 [CreateAssetMenu(fileName = "InteractiveObjectTemplate", menuName = "Templates/Interactive Object Template")]
 public class InteractiveObjectTemplate : DynamicObjectTemplate
 {
+    [Header("Interactive object")]
+
     [SerializeField]
     private string m_name = "Unknown";
     public string Name => m_name;
