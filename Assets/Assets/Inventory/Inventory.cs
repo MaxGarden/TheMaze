@@ -95,4 +95,9 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     {
         DropEquipment(SelectedEquipmentType);
     }
+
+    void IInventoryInputHandler.UseEquipment()
+    {
+        SelectedEquipment?.Controller?.OnUse();
+    }
 }
