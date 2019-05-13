@@ -1,13 +1,11 @@
-﻿public sealed class UtilityEquipment : Equipment
+﻿public class UtilityEquipment : Equipment
 {
     public new UtilityEquipmentTemplate Template { get; private set; }
 
     public float Durability { get; set; } = 0.0f;
 
-    public override void Initialize(DynamicObjectTemplate template)
+    protected override void OnInitialize(EquipmentTemplate template)
     {
-        base.Initialize(template);
-
         Template = (UtilityEquipmentTemplate)template;
 
         Durability = Template.Durability;

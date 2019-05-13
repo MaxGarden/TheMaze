@@ -29,11 +29,15 @@ public abstract class Equipment : InventoryObject
         }
     }
 
-    public override void Initialize(DynamicObjectTemplate template)
+    protected abstract void OnInitialize(EquipmentTemplate template);
+
+    public sealed override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
 
         Template = (EquipmentTemplate)template;
+
+        OnInitialize(Template);
 
         var controllerPrefab = Template.ControllerPrefab;
         if (!controllerPrefab)
@@ -43,11 +47,6 @@ public abstract class Equipment : InventoryObject
         Controller.Initialize(this);
 
         OnStateChanged();
-    }
-
-    public void Use()
-    {
-        Controller.OnUse();
     }
 
     private void OnStateChanged()
