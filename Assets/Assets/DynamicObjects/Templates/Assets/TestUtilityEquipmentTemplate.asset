@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f03554dc3f3b8442a6c2f4175dc13f8, type: 3}
   m_Name: TestUtilityEquipmentTemplate
   m_EditorClassIdentifier: 
-  m_name: Unknown
-  m_interactionColliderPrefab: {fileID: 0}
-  m_icon: {fileID: 0}
-  m_pickUpSound: {fileID: 0}
-  m_dropSound: {fileID: 0}
+  m_name: Test equipment
+  m_interactionColliderPrefab: {fileID: 8015358810473601808, guid: feb3c06623d15eb4b8c91754fe3a4f11,
+    type: 3}
+  m_icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_pickUpSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
+  m_dropSound: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   m_type: 0
-  m_controllerPrefab: {fileID: 0}
+  m_controllerPrefab: {fileID: 5638163638845879584, guid: f8ba21606b8bb444e90ad928cc31bfdb,
+    type: 3}
   m_durability: 100
   m_useCost: 5
