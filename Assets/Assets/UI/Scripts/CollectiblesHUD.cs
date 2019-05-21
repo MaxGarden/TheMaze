@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class CollectiblesHUD : MonoBehaviour
 {
     private Inventory inventory;
+    private List<GameObject> collectiblePrefabs;
+    private List<CollectibleTemplate> collectibles;
+
     public GameObject collectiblePrefab;
-    public GameObject[] collectiblePrefabs;
-    private CollectibleTemplate[] collectibles;
     public Sprite icon;
 
      private void OnEnable()
      {
+         collectiblePrefabs = new List<GameObject>();
+         collectibles = new List<CollectibleTemplate>();
          inventory = PlayerContext.MainPlayer.Inventory;
          inventory.OnCollectiblesChanged += CollectiblesChanged;
      }
@@ -22,11 +25,6 @@ public class CollectiblesHUD : MonoBehaviour
          inventory.OnCollectiblesChanged -= CollectiblesChanged;
      }
 
-    void Start()
-    {
-
-        GameObject test = (GameObject)Instantiate(collectiblePrefab, transform.position, transform.rotation);
-    }
 
     void CollectiblesChanged()
     {
@@ -34,7 +32,7 @@ public class CollectiblesHUD : MonoBehaviour
         {
             var collectible = entry.Key;
 
-            for (int i = 0; i < collectibles.Length; i++)
+            for (int i = 0; i < collectibles.Count; i++)
             {
                 if(collectible == collectibles[i])
                 {
@@ -43,7 +41,7 @@ public class CollectiblesHUD : MonoBehaviour
                 }
             }
             CreateUI(entry.Value);
-            collectibles[collectibles.Length] = collectible;
+            collectibles.Add(collectible);
         }
 
         
@@ -51,14 +49,19 @@ public class CollectiblesHUD : MonoBehaviour
 
     void UpdateUI(int index, int score)
     {
-        collectiblePrefabs[index].GetComponent<Text>().text = score.ToString();
+        collectiblePrefabs[index].GetComponentInChildren<Text>().text = score.ToString();
     }
 
     void CreateUI(int score)
     {
-        collectiblePrefabs[collectiblePrefabs.Length] = Instantiate(collectiblePrefab, GetComponentInParent<Image>().transform);
-        collectiblePrefabs[collectiblePrefabs.Length].GetComponent<Text>().text = score.ToString();
-        collectiblePrefabs[collectiblePrefabs.Length].GetComponent<Image>().sprite = icon;
+         GameObject added = Instantiate(collectiblePrefab, transform);
+         if(added)
+         {
+            added.GetComponentInChildren<Text>().text = score.ToString();
+            added.GetComponentInChildren<Image>().sprite = icon;
+            collectiblePrefabs.Add(added);
+         }
+
     }
-    
+
 }
