@@ -16,7 +16,7 @@ public class CollectiblesHUD : MonoBehaviour
      {
          collectiblePrefabs = new List<GameObject>();
          collectibles = new List<CollectibleTemplate>();
-         inventory = PlayerContext.MainPlayer.Inventory;
+        inventory = PlayerContext.MainPlayer.Inventory;
          inventory.OnCollectiblesChanged += CollectiblesChanged;
      }
 
@@ -40,6 +40,7 @@ public class CollectiblesHUD : MonoBehaviour
                     return;
                 }
             }
+
             CreateUI(entry.Value);
             collectibles.Add(collectible);
         }
