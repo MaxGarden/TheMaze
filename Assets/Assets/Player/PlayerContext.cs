@@ -12,6 +12,9 @@ public sealed class PlayerContext : MonoBehaviour
     public InteractionController InteractionController { get; private set; }
     public IInteractionInputHandler InteractionInputHandler => InteractionController;
 
+    public DisplayController DisplayController { get; private set; }
+    public IDisplayInputHandler DisplayInputHandler => DisplayController;
+
     public PlayerInputController InputController { get; private set; }
 
     private IList<IPlayerComponent> m_playerComponents = new List<IPlayerComponent>();
@@ -21,6 +24,7 @@ public sealed class PlayerContext : MonoBehaviour
         Inventory = EnsureComponent<Inventory>();
         InteractionController = EnsureComponent<InteractionController>();
         InputController = EnsureComponent<PlayerInputController>();
+        DisplayController = EnsureComponent<DisplayController>();
     }
 
     private void Awake()
