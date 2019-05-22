@@ -21,6 +21,10 @@ public sealed class PlayerInputController : PlayerComponentBase
     private string m_useEquipmentButtonName = "UseEquipment";
     public string UseEquipmentButtonName => m_useEquipmentButtonName;
 
+    [SerializeField]
+    private string m_showCollectiblesButtonName = "ShowCollectibles";
+    public string ShowCollectiblesButtonName => m_showCollectiblesButtonName;
+
     private Dictionary<string, Action> m_buttonHandlers;
 
     public PlayerInputController()
@@ -36,6 +40,7 @@ public sealed class PlayerInputController : PlayerComponentBase
             {ToggleEquipmentButtonName, () => PlayerContext.InventoryInputHandler.ToggleEquipment() },
             {DropEquipmentButtonName, () => PlayerContext.InventoryInputHandler.DropEquipment() },
             {UseEquipmentButtonName, () => PlayerContext.InventoryInputHandler.UseEquipment() },
+            {ShowCollectiblesButtonName, () => PlayerContext.DisplayInputHandler.DisplayCollectibles() },
         };
     }
 
