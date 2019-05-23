@@ -89,6 +89,7 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
             default:
                 throw new InvalidOperationException("Unsupported equipment type!");
         }
+        RefreshEquipment();
     }
 
     void IInventoryInputHandler.DropEquipment()

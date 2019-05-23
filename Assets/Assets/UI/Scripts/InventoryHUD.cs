@@ -39,10 +39,8 @@ public class InventoryHUD : MonoBehaviour
                  selectedImages[index].enabled = false;
              }
 
-             if(selectedImages[index].enabled && !itemImages[index].enabled)
-             {
-                 selectedImages[index].enabled = false;
-             }
+            if(selectedImages[index].enabled && !items[index])
+                selectedImages[index].enabled = false;
         }
     }
 }
