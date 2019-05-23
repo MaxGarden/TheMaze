@@ -8,7 +8,7 @@ public class MapBuilder : MonoBehaviour
     public int mapHeight = 9;
 
     private const float defaultGridSize = 5.9f;
-    public float gridSize = 10.0f;
+    public float gridSize = 4.0f;
     private float scaleMargin = 0.1f;
     private Vector3 position;
 
