@@ -42,7 +42,7 @@ public class MapBuilder : MonoBehaviour
         }
         parentObject = new GameObject("Map");
 
-        position = new Vector3(-(mapWidth * gridSize) / 2.0f + gridSize/2, 0.0f, -(mapHeight * gridSize) / 2.0f + gridSize / 2);
+        position = new Vector3(-(mapWidth * gridSize) / 2.0f + gridSize/2.0f, 0.0f, -(mapHeight * gridSize) / 2.0f + gridSize / 2.0f);
 
         for (int y = 0; y < mapHeight; y++)
         {
@@ -56,10 +56,6 @@ public class MapBuilder : MonoBehaviour
                 Vector3 scale = new Vector3(gridSize, gridSize, gridSize);
                 string elementPath = prefabsPath;
                 rescaleToGrid = true;
-
-                pos.y += gridSize;
-                spawn(prefabsPath + "/Walls/Ceiling", pos, posOffset, rotOffset, new Vector3(gridSize, 0.5f, gridSize));
-                pos.y -= gridSize;
 
                 switch (map[pixelNumber].type)
                 {
@@ -333,8 +329,12 @@ public class MapBuilder : MonoBehaviour
                         }
                         break;
                 }
-                spawn(elementPath, pos, posOffset, rotOffset, scale);
-
+                if (elementPath != prefabsPath)
+                {
+                    spawn(elementPath, pos, posOffset, rotOffset, scale);
+                    addFloorDecal(pos);
+                    spawn(prefabsPath + "/Walls/Ceiling", new Vector3(x, map[pixelNumber].height, y) * gridSize + new Vector3(0, gridSize, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(gridSize, 0.5f, gridSize));
+                }
             }
         }
         parentObject.transform.position = position;
@@ -397,5 +397,16 @@ public class MapBuilder : MonoBehaviour
     private void rescaleRelative(GameObject gameObj, float scaleX, float scaleY, float scaleZ)
     {
         gameObj.transform.localScale = new Vector3(scaleX / defaultGridSize, scaleY / defaultGridSize, scaleZ / defaultGridSize);
+    }
+
+    private void addFloorDecal(Vector3 position)
+    {
+        if(Random.value > 0.75f)
+        {
+            char elementLetter =(char) 65;
+            elementLetter += (char)Mathf.Round(5.0f * Random.value); // A - F
+            position.y += 0.02f;
+            spawn(prefabsPath + "/Decals/Grunge_" + elementLetter, position, getRandomizedPosOffset(), new Vector3(0,getRandomizedRotationOffset(180.0f),0), Vector3.zero);
+        }
     }
 }
