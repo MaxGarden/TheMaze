@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 854993033877b9544ba548491a9d75c2, type: 3}
+  m_Name: FancyFlashlightTemplate
+  m_EditorClassIdentifier: 
+  m_name: Fancy flashlight
+  m_interactionColliderPrefab: {fileID: 5460903117887813550, guid: 3cef612e705307241a5e317575927389,
+    type: 3}
+  m_icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_pickUpSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_dropSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
+  m_type: 0
+  m_controllerPrefab: {fileID: 8246302611511010230, guid: eb18e1f0c8e2c8641b04e7679d5b1142,
+    type: 3}
+  m_durability: 100
+  m_useCost: 5
+  m_dimmingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0083351135
+      value: 1.0023499
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9750061
+      value: 0.13443375
+      inSlope: 0.4422115
+      outSlope: 0.4422115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.551728
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_color: {r: 0.9528302, g: 0.09438412, b: 0.20566252, a: 1}
+  m_cookie: {fileID: 2800000, guid: 538c5725a4025a54e9315468d80e50df, type: 3}
+  m_cookieSize: 1
