@@ -6,6 +6,9 @@ public sealed class InteractionRaycastHandlerProvider : InteractionHandlerProvid
     private float m_raycastDistance = 10.0f;
 
     [SerializeField]
+    private int m_layerMask = 0;
+
+    [SerializeField]
     private Transform m_originTransform = null;
 
     public override InteractionHandler ProvideHandler()
@@ -13,7 +16,7 @@ public sealed class InteractionRaycastHandlerProvider : InteractionHandlerProvid
         Debug.DrawRay(m_originTransform.position, m_originTransform.forward * m_raycastDistance);
 
         RaycastHit raycastResult;
-        if (!Physics.Raycast(m_originTransform.position, m_originTransform.forward, out raycastResult, m_raycastDistance))
+        if (!Physics.Raycast(m_originTransform.position, m_originTransform.forward, out raycastResult, m_raycastDistance, m_layerMask))
             return null;
 
         return raycastResult.transform.GetComponentInParent<InteractionHandler>();

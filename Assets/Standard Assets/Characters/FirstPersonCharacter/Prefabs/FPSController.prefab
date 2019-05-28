@@ -50,12 +50,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.5
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_WalkSpeed: 5
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 10
+  m_JumpSpeed: 7
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_raycastDistance: 10
+  m_layerMask: 512
   m_originTransform: {fileID: 400002}
 --- !u!114 &6205803396155610220
 MonoBehaviour:
@@ -544,3 +545,5 @@ MonoBehaviour:
   m_interactButtonName: Interact
   m_toggleEquipmentButtonName: ToggleEquipment
   m_dropEquipmentButtonName: DropEquipment
+  m_useEquipmentButtonName: UseEquipment
+  m_showCollectiblesButtonName: ShowCollectibles
