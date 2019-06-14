@@ -33,6 +33,19 @@ public class MapBuilder : MonoBehaviour
     (0,0,0,159),(60,0,0,159),(1,0,0,159),(1,0,0,159),(60,0,0,159),(1,0,0,159),(1,0,0,159),(60,0,0,159),(0,0,0,159)
     };
 
+    public bool loadMap((byte type, byte id, byte height, byte rotation)[] _map, int _mapWidth, int _mapHeight)
+    {
+        if(_map != null && _mapWidth > 0 && _mapHeight > 0)
+        {
+            map = _map;
+            mapWidth = _mapWidth;
+            mapHeight = _mapHeight;
+            return true;
+        }
+        Debug.Log("Couldn't load the map. Using default one...");
+        return false;
+    }
+
     public void generate()
     {
         parentObject = GameObject.Find("Map");
