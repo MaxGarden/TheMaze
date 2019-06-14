@@ -9,15 +9,32 @@ public class InventoryHUD : MonoBehaviour
     public Image[] selectedImages = new Image[numberItemSlots];
     private Inventory inventory;
 
+
+    // -----------------
+    public Slider durabilitySlider;
+    public Image fillSliderImage;
+    private Color minColor = new Color(89f/255f, 2f/255f, 25f/255f);
+    private Color maxColor = new Color(44f/255f, 64f/255f, 1f/255f);
+    public Image selectedEquipmentImage;
+    private UtilityEquipment utilityEquipment;
+
     private void OnEnable()
     {
         inventory = PlayerContext.MainPlayer.Inventory;
         inventory.OnEquipmentChanged += EquipmentChange;
+
+        // ------------------------------------
+        durabilitySlider.gameObject.SetActive(false);
+        selectedEquipmentImage.enabled = false;
     }
 
     private void OnDisable()
     {
         inventory.OnEquipmentChanged -= EquipmentChange;
+
+        // ------------------------------------
+        durabilitySlider.gameObject.SetActive(false);
+        selectedEquipmentImage.enabled = false;
     }
 
     void EquipmentChange()
@@ -41,6 +58,31 @@ public class InventoryHUD : MonoBehaviour
 
             if(selectedImages[index].enabled && !items[index])
                 selectedImages[index].enabled = false;
+        }
+
+        // --------------------------------------
+        if (inventory.SelectedEquipment is UtilityEquipment)
+        {
+            utilityEquipment = (UtilityEquipment)inventory.SelectedEquipment;
+            durabilitySlider.value = utilityEquipment.Template.Durability;
+            durabilitySlider.gameObject.SetActive(true);
+            selectedEquipmentImage.sprite = inventory.SelectedEquipment.Template.Icon;
+            selectedEquipmentImage.enabled = true;
+        }
+        else
+        {
+            durabilitySlider.gameObject.SetActive(false);
+            selectedEquipmentImage.enabled = false;
+        }
+    }
+
+    // ------------------------------------
+    void Update()
+    {
+        if (durabilitySlider.gameObject.activeSelf)
+        {
+            durabilitySlider.value = utilityEquipment.Durability;
+            fillSliderImage.color = Color.Lerp(minColor, maxColor, durabilitySlider.value / utilityEquipment.Template.Durability);
         }
     }
 }
