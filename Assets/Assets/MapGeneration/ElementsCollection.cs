@@ -9,58 +9,58 @@ public class ElementsCollection
             // Walls
 
         // Wall_A
-        {"Wall_A_N", new Color(0,0,0,159/255f) },
-        {"Wall_A_E", new Color(0,0,0,191/255f) },
-        {"Wall_A_S", new Color(0,0,0,223/255f) },
-        {"Wall_A_W", new Color(0,0,0,255/255f) },
+        {"Wall_A_N", new Color32(0,0,0,159) },
+        {"Wall_A_E", new Color32(0,0,0,191) },
+        {"Wall_A_S", new Color32(0,0,0,223) },
+        {"Wall_A_W", new Color32(0,0,0,255) },
 
         // Wall_B
-        {"Wall_B_N", new Color(0,20/255f,0,159/255f) },
-        {"Wall_B_E", new Color(0,20/255f,0,191/255f) },
-        {"Wall_B_S", new Color(0,20/255f,0,223/255f) },
-        {"Wall_B_W", new Color(0,20/255f,0,255/255f) },
+        {"Wall_B_N", new Color32(0,20,0,159) },
+        {"Wall_B_E", new Color32(0,20,0,191) },
+        {"Wall_B_S", new Color32(0,20,0,223) },
+        {"Wall_B_W", new Color32(0,20,0,255) },
 
         // Wall_C
-        {"Wall_C_N", new Color(0,40/255f,0,159/255f) },
-        {"Wall_C_E", new Color(0,40/255f,0,191/255f) },
-        {"Wall_C_S", new Color(0,40/255f,0,223/255f) },
-        {"Wall_C_W", new Color(0,40/255f,0,255/255f) },
+        {"Wall_C_N", new Color32(0,40,0,159) },
+        {"Wall_C_E", new Color32(0,40,0,191) },
+        {"Wall_C_S", new Color32(0,40,0,223) },
+        {"Wall_C_W", new Color32(0,40,0,255) },
 
         // Wall_D
-        {"Wall_D_N", new Color(0,60/255f,0,159/255f) },
-        {"Wall_D_E", new Color(0,60/255f,0,191/255f) },
-        {"Wall_D_S", new Color(0,60/255f,0,223/255f) },
-        {"Wall_D_W", new Color(0,60/255f,0,255/255f) },
+        {"Wall_D_N", new Color32(0,60,0,159) },
+        {"Wall_D_E", new Color32(0,60,0,191) },
+        {"Wall_D_S", new Color32(0,60,0,223) },
+        {"Wall_D_W", new Color32(0,60,0,255) },
 
         // Wall_E
-        {"Wall_E_N", new Color(0,80/255f,0,159/255f) },
-        {"Wall_E_E", new Color(0,80/255f,0,191/255f) },
-        {"Wall_E_S", new Color(0,80/255f,0,223/255f) },
-        {"Wall_E_W", new Color(0,80/255f,0,255/255f) },
+        {"Wall_E_N", new Color32(0,80,0,159) },
+        {"Wall_E_E", new Color32(0,80,0,191) },
+        {"Wall_E_S", new Color32(0,80,0,223) },
+        {"Wall_E_W", new Color32(0,80,0,255) },
 
         // Arch_A
-        {"Arch_A_NS", new Color(0,100/255f,0,223/255f) },
-        {"Arch_A_EW", new Color(0,100/255f,0,255/255f) },
+        {"Arch_A_NS", new Color32(0,100,0,223) },
+        {"Arch_A_EW", new Color32(0,100,0,255) },
 
             // Doors
 
         // Rec_Door_A
-        {"Rec_Door_A_N", new Color(20/255f,0,0,159/255f) },
-        {"Rec_Door_A_E", new Color(20/255f,0,0,191/255f) },
-        {"Rec_Door_A_S", new Color(20/255f,0,0,223/255f) },
-        {"Rec_Door_A_W", new Color(20/255f,0,0,255/255f) },
+        {"Rec_Door_A_N", new Color32(20,0,0,159) },
+        {"Rec_Door_A_E", new Color32(20,0,0,191) },
+        {"Rec_Door_A_S", new Color32(20,0,0,223) },
+        {"Rec_Door_A_W", new Color32(20,0,0,255) },
 
         // Arch_Door_B
-        {"Arch_Door_B_N", new Color(20/255f,20/255f,0,159/255f) },
-        {"Arch_Door_B_E", new Color(20/255f,20/255f,0,191/255f) },
-        {"Arch_Door_B_S", new Color(20/255f,20/255f,0,223/255f) },
-        {"Arch_Door_B_W", new Color(20/255f,20/255f,0,255/255f) },
+        {"Arch_Door_B_N", new Color32(20,20,0,159) },
+        {"Arch_Door_B_E", new Color32(20,20,0,191) },
+        {"Arch_Door_B_S", new Color32(20,20,0,223) },
+        {"Arch_Door_B_W", new Color32(20,20,0,255) },
 
         // Rec_Door_C
-        {"Rec_Door_C_N", new Color(20/255f,60/255f,0,159/255f) },
-        {"Rec_Door_C_E", new Color(20/255f,60/255f,0,191/255f) },
-        {"Rec_Door_C_S", new Color(20/255f,60/255f,0,223/255f) },
-        {"Rec_Door_C_W", new Color(20/255f,60/255f,0,255/255f) },
+        {"Rec_Door_C_N", new Color32(20,60,0,159) },
+        {"Rec_Door_C_E", new Color32(20,60,0,191) },
+        {"Rec_Door_C_S", new Color32(20,60,0,223) },
+        {"Rec_Door_C_W", new Color32(20,60,0,255) },
 
             // Stairs
 
@@ -69,19 +69,19 @@ public class ElementsCollection
             // Floors
 
         // Floor_A
-        {"Floor_A", new Color(80/255f,0,0,1f) },
-        {"Floor_B", new Color(80/255f,20/255f,0,1f) },
-        {"Floor_Gate", new Color(80/255f,40/255f,0,1f) },
+        {"Floor_A", new Color32(80,0,0,1) },
+        {"Floor_B", new Color32(80,20,0,1) },
+        {"Floor_Gate", new Color32(80,40,0,1) },
 
             // Special
 
-        {"StartPoint", new Color(250/255f,50/255f,0,1f) },
-        {"EndPoint", new Color(250/255f,200/255f,0,1f) }
+        {"StartPoint", new Color32(250,50,0,1) },
+        {"EndPoint", new Color32(250,200,0,1) }
     };
 
-    public Color getWall(Walls wall, DirectionsEnum direction)
+    public Color32 getWall(Walls wall, DirectionsEnum direction)
     {
-        Color elementColor = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1f);
+        Color32 elementColor = new Color32(100, 100 , 100, 1);
         switch (wall)
         {
             case Walls.Wall_A:
@@ -148,9 +148,9 @@ public class ElementsCollection
         return elementColor;
     }
 
-    public Color getDoors(Doors door, DirectionsEnum direction)
+    public Color32 getDoors(Doors door, DirectionsEnum direction)
     {
-        Color elementColor = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1f);
+        Color32 elementColor = new Color32(100, 100, 100, 1);
         switch (door)
         {
             case Doors.Rec_Door_A:
@@ -187,9 +187,9 @@ public class ElementsCollection
         return elementColor;
     }
 
-    public Color getFloors(Floors floor)
+    public Color32 getFloors(Floors floor)
     {
-        Color elementColor = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1);
+        Color32 elementColor = new Color32(100, 100, 100, 1);
         switch (floor)
         {
             case Floors.Floor_A:
@@ -205,9 +205,9 @@ public class ElementsCollection
         return elementColor;
     }
 
-    public Color getSpecial(Special special)
+    public Color32 getSpecial(Special special)
     {
-        Color elementColor = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1);
+        Color32 elementColor = new Color32(100, 100, 100, 1);
         switch (special)
         {
             case Special.StartPoint:
