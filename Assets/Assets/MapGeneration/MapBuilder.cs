@@ -47,6 +47,11 @@ public class MapBuilder : MonoBehaviour
 
     public void generate()
     {
+
+        MapGenerator generator = new MapGenerator();
+        Map createdMap = generator.create();
+        loadMap(createdMap.getData(), createdMap.getMapWidth(), createdMap.getMapHeight());
+
         parentObject = GameObject.Find("Map");
         if (parentObject != null)
         {
