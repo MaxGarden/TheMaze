@@ -18,8 +18,7 @@ public class MapBuilder : MonoBehaviour
     private GameObject parentObject;
     private int pixelNumber;
 
-    //notation: (R: element type, G: element id, B: height level, Alpha: rotation)
-    private (byte type, byte id, byte height, byte rotation)[] map = 
+    private (byte type, byte id, byte height, byte rotation)[] defaultMap =
     {
     (1,0,0,159),(1,0,0,159),(0,100,0,159),(1,0,0,159),(1,0,0,159),(0,60,0,223),(0,60,0,223),(0,60,0,223),(0,0,0,159),
     (1,0,0,159),(1,0,0,159),(0,100,0,159),(1,0,0,191),(0,0,0,191),(80,20,0,159),(80,20,0,159),(80,20,0,159),(0,20,0,255),
@@ -31,8 +30,10 @@ public class MapBuilder : MonoBehaviour
     (20,20,0,191),(250,200,0,159),(0,100,0,191),(0,100,0,191),(80,0,0,159),(0,100,0,191),(0,100,0,191),(80,0,0,159),(20,0,0,191),
     (0,0,0,159),(0,0,0,159),(1,0,0,159),(1,0,0,159),(60,0,0,159),(1,0,0,159),(1,0,0,159),(60,0,0,159),(0,0,0,159)
     };
+    //notation: (R: element type, G: element id, B: height level, Alpha: rotation)
+    private List<(byte type, byte id, byte height, byte rotation)> map;
 
-    public bool loadMap((byte type, byte id, byte height, byte rotation)[] _map, int _mapWidth, int _mapHeight)
+    public bool loadMap(List<(byte type, byte id, byte height, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
@@ -40,6 +41,9 @@ public class MapBuilder : MonoBehaviour
             mapWidth = _mapWidth;
             mapHeight = _mapHeight;
             return true;
+        } else
+        {
+            map = new List<(byte type, byte id, byte height, byte rotation)>(defaultMap);
         }
         Debug.Log("Couldn't load the map. Using default one...");
         return false;
@@ -368,7 +372,7 @@ public class MapBuilder : MonoBehaviour
                 {
                     spawn(elementPath, pos, posOffset, rotOffset, scale);
                     addFloorDecal(pos);
-                    spawn(prefabsPath + "/Walls/Ceiling", new Vector3(x, map[pixelNumber].height, y) * gridSize + new Vector3(0, gridSize, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(gridSize, 0.5f, gridSize));
+                    //spawn(prefabsPath + "/Walls/Ceiling", new Vector3(x, map[pixelNumber].height, y) * gridSize + new Vector3(0, gridSize, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(gridSize, 0.5f, gridSize));
                 }
             }
         }
