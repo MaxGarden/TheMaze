@@ -10,7 +10,7 @@ public class MapBuilder : MonoBehaviour
     private const float defaultGridSize = 5.9f;
     public float gridSize = 4.0f;
     private float scaleMargin = 0.1f;
-    private Vector3 position;
+    private Vector3 mapPosition;
 
     private string prefabsPath = "Decrepit Dungeon LITE/Prefabs";
 
@@ -25,7 +25,7 @@ public class MapBuilder : MonoBehaviour
     (1,0,0,159),(1,0,0,159),(0,100,0,159),(1,0,0,191),(0,0,0,191),(80,20,0,159),(80,20,0,159),(80,20,0,159),(0,20,0,255),
     (1,0,0,159),(0,0,0,159),(0,100,0,159),(60,0,0,223),(0,0,0,159),(60,150,0,159),(60,140,0,159),(60,160,0,159),(60,0,0,255),
     (0,0,0,191),(80,0,0,159),(80,0,0,191),(60,10,0,159),(60,30,0,159),(60,50,0,159),(60,60,0,191),(60,70,0,159),(0,20,0,255),
-    (20,40,0,191),(80,0,0,159),(80,0,0,191),(80,0,0,191),(250,50,0,159),(80,0,0,191),(80,0,0,191),(80,0,0,159),(60,0,0,255),
+    (20,40,0,191),(80,0,0,159),(80,0,0,191),(250,50,0,191),(80,0,0,191),(80,0,0,191),(80,0,0,191),(80,0,0,159),(60,0,0,255),
     (0,0,0,191),(80,0,0,159),(80,0,0,191),(80,0,0,159),(80,0,0,159),(80,0,0,159),(80,0,0,191),(80,0,0,159),(0,20,0,255),
     (0,0,0,159),(0,0,0,159),(0,80,0,159),(60,0,0,159),(0,100,0,159),(60,0,0,159),(0,40,0,159),(0,0,0,159),(0,0,0,159),
     (20,20,0,191),(250,200,0,159),(0,100,0,191),(0,100,0,191),(80,0,0,159),(0,100,0,191),(0,100,0,191),(80,0,0,159),(20,0,0,191),
@@ -59,7 +59,7 @@ public class MapBuilder : MonoBehaviour
         }
         parentObject = new GameObject("Map");
 
-        position = new Vector3(-(mapWidth * gridSize) / 2.0f + gridSize/2.0f, 0.0f, -(mapHeight * gridSize) / 2.0f + gridSize / 2.0f);
+        mapPosition = new Vector3(-(mapWidth * gridSize) / 2.0f + gridSize/2.0f, 0.0f, -(mapHeight * gridSize) / 2.0f + gridSize / 2.0f);
 
         for (int y = 0; y < mapHeight; y++)
         {
@@ -145,7 +145,7 @@ public class MapBuilder : MonoBehaviour
                                 elementPath += "/Floors/Floor_A";
                                 break;
                             case 60:
-                                // Unfinished
+                                // tbc
                                 scale.y = 0.5f;
                                 posOffset.y += 0.01f;
                                 elementPath += "/Floors/Floor_C";
@@ -354,6 +354,8 @@ public class MapBuilder : MonoBehaviour
                         switch (map[pixelNumber].id)
                         {
                             case 50:
+                                Debug.Log(pos);
+                                setPlayerSpawnPosition(pos);
                                 elementPath += "/Start";
                                 break;
                             case 200:
@@ -371,7 +373,7 @@ public class MapBuilder : MonoBehaviour
                 }
             }
         }
-        parentObject.transform.position = position;
+        parentObject.transform.position = mapPosition;
 
     }
 
@@ -442,5 +444,11 @@ public class MapBuilder : MonoBehaviour
             position.y += 0.02f;
             spawn(prefabsPath + "/Decals/Grunge_" + elementLetter, position, getRandomizedPosOffset(), new Vector3(0,getRandomizedRotationOffset(180.0f),0), Vector3.zero);
         }
+    }
+
+    private void setPlayerSpawnPosition(Vector3 _position)
+    {
+        GameObject player = GameObject.Find("FPSController");
+        player.transform.position = mapPosition + _position;
     }
 }
