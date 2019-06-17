@@ -354,7 +354,6 @@ public class MapBuilder : MonoBehaviour
                         switch (map[pixelNumber].id)
                         {
                             case 50:
-                                Debug.Log(pos);
                                 setPlayerSpawnPosition(pos);
                                 elementPath += "/Start";
                                 break;
@@ -448,6 +447,7 @@ public class MapBuilder : MonoBehaviour
 
     private void setPlayerSpawnPosition(Vector3 _position)
     {
+        _position.y += 1.0f;
         GameObject player = GameObject.Find("FPSController");
         player.transform.position = mapPosition + _position;
     }
