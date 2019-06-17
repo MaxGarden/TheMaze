@@ -131,8 +131,16 @@ public class GenerationAlgorithms
 
         while (true)
         {
-            Color currentPointColor = _mapSchema.GetPixel(x, y);
-            if (currentPointColor != new Color(205 / 255f, 205 / 255f, 205 / 255f, 205 / 255f) && currentPointColor != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path))
+            Color32 currentPointColor = _mapSchema.GetPixel(x, y);
+            if ((currentPointColor.r != 205 &&
+                currentPointColor.g != 205 &&
+                currentPointColor.b != 205 &&
+                currentPointColor.a != 205) && 
+                (currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).r &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).g &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).b &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).a)
+                )
             {
                 if(y != endPoint.y)
                 { drawY(new Point(x - unit, y), endPoint);
@@ -181,8 +189,15 @@ public class GenerationAlgorithms
             unit *= -1;
         while(true)
         {
-            Color currentPointColor = _mapSchema.GetPixel(x, y);
-            if (currentPointColor != new Color(205 / 255f, 205 / 255f, 205 / 255f, 205 / 255f) && currentPointColor != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path))
+            Color32 currentPointColor = _mapSchema.GetPixel(x, y);
+            if ((currentPointColor.r != 205 &&
+                currentPointColor.g != 205 &&
+                currentPointColor.b != 205 &&
+                currentPointColor.a != 205) &&
+                (currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).r &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).g &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).b &&
+                currentPointColor.r != _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path).a))
             {
                 if (x != endPoint.x)
                 {
@@ -243,7 +258,13 @@ public class GenerationAlgorithms
         for(int i =0; i<_width;i++)
             for(int j =0; j<_height;j++)
             {
-                if (_mapSchema.GetPixel(i, j) == new Color(205 / 255f, 205 / 255f, 205 / 255f, 205 / 255f))
+                Color32 currentPixel = _mapSchema.GetPixel(i, j);
+                if (
+                    currentPixel.r == 205 &&
+                    currentPixel.g == 205 &&
+                    currentPixel.b == 205 &&
+                    currentPixel.a == 205
+                    )
                     _mapSchema.SetPixel(i, j, _t1Elements.getElement(ElementsT1Collection.ElementsT1.Wall));
 
             }
@@ -251,7 +272,12 @@ public class GenerationAlgorithms
 
     private bool isOccupied(Point point)
     {
-        if (_mapSchema.GetPixel(point.x, point.y) != new Color(205 / 255f, 205 / 255f, 205 / 255f, 205 / 255f))
+        Color32 currentPixel = _mapSchema.GetPixel(point.x, point.y);
+        if (currentPixel.r != 205 &&
+            currentPixel.g != 205 &&
+            currentPixel.b != 205 &&
+            currentPixel.a != 205
+            )
             return true;
         return false;
     }
@@ -260,7 +286,12 @@ public class GenerationAlgorithms
     {
         foreach(Point point in points)
         {
-            if (_mapSchema.GetPixel(point.x, point.y) != new Color(205 / 255f, 205 / 255f, 205 / 255f, 205 / 255f))
+            Color32 currentPixel = _mapSchema.GetPixel(point.x, point.y);
+            if (currentPixel.r != 205 &&
+                currentPixel.g != 205 &&
+                currentPixel.b != 205 &&
+                currentPixel.a != 205
+                )
                 return true;
         }
         return false;

@@ -7,25 +7,25 @@ public class ElementsT1Collection
     private Dictionary<string, Color> elements = new Dictionary<string, Color>()
     {
 
-        {"Path", new Color(1f,1f,1f,1f)  },
-        {"Wall", new Color(0,0,0,1f) },
+        {"Path", new Color32(1,1,1,1)  },
+        {"Wall", new Color32(0,0,0,1) },
  
-        {"SmallRoom", new Color(0,200/255f,0,1) },
-        {"MediumRoom", new Color(0,200/255f,200/255f,1f) },
-        {"LargeRoom", new Color(200/255f,0,200/255f,1f) },
+        {"SmallRoom", new Color32(0,200,0,1) },
+        {"MediumRoom", new Color32(0,200,200,1) },
+        {"LargeRoom", new Color32(200,0,200,1) },
 
-        {"RoomDoors_N", new Color(200/255f,0,0,159/255f) },
-        {"RoomDoors_E", new Color(200/255f,0,0,191/255f) },
-        {"RoomDoors_S", new Color(200/255f,0,0,223/255f) },
-        {"RoomDoors_W", new Color(200/255f,0,0,1f) },
+        {"RoomDoors_N", new Color32(200,0,0,159) },
+        {"RoomDoors_E", new Color32(200,0,0,191) },
+        {"RoomDoors_S", new Color32(200,0,0,223) },
+        {"RoomDoors_W", new Color32(200,0,0,1) },
 
-        {"StartPoint", new Color(250/255f,50/255f,0,1f) },
-        {"EndPoint", new Color(250/255f,200/255f,0,1f) }
+        {"StartPoint", new Color32(250,50,0,1) },
+        {"EndPoint", new Color32(250,200,0,1) }
     };
 
-    public Color getElement(ElementsT1 element)
+    public Color32 getElement(ElementsT1 element)
     {
-        Color elementColor = new Color(100/255f,100/255f,100/255f,1f);
+        Color32 elementColor = new Color32(100,100,100,1);
         switch(element)
         {
             case ElementsT1.Path:
