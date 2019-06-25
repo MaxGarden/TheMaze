@@ -29573,7 +29573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 5121437595618541561, guid: 610e3ef6e09181c428333e6190262301,
     type: 3}
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
 --- !u!1 &508062121
 GameObject:
   m_ObjectHideFlags: 0
@@ -107685,14 +107685,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.5882353}
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.7254902}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 59021a0bacad52349bbc2722f4cca2c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edc4f2cd58dc8d84e81307794d9ca8da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
