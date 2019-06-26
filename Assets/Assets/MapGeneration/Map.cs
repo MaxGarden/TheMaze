@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Map
 {
-    private List<(byte type, byte id, byte height, byte rotation)> _data;
+    private List<(byte type, byte id, byte rotation)> _data;
     private int _mapWidth, _mapHeight;
 
-    public Map(List<(byte type, byte id, byte height, byte rotation)> data, int mapWidth, int mapHeight)
+    public Map(List<(byte type, byte id, byte rotation)> data, int mapWidth, int mapHeight)
     {
         this._data = data;
         this._mapHeight = mapHeight;
@@ -16,7 +16,7 @@ public class Map
 
     public Map() { }
 
-    public List<(byte type, byte id, byte height, byte rotation)> getData()
+    public List<(byte type, byte id, byte rotation)> getData()
     {
         return _data;
     }
