@@ -10,7 +10,6 @@ public class MapGenerator : MonoBehaviour
 
     public int MAP_WIDTH = 60;
     public int MAP_HEIGHT = 60;
-    //Texture2D mapSchema;
 
     public Map create()
     {
@@ -24,11 +23,7 @@ public class MapGenerator : MonoBehaviour
 
         saveMapToPNG(mapSchema);
 
-        List<(byte type, byte id, byte height, byte rotation)> data = new List<(byte type, byte id, byte height, byte rotation)>();
-
-        //(byte type, byte id, byte height, byte rotation)[] data = new (byte type, byte id, byte height, byte rotation)[MAP_WIDTH*MAP_HEIGHT];
-
-        int index = 0;
+        List<(byte type, byte id, byte rotation)> data = new List<(byte type, byte id, byte rotation)>();
         
         for (int j = MAP_HEIGHT - 1; j >= 0; j--)
         {
@@ -36,12 +31,8 @@ public class MapGenerator : MonoBehaviour
             {
 
                 Color32 currentPixel = mapSchema.GetPixel(i, j);
-                //data[index].type = Convert.ToByte(currentPixel.r);
-                //data[index].id = Convert.ToByte(currentPixel.g);
-                //data[index].height = Convert.ToByte(currentPixel.b);
-                //data[index].rotation = Convert.ToByte(currentPixel.a);
 
-                data.Add( (Convert.ToByte(currentPixel.r), Convert.ToByte(currentPixel.g) , Convert.ToByte(currentPixel.b) , Convert.ToByte(currentPixel.a)) );
+                data.Add( (Convert.ToByte(currentPixel.r), Convert.ToByte(currentPixel.g) , Convert.ToByte(currentPixel.b)) );
             }
         }
 
@@ -66,24 +57,56 @@ public class MapGenerator : MonoBehaviour
             {
                 Color32 currentPixel = mapSchema.GetPixel(i, j);
                 //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.Wall))
-                if(
-                   currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.Wall).r &&
-                   currentPixel.g == elemT1.getElement(ElementsT1Collection.ElementsT1.Wall).g &&
-                   currentPixel.b == elemT1.getElement(ElementsT1Collection.ElementsT1.Wall).b &&
-                   currentPixel.a == elemT1.getElement(ElementsT1Collection.ElementsT1.Wall).a 
-                   )
+                if(compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North));
-                    continue;
+
+                    float torchChance = UnityEngine.Random.Range(0.0f, 1.0f);
+
+                    if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Path)) ||
+                       compareColor32(mapSchema.GetPixel(i, j + 1), elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    {
+                        if (torchChance > 0.95f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_N, DirectionsEnum.North));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North));
+                        continue;
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i+1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Path)) ||
+                        compareColor32(mapSchema.GetPixel(i+1, j), elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    {
+                        if (torchChance > 0.95f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_E, DirectionsEnum.East));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.East));
+                        continue;
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Path)) ||
+                        compareColor32(mapSchema.GetPixel(i, j - 1), elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    {
+                        if (torchChance > 0.95f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_S, DirectionsEnum.South));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.South));
+                        continue;
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Path)) ||
+                        compareColor32(mapSchema.GetPixel(i - 1, j), elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    {
+                        if (torchChance > 0.95f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_W, DirectionsEnum.West));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.West));
+                        continue;
+                    }
+
                 }
 
                 //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
                 if(
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.Path).r &&
-                    currentPixel.g == elemT1.getElement(ElementsT1Collection.ElementsT1.Path).g &&
-                    currentPixel.b == elemT1.getElement(ElementsT1Collection.ElementsT1.Path).b &&
-                    currentPixel.a == elemT1.getElement(ElementsT1Collection.ElementsT1.Path).a 
-
+                    compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
                     )
                 {
                     mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
@@ -91,12 +114,7 @@ public class MapGenerator : MonoBehaviour
                 }
 
                 //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom))
-                if(
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom).r &&
-                    currentPixel.g == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom).g &&
-                    currentPixel.b == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom).b &&
-                    currentPixel.a == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom).a
-                    )
+                if(compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)))
                 {
                     mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_B));
                     continue;
@@ -105,15 +123,8 @@ public class MapGenerator : MonoBehaviour
 
                 // Doors N
 
-                //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N) &&
-                //    (mapSchema.GetPixel(i, j + 1) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
-                //    mapSchema.GetPixel(i, j + 1) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
-
                 if(
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N).r &&
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N).r &&
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N).r &&
-                    currentPixel.r == elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N).r &&
+                    compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N)) &&
 
                     (mapSchema.GetPixel(i, j + 1) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
                     mapSchema.GetPixel(i, j + 1) == elem.getFloors(ElementsCollection.Floors.Floor_A))
@@ -147,8 +158,8 @@ public class MapGenerator : MonoBehaviour
                 // Doors S
 
                 if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_S)) &&
-                    (mapSchema.GetPixel(i - 1, j) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
-                    mapSchema.GetPixel(i - 1, j) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    (mapSchema.GetPixel(i, j-1) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
+                    mapSchema.GetPixel(i, j-1) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
                 {
                     mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.South)); // Open Arch
                     continue;
@@ -162,8 +173,8 @@ public class MapGenerator : MonoBehaviour
                 // Doors W
 
                 if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_W)) &&
-                    (mapSchema.GetPixel(i, j - 1) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
-                    mapSchema.GetPixel(i, j - 1) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
+                    (mapSchema.GetPixel(i - 1, j ) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
+                    mapSchema.GetPixel(i - 1, j) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
                 {
                     mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.West)); // Open Arch
                     continue;
@@ -182,5 +193,15 @@ public class MapGenerator : MonoBehaviour
     {
         byte[] bytes = mapSchema.EncodeToPNG();
         File.WriteAllBytes(Application.dataPath + "/../MapPreview.png", bytes);
+    }
+
+    private bool compareColor32(Color32 c1, Color32 c2)
+    {
+        if (c1.a == c2.a &&
+            c1.r == c2.r &&
+            c1.g == c2.g &&
+            c1.b == c2.b)
+            return true;
+        else return false;
     }
 }
