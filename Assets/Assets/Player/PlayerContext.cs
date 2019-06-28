@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public sealed class PlayerContext : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public sealed class PlayerContext : MonoBehaviour
 
     public Health Health { get; private set; }
     public KnockbackController KnockbackController { get; private set; }
+    public FirstPersonController FirstPersonController { get; private set; }
 
     public Inventory Inventory { get; private set; }
     public IInventoryInputHandler InventoryInputHandler => Inventory;
@@ -26,6 +28,7 @@ public sealed class PlayerContext : MonoBehaviour
     {
         Health = EnsureComponent<Health>();
         KnockbackController = EnsureComponent<KnockbackController>();
+        FirstPersonController = EnsureComponent<FirstPersonController>();
         Inventory = EnsureComponent<Inventory>();
         InteractionController = EnsureComponent<InteractionController>();
         InputController = EnsureComponent<PlayerInputController>();
