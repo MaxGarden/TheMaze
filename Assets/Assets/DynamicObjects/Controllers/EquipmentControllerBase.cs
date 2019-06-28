@@ -10,13 +10,6 @@ public abstract class EquipmentControllerBase : EquipmentController
     [SerializeField]
     private float m_dropThrowForce = 8.0f;
 
-    private AudioSource m_audioSource = null;
-
-    protected virtual void Awake()
-    {
-        m_audioSource = GetComponent<AudioSource>();
-    }
-
     public override void Initialize(Equipment equipment)
     {
         Equipment = equipment;
@@ -77,20 +70,5 @@ public abstract class EquipmentControllerBase : EquipmentController
     protected virtual void OnStateChanged(Equipment.EquipmentState state)
     {
         //to override
-    }
-
-    protected void TryPlayInteractionSound(AudioClip clip)
-    {
-        if (!clip)
-            return;
-
-        if (!m_audioSource)
-        {
-            AudioSource.PlayClipAtPoint(clip, transform.position);
-            return;
-        }
-
-        m_audioSource.clip = clip;
-        m_audioSource.Play();
     }
 }
