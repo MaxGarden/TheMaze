@@ -6,6 +6,9 @@ public sealed class PlayerContext : MonoBehaviour
 {
     static public PlayerContext MainPlayer { get; private set; }
 
+    public Health Health { get; private set; }
+    public KnockbackController KnockbackController { get; private set; }
+
     public Inventory Inventory { get; private set; }
     public IInventoryInputHandler InventoryInputHandler => Inventory;
 
@@ -21,6 +24,8 @@ public sealed class PlayerContext : MonoBehaviour
 
     private void EnsureComponents()
     {
+        Health = EnsureComponent<Health>();
+        KnockbackController = EnsureComponent<KnockbackController>();
         Inventory = EnsureComponent<Inventory>();
         InteractionController = EnsureComponent<InteractionController>();
         InputController = EnsureComponent<PlayerInputController>();
