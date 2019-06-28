@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fe53e56bf3ccd4ca51eeccbc5b79ac, type: 3}
+  m_Name: TestLockedDoorTemplate
+  m_EditorClassIdentifier: 
+  m_name: Locked door
+  m_interactionColliderPrefab: {fileID: 1898897732029805248, guid: 07dd357c71331ce479ff975e85d67e8d,
+    type: 3}
+  m_openSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
+  m_closeSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  m_lockedSound: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
+  m_requiredCollectibleToOpen: {fileID: 11400000, guid: 29d71854fc1d6a94399853e360d66f19,
+    type: 2}
