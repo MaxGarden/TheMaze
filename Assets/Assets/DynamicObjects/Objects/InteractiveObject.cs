@@ -10,6 +10,8 @@ public class InteractiveObject : DynamicObject
 
     public override void Initialize(DynamicObjectTemplate template)
     {
+        base.Initialize(template);
+
         Template = (InteractiveObjectTemplate)template;
 
         var interactionColliderPrefab = Template.InteractionColliderPrefab;
