@@ -18,5 +18,4 @@ MonoBehaviour:
   m_openSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   m_closeSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_lockedSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
-  m_requiredCollectibleToOpen: {fileID: 11400000, guid: 29d71854fc1d6a94399853e360d66f19,
-    type: 2}
+  m_requiredCollectibleToOpen: {fileID: 0}
