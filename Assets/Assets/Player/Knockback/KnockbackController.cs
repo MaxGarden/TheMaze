@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 [RequireComponent(typeof(CharacterController))]
 public sealed class KnockbackController : MonoBehaviour
@@ -11,6 +12,7 @@ public sealed class KnockbackController : MonoBehaviour
 
     private Vector3 m_impact = Vector3.zero;
     private CharacterController m_characterController;
+    private FirstPersonController m_firstPersonController;
 
     private void Awake()
     {

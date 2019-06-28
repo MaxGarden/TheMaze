@@ -42,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public Vector3 LastNonZeroMoveDirection { get; private set; }
+
         // Use this for initialization
         private void Start()
         {
@@ -110,6 +112,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MoveDir.x = desiredMove.x * speed;
                 m_MoveDir.z = desiredMove.z * speed;
                 m_MoveDir.y = -m_StickToGroundForce;
+
+                if (m_MoveDir.x != 0 || m_MoveDir.z != 0)
+                    LastNonZeroMoveDirection = m_MoveDir;
 
                 if (m_Jump)
                 {
