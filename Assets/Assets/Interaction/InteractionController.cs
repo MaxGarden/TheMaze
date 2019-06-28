@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(InteractionHandlerProvider))]
 public sealed class InteractionController : MonoBehaviour, IInteractionInputHandler
@@ -11,7 +10,17 @@ public sealed class InteractionController : MonoBehaviour, IInteractionInputHand
     private InteractionHandler m_possibleInteraction;
 
     public bool IsInteractionPossible => m_possibleInteraction;
-    public string InteractionDescription => m_possibleInteraction ? m_possibleInteraction.InteractionDescription : string.Empty;
+    public string InteractionDescription
+    {
+        get
+        {
+            if (m_possibleInteraction)
+                return m_possibleInteraction.CalculateInteractionDescription(CreateInteractionContext());
+
+            return string.Empty;
+        }
+    }
+    public bool CustomInteraction => m_possibleInteraction ? m_possibleInteraction.IsCustomInteraction(CreateInteractionContext()) : false;
 
     private void Awake()
     {

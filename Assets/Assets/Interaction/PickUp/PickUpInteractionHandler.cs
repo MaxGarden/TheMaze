@@ -8,7 +8,10 @@ public class PickUpInteractionHandler : InteractionHandler
     [SerializeField]
     private string m_interactionPrefix = "pick up - ";
 
-    public override string InteractionDescription => m_interactionPrefix + m_pickUpController.PickUpName;
+    public override string CalculateInteractionDescription(InteractionContext context)
+    {
+        return m_interactionPrefix + m_pickUpController.PickUpName;
+    }
 
     protected override void Awake()
     {
