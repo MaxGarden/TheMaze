@@ -2,9 +2,13 @@ using UnityEngine;
 
 public abstract class InteractionHandler : MonoBehaviour
 {
-    public abstract string InteractionDescription { get; }
-
+    public abstract string CalculateInteractionDescription(InteractionContext context);
     public abstract void Interact(InteractionContext context);
+
+    public virtual bool IsCustomInteraction(InteractionContext context)
+    {
+        return false;
+    }
 
     private AudioSource m_audioSource = null;
 
