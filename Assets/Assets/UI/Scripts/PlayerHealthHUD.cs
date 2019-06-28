@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerHealthHUD : MonoBehaviour
@@ -38,9 +39,6 @@ public class PlayerHealthHUD : MonoBehaviour
 
     void Death()
     {
-
-        // disable movment etc of player
-        // game over!
-
+        //SceneManager.LoadScene(2);
     }
 }
