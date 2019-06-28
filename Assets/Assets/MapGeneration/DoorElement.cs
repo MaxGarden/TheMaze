@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door
+public class DoorElement
 {
     public DirectionsEnum dir;
     public bool isAvailable;
     public Point accessPoint;
 
-    public Door() { }
+    public DoorElement() { }
 
-    public Door(DirectionsEnum dir, bool isAvailable, Point accessPoint)
+    public DoorElement(DirectionsEnum dir, bool isAvailable, Point accessPoint)
     {
         this.dir = dir;
         this.isAvailable = isAvailable;
