@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class EquipmentController : MonoBehaviour
+public abstract class EquipmentController : ControllerBase
 {
     public abstract void Initialize(Equipment equipment);
 

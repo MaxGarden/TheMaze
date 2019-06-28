@@ -6,7 +6,7 @@ public sealed class FlashlightTemplate : UtilityEquipmentTemplate
     [Header("Flashlight")]
 
     [SerializeField]
-    private AnimationCurve m_dimmingCurve;
+    private AnimationCurve m_dimmingCurve = null;
     public AnimationCurve DimmingCurve => m_dimmingCurve;
 
     [SerializeField]
@@ -20,4 +20,8 @@ public sealed class FlashlightTemplate : UtilityEquipmentTemplate
     [SerializeField]
     private float m_cookieSize = 1.0f;
     public float CookieSize => m_cookieSize;
+
+    [SerializeField]
+    private AudioClip m_turningOnOffSound = null;
+    public AudioClip TurningOnOffSound => m_turningOnOffSound;
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Light))]
 public sealed class FlashlightController : UtilityEquipmentController
@@ -37,6 +36,8 @@ public sealed class FlashlightController : UtilityEquipmentController
             Equipment.TurnOff();
         else
             Equipment.TryTurnOn();
+
+        TryPlayInteractionSound(EquipmentTemplate.TurningOnOffSound);
     }
 
     protected override void OnStateChanged(Equipment.EquipmentState state)
