@@ -20,7 +20,8 @@ public class CollectiblesHUD : MonoBehaviour
 
      private void OnDestroy()
      {
-        PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged -= CollectiblesChanged;
+        if (PlayerContext.MainPlayer.Inventory)
+            PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged -= CollectiblesChanged;
      }
 
 
@@ -29,22 +30,25 @@ public class CollectiblesHUD : MonoBehaviour
         foreach (var entry in PlayerContext.MainPlayer.Inventory.Collectibles)
         {
             var collectible = entry.Key;
-     
+            var wasUpdated = false;
+
             for (int i = 0; i < collectibles.Count; i++)
             {
-                if(collectible == collectibles[i])
+                if (collectible == collectibles[i])
                 {
                     UpdateUI(i, entry.Value);
-                    return;
- 
+                    wasUpdated = true;
                 }
             }
+
+            if (wasUpdated)
+                continue;
 
             CreateUI(entry.Value, collectible.Icon);
             collectibles.Add(collectible);
         }
 
-        
+
     }
 
     void UpdateUI(int index, int score)
