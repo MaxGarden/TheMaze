@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
+public sealed class Inventory : MonoBehaviour, IInventoryInputHandler, IPlayerComponent
 {
+    public PlayerContext PlayerContext { get; private set; }
+
     public Dictionary<CollectibleTemplate, int> Collectibles { get; } = new Dictionary<CollectibleTemplate, int>();
     public Dictionary<EquipmentTemplate.EquipmentType, Equipment> Equipment { get; } = new Dictionary<EquipmentTemplate.EquipmentType, Equipment>();
 
@@ -100,5 +102,10 @@ public sealed class Inventory : MonoBehaviour, IInventoryInputHandler
     void IInventoryInputHandler.UseEquipment()
     {
         SelectedEquipment?.Controller?.OnUse();
+    }
+
+    void IPlayerComponent.OnPlayerContextInitialized(PlayerContext context)
+    {
+        PlayerContext = context;
     }
 }
