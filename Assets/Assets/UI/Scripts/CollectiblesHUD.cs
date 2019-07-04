@@ -20,7 +20,7 @@ public class CollectiblesHUD : MonoBehaviour
 
      private void OnDestroy()
      {
-        if (PlayerContext.MainPlayer.Inventory)
+        if (PlayerContext.MainPlayer)
             PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged -= CollectiblesChanged;
      }
 
