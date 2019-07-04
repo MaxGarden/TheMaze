@@ -14,6 +14,12 @@ public sealed class GameplayController : MonoBehaviour
     private Canvas m_hudCanvas = null;
 
     [SerializeField]
+    private Canvas m_victoryCanvas = null;
+
+    [SerializeField]
+    private AudioClip m_victorySound = null;
+
+    [SerializeField]
     private Canvas m_gameOverCanvas = null;
 
     [SerializeField]
@@ -70,18 +76,24 @@ public sealed class GameplayController : MonoBehaviour
 
     private void OnWin()
     {
+        OnFinish();
+
+        ShowVictory();
+        PlayVictorySound();
     }
 
     private void OnFail()
     {
-        PlayerContext.MainPlayer.FirstPersonController.enabled = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        OnFinish();
 
-        HideHUD();
         ShowGameOver();
         PlayGameOverSound();
+    }
 
+    private void OnFinish()
+    {
+        HideHUD();
+        DisableFirstPersonController();
         StartCoroutine(DestroyDynamicObjectsCoroutine());
     }
 
@@ -93,6 +105,25 @@ public sealed class GameplayController : MonoBehaviour
 
         foreach (var dynamicObject in dynamicObjects)
             Destroy(dynamicObject.gameObject);
+    }
+
+    private void DisableFirstPersonController()
+    {
+        PlayerContext.MainPlayer.FirstPersonController.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void PlayVictorySound()
+    {
+        if (m_victorySound)
+            AudioSource.PlayClipAtPoint(m_victorySound, Camera.main.transform.position);
+    }
+
+    private void ShowVictory()
+    {
+        if (m_victoryCanvas)
+            m_victoryCanvas.gameObject.SetActive(true);
     }
 
     private void PlayGameOverSound()
