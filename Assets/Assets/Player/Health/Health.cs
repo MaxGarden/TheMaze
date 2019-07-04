@@ -11,8 +11,23 @@ public sealed class Health : MonoBehaviour, IPlayerComponent
     [SerializeField]
     private AudioClip m_damageSound = null;
 
+    [SerializeField]
+    private AudioClip m_healingSound = null;
+
     public PlayerContext PlayerContext { get; private set; }
-    public float CurrentHealth { get; private set; }
+
+    private float m_currentHealth;
+    public float CurrentHealth
+    {
+        get { return m_currentHealth; }
+        private set
+        {
+            m_currentHealth = value;
+            m_currentHealth = Math.Min(Math.Max(0.0f, m_currentHealth), MaximumHealth);
+
+            OnHealthChanged?.Invoke();
+        }
+    }
 
     private AudioSource m_audioSource;
 
@@ -23,14 +38,32 @@ public sealed class Health : MonoBehaviour, IPlayerComponent
         m_audioSource = GetComponent<AudioSource>();
     }
 
+
+    public void Heal(float heal)
+    {
+        if (heal <= 0.0f)
+            throw new ArgumentException("Heal cannot be less than zero.");
+
+        CurrentHealth += heal;
+        PlaySound(m_healingSound);
+    }
+
     public void Damage(float damage)
     {
+        if (damage <= 0.0f)
+            throw new ArgumentException("Damage cannot be less than zero.");
+
         CurrentHealth -= damage;
+        PlaySound(m_damageSound);
+    }
 
-        m_audioSource.clip = m_damageSound;
+    private void PlaySound(AudioClip sound)
+    {
+        if (!sound)
+            return;
+
+        m_audioSource.clip = sound;
         m_audioSource.Play();
-
-        OnHealthChanged?.Invoke();
     }
 
     void IPlayerComponent.OnPlayerContextInitialized(PlayerContext context)
