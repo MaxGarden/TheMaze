@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019bfc5aefb4ddf48b5ebeb6d69fcece, type: 3}
   m_Name: TestCollectibleTemplate
   m_EditorClassIdentifier: 
-  m_name: Test collectible
+  m_name: Coins
   m_interactionColliderPrefab: {fileID: 9215257674622289858, guid: b58a900918a6ada4eb387b82aa8033df,
     type: 3}
-  m_icon: {fileID: 21300000, guid: 6151ed2a87c4f4149b6274e76cb4786a, type: 3}
+  m_icon: {fileID: 21300000, guid: 382e1843b51469b49a79622554f04054, type: 3}
   m_pickUpSound: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
   m_collectIncrement: 1
