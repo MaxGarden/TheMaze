@@ -9,7 +9,7 @@ public class CollectiblesHUD : MonoBehaviour
     private List<CollectibleTemplate> collectibles;
 
     public GameObject collectiblePrefab;
-    public Sprite icon;
+   // public Sprite icon;
 
      private void Start()
      {
@@ -29,17 +29,18 @@ public class CollectiblesHUD : MonoBehaviour
         foreach (var entry in PlayerContext.MainPlayer.Inventory.Collectibles)
         {
             var collectible = entry.Key;
-
+     
             for (int i = 0; i < collectibles.Count; i++)
             {
                 if(collectible == collectibles[i])
                 {
                     UpdateUI(i, entry.Value);
                     return;
+ 
                 }
             }
 
-            CreateUI(entry.Value);
+            CreateUI(entry.Value, collectible.Icon);
             collectibles.Add(collectible);
         }
 
@@ -51,7 +52,7 @@ public class CollectiblesHUD : MonoBehaviour
         collectiblePrefabs[index].GetComponentInChildren<Text>().text = score.ToString();
     }
 
-    void CreateUI(int score)
+    void CreateUI(int score, Sprite icon)
     {
          GameObject added = Instantiate(collectiblePrefab, transform);
          if(added)
