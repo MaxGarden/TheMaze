@@ -16,7 +16,8 @@ MonoBehaviour:
     type: 3}
   m_collisionDamage: 50
   m_knockbackForce: 60
-  m_knocbackDirectionModifier: {x: 0, y: 0, z: 0}
   m_collisionCooldownInSeconds: 0.5
-  m_showSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
-  m_hideSound: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
+  m_timeWhenShownInSeconds: 2
+  m_timeWhenHiddenInSeconds: 2
+  m_showSound: {fileID: 8300000, guid: da5aeec65dfce4d449024607b399a5ec, type: 3}
+  m_hideSound: {fileID: 8300000, guid: a2cb9f8f4930f7e48b48bf85834f464c, type: 3}

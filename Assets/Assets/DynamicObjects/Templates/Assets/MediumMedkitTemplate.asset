@@ -23,4 +23,4 @@ MonoBehaviour:
     type: 3}
   m_durability: 60
   m_useCost: 10
-  m_regenerationSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
+  m_regenerationSound: {fileID: 8300000, guid: f65dc10e9a9a7b54bb57c0e03094b98e, type: 3}

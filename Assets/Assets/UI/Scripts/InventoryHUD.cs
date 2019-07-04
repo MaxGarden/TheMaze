@@ -64,7 +64,7 @@ public class InventoryHUD : MonoBehaviour
         if (inventory.SelectedEquipment is UtilityEquipment)
         {
             utilityEquipment = (UtilityEquipment)inventory.SelectedEquipment;
-            durabilitySlider.value = utilityEquipment.Template.Durability;
+            durabilitySlider.maxValue = utilityEquipment.Template.Durability;
             durabilitySlider.gameObject.SetActive(true);
             selectedEquipmentImage.sprite = inventory.SelectedEquipment.Template.Icon;
             selectedEquipmentImage.enabled = true;

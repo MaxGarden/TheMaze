@@ -15,7 +15,7 @@ MonoBehaviour:
   m_name: Unlocked door
   m_interactionColliderPrefab: {fileID: 1898897732029805248, guid: 07dd357c71331ce479ff975e85d67e8d,
     type: 3}
-  m_openSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
-  m_closeSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_lockedSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_openSound: {fileID: 8300000, guid: d1834f67ccfe0d04cb78bc1d37575c3d, type: 3}
+  m_closeSound: {fileID: 8300000, guid: d0505a6eeb8740f438012f641a97b19c, type: 3}
+  m_lockedSound: {fileID: 8300000, guid: 212281cdd1d2c134eb8eae289cffb8bc, type: 3}
   m_requiredCollectibleToOpen: {fileID: 0}
