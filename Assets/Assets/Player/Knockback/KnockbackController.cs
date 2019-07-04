@@ -21,13 +21,10 @@ public sealed class KnockbackController : MonoBehaviour
 
     public void Knockback(Vector3 direction, float force)
     {
-        if (direction.y < 0)
-            direction.y *= -1.0f;
-
         m_impact += direction.normalized * force / m_mass;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (m_impact.magnitude > 0.2f)
             m_characterController.Move(m_impact * Time.deltaTime);
