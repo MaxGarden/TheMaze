@@ -5,30 +5,28 @@ using UnityEngine.UI;
 
 public class CollectiblesHUD : MonoBehaviour
 {
-    private Inventory inventory;
     private List<GameObject> collectiblePrefabs;
     private List<CollectibleTemplate> collectibles;
 
     public GameObject collectiblePrefab;
     public Sprite icon;
 
-     private void OnEnable()
+     private void Start()
      {
          collectiblePrefabs = new List<GameObject>();
          collectibles = new List<CollectibleTemplate>();
-         inventory = PlayerContext.MainPlayer.Inventory;
-         inventory.OnCollectiblesChanged += CollectiblesChanged;
+        PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged += CollectiblesChanged;
      }
 
-     private void OnDisable()
+     private void OnDestroy()
      {
-         inventory.OnCollectiblesChanged -= CollectiblesChanged;
+        PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged -= CollectiblesChanged;
      }
 
 
     void CollectiblesChanged()
     {
-        foreach (var entry in inventory.Collectibles)
+        foreach (var entry in PlayerContext.MainPlayer.Inventory.Collectibles)
         {
             var collectible = entry.Key;
 
