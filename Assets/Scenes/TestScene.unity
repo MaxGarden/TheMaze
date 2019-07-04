@@ -3423,6 +3423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2329810229181031427, guid: cf107a72a0cdd974a95378d102b443e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7358901338643925168, guid: cf107a72a0cdd974a95378d102b443e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3483,11 +3488,6 @@ PrefabInstance:
       propertyPath: m_interactionController
       value: 
       objectReference: {fileID: 1792254812}
-    - target: {fileID: 2329810229181031427, guid: cf107a72a0cdd974a95378d102b443e8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf107a72a0cdd974a95378d102b443e8, type: 3}
 --- !u!1001 &8847154981131834548
