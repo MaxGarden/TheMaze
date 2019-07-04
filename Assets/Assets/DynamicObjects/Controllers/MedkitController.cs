@@ -17,15 +17,7 @@ public sealed class MedkitController : UtilityEquipmentController
         if (!Inventory || Equipment.Durability <= 0.0f)
             return;
 
-        var health = Inventory.PlayerContext.Health;
-        var missingHealth = health.MaximumHealth - health.CurrentHealth;
-        var availableHealing = Math.Min(Equipment.Durability, EquipmentTemplate.UseCost);
-
-        var healingValue = Math.Min(missingHealth, availableHealing);
-
-        Equipment.Durability -= healingValue;
-        health.Heal(healingValue);
-
-        TryPlayInteractionSound(EquipmentTemplate.RegenerationSound);
+        if(Equipment.Heal(Inventory.PlayerContext.Health))
+            TryPlayInteractionSound(EquipmentTemplate.RegenerationSound);
     }
 }
