@@ -54,7 +54,10 @@ public class Spices : DynamicObject
     {
         playerContext.Health.Damage(Template.CollisionDamage);
 
-        var playerMoveDirection = playerContext.FirstPersonController.LastNonZeroMoveDirection;
-        playerContext.KnockbackController.Knockback(new Vector3(-playerMoveDirection.x, 0.0f, -playerMoveDirection.z), Template.KnockbackForce);
+        var firstPersonController = playerContext.FirstPersonController;
+        var playerMoveDirection = firstPersonController.LastNonZeroMoveDirection;
+        firstPersonController.ResetMoveDirection();
+
+        playerContext.KnockbackController.Knockback(new Vector3(-playerMoveDirection.x, -0.5f, -playerMoveDirection.z), Template.KnockbackForce);
     }
 }

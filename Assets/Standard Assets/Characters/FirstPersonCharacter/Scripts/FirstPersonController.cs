@@ -93,6 +93,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
+        public void ResetMoveDirection()
+        {
+            m_MoveDir = Vector3.zero;
+        }
 
         private void FixedUpdate()
         {
