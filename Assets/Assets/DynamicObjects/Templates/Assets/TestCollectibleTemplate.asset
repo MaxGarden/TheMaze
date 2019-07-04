@@ -15,6 +15,6 @@ MonoBehaviour:
   m_name: Test collectible
   m_interactionColliderPrefab: {fileID: 9215257674622289858, guid: b58a900918a6ada4eb387b82aa8033df,
     type: 3}
-  m_icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_icon: {fileID: 21300000, guid: 6151ed2a87c4f4149b6274e76cb4786a, type: 3}
   m_pickUpSound: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
   m_collectIncrement: 1
