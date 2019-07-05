@@ -93,8 +93,14 @@ public sealed class GameplayController : MonoBehaviour
     private void OnFinish()
     {
         HideHUD();
+        DisableInput();
         DisableFirstPersonController();
         StartCoroutine(DestroyDynamicObjectsCoroutine());
+    }
+
+    private void DisableInput()
+    {
+        PlayerContext.MainPlayer.InputController.IsInputEnabled = false;
     }
 
     private IEnumerator DestroyDynamicObjectsCoroutine()
