@@ -42,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public Vector3 LastNonZeroMoveDirection { get; private set; }
+
         // Use this for initialization
         private void Start()
         {
@@ -91,6 +93,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
+        public void ResetMoveDirection()
+        {
+            m_MoveDir = Vector3.zero;
+        }
 
         private void FixedUpdate()
         {
@@ -105,13 +111,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
-
-
             if (m_CharacterController.isGrounded)
             {
+                m_MoveDir.x = desiredMove.x * speed;
+                m_MoveDir.z = desiredMove.z * speed;
                 m_MoveDir.y = -m_StickToGroundForce;
+
+                if (m_MoveDir.x != 0 || m_MoveDir.z != 0)
+                    LastNonZeroMoveDirection = m_MoveDir;
 
                 if (m_Jump)
                 {
@@ -130,7 +137,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
+            if(enabled)
+                m_MouseLook.UpdateCursorLock();
         }
 
 

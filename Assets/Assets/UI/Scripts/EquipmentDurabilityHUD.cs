@@ -27,7 +27,7 @@ public class EquipmentDurabilityHUD : MonoBehaviour
        if(inventory.SelectedEquipment is UtilityEquipment)
         {
             utilityEquipment = (UtilityEquipment)inventory.SelectedEquipment;
-            durabilitySlider.value = utilityEquipment.Template.Durability;
+            durabilitySlider.maxValue = utilityEquipment.Template.Durability;
             durabilitySlider.gameObject.SetActive(true);
         }
         else
@@ -39,7 +39,6 @@ public class EquipmentDurabilityHUD : MonoBehaviour
 
     void Update()
     {
-        if (durabilitySlider.gameObject.activeSelf)
-            durabilitySlider.value = utilityEquipment.Durability;
+        durabilitySlider.value = utilityEquipment.Durability;
     }
 }

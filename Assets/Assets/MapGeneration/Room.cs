@@ -15,7 +15,7 @@ public class Room
     RoomsSize _size;
     RoomsType _type;
     List<Point> _points;
-    List<Door> _doors;
+    List<DoorElement> _doors;
 
     public Room(Point centerPoint, RoomsSize size, RoomsType type)
     {
@@ -23,7 +23,7 @@ public class Room
         this._size = size;
         this._type = type;
         _points = new List<Point>();
-        _doors = new List<Door>();
+        _doors = new List<DoorElement>();
     }
 
     public Point getCenterPoint()
@@ -41,7 +41,7 @@ public class Room
         return _points;
     }
 
-    public List<Door> GetDoors()
+    public List<DoorElement> GetDoors()
     {
         return _doors;
     }
@@ -61,16 +61,16 @@ public class Room
                             for (int j = _centerPoint.y - 1; j < _centerPoint.y + SMALL_SIZE; j++)
                                 _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)));
                         _points.Add(new Point(_centerPoint.x, _centerPoint.y + 2, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N)));
-                        _doors.Add(new Door(DirectionsEnum.North, true, new Point(_centerPoint.x, _centerPoint.y + 3)));
+                        _doors.Add(new DoorElement(DirectionsEnum.North, true, new Point(_centerPoint.x, _centerPoint.y + 3)));
 
                         _points.Add(new Point(_centerPoint.x + 2, _centerPoint.y, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_E)));
-                        _doors.Add(new Door(DirectionsEnum.East, true, new Point(_centerPoint.x + 3, _centerPoint.y)));
+                        _doors.Add(new DoorElement(DirectionsEnum.East, true, new Point(_centerPoint.x + 3, _centerPoint.y)));
 
                         _points.Add(new Point(_centerPoint.x, _centerPoint.y - 2, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_S)));
-                        _doors.Add(new Door(DirectionsEnum.South, true, new Point(_centerPoint.x, _centerPoint.y - 3)));
+                        _doors.Add(new DoorElement(DirectionsEnum.South, true, new Point(_centerPoint.x, _centerPoint.y - 3)));
 
                         _points.Add(new Point(_centerPoint.x - 2, _centerPoint.y, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_W)));
-                        _doors.Add(new Door(DirectionsEnum.West, true, new Point(_centerPoint.x - 3, _centerPoint.y)));
+                        _doors.Add(new DoorElement(DirectionsEnum.West, true, new Point(_centerPoint.x - 3, _centerPoint.y)));
                         for (int i = _centerPoint.x - SMALL_SIZE; i <= _centerPoint.x + SMALL_SIZE; i++)
                             for (int j = _centerPoint.y - SMALL_SIZE; j <= _centerPoint.y + SMALL_SIZE; j++)
                             {

@@ -19,9 +19,14 @@ public sealed class InteractionVisualization : MonoBehaviour
 
     private string CalculateInteractionText()
     {
-        if (m_interactionController.IsInteractionPossible)
-            return m_interactionHintPrefix + m_interactionController.InteractionDescription;
+        if (!m_interactionController.IsInteractionPossible)
+            return string.Empty;
 
-        return string.Empty;
+        var interactionDescription = m_interactionController.InteractionDescription;
+
+        if (m_interactionController.CustomInteraction)
+            return interactionDescription;
+
+        return m_interactionHintPrefix + interactionDescription;
     }
 }

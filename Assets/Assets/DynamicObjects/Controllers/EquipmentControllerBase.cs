@@ -7,15 +7,10 @@ public abstract class EquipmentControllerBase : EquipmentController
 
     public Transform OriginalEquipmentParentTransform { get; private set; }
 
+    protected Inventory Inventory { get; private set; }
+
     [SerializeField]
     private float m_dropThrowForce = 8.0f;
-
-    private AudioSource m_audioSource = null;
-
-    protected virtual void Awake()
-    {
-        m_audioSource = GetComponent<AudioSource>();
-    }
 
     public override void Initialize(Equipment equipment)
     {
@@ -25,7 +20,9 @@ public abstract class EquipmentControllerBase : EquipmentController
 
     public sealed override void OnPickedUp(Inventory inventory)
     {
-        Equipment.transform.SetParent(inventory.transform, false);
+        Inventory = inventory;
+
+        Equipment.transform.SetParent(Inventory.transform, false);
         Equipment.transform.localPosition = Vector3.zero;
 
         Equipment.State = Equipment.EquipmentState.Stored;
@@ -45,6 +42,8 @@ public abstract class EquipmentControllerBase : EquipmentController
         Equipment.transform.localPosition = Vector3.zero;
         Equipment.transform.position = dropPosition;
         Equipment.State = Equipment.EquipmentState.Idle;
+
+        Inventory = null;
         NotifyStateChanged();
 
         var rigidbody = Equipment.InteractionRoot.GetComponent<Rigidbody>();
@@ -77,20 +76,5 @@ public abstract class EquipmentControllerBase : EquipmentController
     protected virtual void OnStateChanged(Equipment.EquipmentState state)
     {
         //to override
-    }
-
-    protected void TryPlayInteractionSound(AudioClip clip)
-    {
-        if (!clip)
-            return;
-
-        if (!m_audioSource)
-        {
-            AudioSource.PlayClipAtPoint(clip, transform.position);
-            return;
-        }
-
-        m_audioSource.clip = clip;
-        m_audioSource.Play();
     }
 }

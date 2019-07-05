@@ -5,47 +5,50 @@ using UnityEngine.UI;
 
 public class CollectiblesHUD : MonoBehaviour
 {
-    private Inventory inventory;
     private List<GameObject> collectiblePrefabs;
     private List<CollectibleTemplate> collectibles;
 
     public GameObject collectiblePrefab;
-    public Sprite icon;
+   // public Sprite icon;
 
-     private void OnEnable()
+     private void Start()
      {
          collectiblePrefabs = new List<GameObject>();
          collectibles = new List<CollectibleTemplate>();
-         inventory = PlayerContext.MainPlayer.Inventory;
-         inventory.OnCollectiblesChanged += CollectiblesChanged;
+        PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged += CollectiblesChanged;
      }
 
-     private void OnDisable()
+     private void OnDestroy()
      {
-         inventory.OnCollectiblesChanged -= CollectiblesChanged;
+        if (PlayerContext.MainPlayer)
+            PlayerContext.MainPlayer.Inventory.OnCollectiblesChanged -= CollectiblesChanged;
      }
 
 
     void CollectiblesChanged()
     {
-        foreach (var entry in inventory.Collectibles)
+        foreach (var entry in PlayerContext.MainPlayer.Inventory.Collectibles)
         {
             var collectible = entry.Key;
+            var wasUpdated = false;
 
             for (int i = 0; i < collectibles.Count; i++)
             {
-                if(collectible == collectibles[i])
+                if (collectible == collectibles[i])
                 {
                     UpdateUI(i, entry.Value);
-                    return;
+                    wasUpdated = true;
                 }
             }
 
-            CreateUI(entry.Value);
+            if (wasUpdated)
+                continue;
+
+            CreateUI(entry.Value, collectible.Icon);
             collectibles.Add(collectible);
         }
 
-        
+
     }
 
     void UpdateUI(int index, int score)
@@ -53,7 +56,7 @@ public class CollectiblesHUD : MonoBehaviour
         collectiblePrefabs[index].GetComponentInChildren<Text>().text = score.ToString();
     }
 
-    void CreateUI(int score)
+    void CreateUI(int score, Sprite icon)
     {
          GameObject added = Instantiate(collectiblePrefab, transform);
          if(added)

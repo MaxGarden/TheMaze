@@ -84,8 +84,8 @@ public class GenerationAlgorithms
     public List<Point> createPath(int pathsCount)
     {
         List<Point> points = new List<Point>();
-        Door startDoor = new Door();
-        Door endDoor = new Door();
+        DoorElement startDoor = new DoorElement();
+        DoorElement endDoor = new DoorElement();
         int doorNumber, startRoomNumber, endRoomNumber;
         for (int i = 0; i < pathsCount; i++)
         {

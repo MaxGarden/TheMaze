@@ -13,8 +13,8 @@ public class InventoryHUD : MonoBehaviour
     // -----------------
     public Slider durabilitySlider;
     public Image fillSliderImage;
-    private Color minColor = new Color(89f/255f, 2f/255f, 25f/255f);
-    private Color maxColor = new Color(44f/255f, 64f/255f, 1f/255f);
+    private Color minColor = new Color(142f / 255f, 40f / 255f, 0f / 255f);
+    private Color maxColor = new Color(70f / 255f, 137f / 255f, 102f / 255f);
     public Image selectedEquipmentImage;
     private UtilityEquipment utilityEquipment;
 
@@ -64,7 +64,7 @@ public class InventoryHUD : MonoBehaviour
         if (inventory.SelectedEquipment is UtilityEquipment)
         {
             utilityEquipment = (UtilityEquipment)inventory.SelectedEquipment;
-            durabilitySlider.value = utilityEquipment.Template.Durability;
+            durabilitySlider.maxValue = utilityEquipment.Template.Durability;
             durabilitySlider.gameObject.SetActive(true);
             selectedEquipmentImage.sprite = inventory.SelectedEquipment.Template.Icon;
             selectedEquipmentImage.enabled = true;
