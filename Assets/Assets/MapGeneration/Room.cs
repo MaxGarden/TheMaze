@@ -123,7 +123,7 @@ public class Room
         bool collision = false;
         if (rooms == null)
         {
-            if (this._centerPoint.x < SMALL_SIZE * 3 || this._centerPoint.y < SMALL_SIZE * 3 || this._centerPoint.x > width - SMALL_SIZE * 3 || this._centerPoint.y > height - SMALL_SIZE * 3)
+            if (this._centerPoint.x < SMALL_SIZE * 4 || this._centerPoint.y < SMALL_SIZE * 4 || this._centerPoint.x > width - SMALL_SIZE * 4 || this._centerPoint.y > height - SMALL_SIZE * 4)
                 collision = true;
         }
         else
@@ -143,7 +143,7 @@ public class Room
         }
         if (rooms.Count == 0)
         {
-            if (this._centerPoint.x < SMALL_SIZE * 3 || this._centerPoint.y < SMALL_SIZE * 3 || this._centerPoint.x > width - SMALL_SIZE * 3 || this._centerPoint.y > height - SMALL_SIZE * 3)
+            if (this._centerPoint.x < SMALL_SIZE * 4 || this._centerPoint.y < SMALL_SIZE * 4 || this._centerPoint.x > width - SMALL_SIZE * 4 || this._centerPoint.y > height - SMALL_SIZE * 4)
                 collision = true;
         }
         return collision;

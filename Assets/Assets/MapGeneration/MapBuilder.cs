@@ -18,6 +18,8 @@ public class MapBuilder : MonoBehaviour
     private GameObject parentObject;
     private int pixelNumber;
 
+    public GameObject doorSpawner;
+
     private (byte type, byte id, byte rotation)[] defaultMap =
     {
     (1,0,159),(1,0,159),(0,100,159),(1,0,159),(1,0,159),(0,60,223),(0,60,223),(0,60,223),(0,0,159),
@@ -54,7 +56,7 @@ public class MapBuilder : MonoBehaviour
 
         MapGenerator generator = new MapGenerator();
         Map createdMap = generator.create();
-        loadMap(createdMap.getData(), createdMap.getMapWidth(), createdMap.getMapHeight());//createdMap.getData(), createdMap.getMapWidth(), createdMap.getMapHeight());
+        loadMap(createdMap.getData(), createdMap.getMapWidth(), createdMap.getMapHeight());
 
         parentObject = GameObject.Find("Map");
         if (parentObject != null)
@@ -129,7 +131,8 @@ public class MapBuilder : MonoBehaviour
                         {
                             case 0:
                                 spawn(prefabsPath + "/Doorways/Doorway_A", pos, posOffset, rotOffset, new Vector3(1.0f, gridSize, gridSize + scaleMargin));
-                                spawn(prefabsPath + "/Doors/Door_A", pos, new Vector3(0, 0, 1.2f), rotOffset, Vector3.zero);
+                                //spawn(prefabsPath + "/Doors/Door_A", pos, new Vector3(0, 0, 1.2f), rotOffset, Vector3.zero);
+                                spawn(doorSpawner, pos, new Vector3(0, 0, 1.2f), rotOffset, Vector3.zero);
                                 scale.y = 0.5f;
                                 posOffset.y += 0.01f;
                                 elementPath += "/Floors/Floor_A";
@@ -362,6 +365,7 @@ public class MapBuilder : MonoBehaviour
                                 elementPath += "/Start";
                                 break;
                             case 200:
+                                setPlayerFinishPosition(pos);
                                 elementPath += "/Finish";
                                 break;
                         }
@@ -372,7 +376,7 @@ public class MapBuilder : MonoBehaviour
                 {
                     spawn(elementPath, pos, posOffset, rotOffset, scale);
                     addFloorDecal(pos);
-                    spawn(prefabsPath + "/Walls/Ceiling", new Vector3(x, 0, y) * gridSize + new Vector3(0, gridSize, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(gridSize, 0.5f, gridSize));
+                    //spawn(prefabsPath + "/Walls/Ceiling", new Vector3(x, 0, y) * gridSize + new Vector3(0, gridSize, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(gridSize, 0.5f, gridSize));
                 }
             }
         }
@@ -408,6 +412,31 @@ public class MapBuilder : MonoBehaviour
             spawner.transform.Translate(positionOffset*(gridSize/ defaultGridSize), Space.Self);
         }
     }
+
+    private void spawn(GameObject spawner_, Vector3 position, Vector3 positionOffset, Vector3 rotationOffset, Vector3 scale)
+    {
+        GameObject spawner = Instantiate(spawner_, position, Quaternion.identity, parentObject.transform);
+
+        if (spawner != null)
+        {
+            if (rescaleToGrid && scale != Vector3.zero)
+            {
+                rescale(spawner, scale.x, scale.y, scale.z);
+            }
+            else
+            {
+                rescaleRelative(spawner, gridSize, gridSize, gridSize);
+            }
+
+            if (rotationOffset == null)
+            {
+                rotationOffset = Vector3.zero;
+            }
+            spawner.transform.Rotate(rotationOffset.x, 90f * ((255 - map[pixelNumber].rotation) / 32) + rotationOffset.y, rotationOffset.z, Space.World);
+            spawner.transform.Translate(positionOffset * (gridSize / defaultGridSize), Space.Self);
+        }
+    }
+
 
     private Vector3 getRandomizedPosOffset(float deltaPos = 1.0f)
     {
@@ -453,6 +482,13 @@ public class MapBuilder : MonoBehaviour
     {
         _position.y += 1.0f;
         GameObject player = GameObject.Find("FPSController");
+        player.transform.position = mapPosition + _position;
+    }
+
+    private void setPlayerFinishPosition(Vector3 _position)
+    {
+        _position.y += 1.0f;
+        GameObject player = GameObject.Find("FinishTag");
         player.transform.position = mapPosition + _position;
     }
 }

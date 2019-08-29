@@ -1,6 +1,6 @@
 ﻿public sealed class DeathCondition : GameplayFailCondition
 {
-    private Health Health => PlayerContext.MainPlayer.Health;
+    private Health Health => PlayerContext.MainPlayer ? PlayerContext.MainPlayer.Health : null;
 
     public override bool DetermineIfFulfilled()
     {
@@ -16,7 +16,8 @@
 
     protected override void UnregisterEvents()
     {
-        Health.OnHealthChanged -= RecalculateFulfillment;
+        if(Health)
+            Health.OnHealthChanged -= RecalculateFulfillment;
 
         base.UnregisterEvents();
     }

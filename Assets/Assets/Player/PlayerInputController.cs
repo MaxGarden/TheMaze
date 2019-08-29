@@ -27,6 +27,8 @@ public sealed class PlayerInputController : PlayerComponentBase
 
     private Dictionary<string, Action> m_buttonHandlers;
 
+    public bool IsInputEnabled { get; set; } = true;
+
     public PlayerInputController()
     {
         BuildButtonHandlers(out m_buttonHandlers);
@@ -46,6 +48,9 @@ public sealed class PlayerInputController : PlayerComponentBase
 
     private void Update()
     {
+        if (!IsInputEnabled)
+            return;
+
         foreach(var entry in m_buttonHandlers)
         {
             if (CrossPlatformInputManager.GetButtonDown(entry.Key))
