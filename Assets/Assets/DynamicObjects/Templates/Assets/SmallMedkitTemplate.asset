@@ -15,7 +15,7 @@ MonoBehaviour:
   m_name: Small medkit
   m_interactionColliderPrefab: {fileID: 562474330690254912, guid: 027f39588006bde48b751103add0ad99,
     type: 3}
-  m_icon: {fileID: 21300000, guid: 6151ed2a87c4f4149b6274e76cb4786a, type: 3}
+  m_icon: {fileID: 21300000, guid: 7256223413a1f824b8ef6d04ad3b1977, type: 3}
   m_pickUpSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   m_dropSound: {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_type: 1
