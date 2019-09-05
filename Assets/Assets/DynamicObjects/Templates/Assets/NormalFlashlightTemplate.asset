@@ -15,7 +15,7 @@ MonoBehaviour:
   m_name: Flashlight
   m_interactionColliderPrefab: {fileID: 5460903117887813550, guid: 3cef612e705307241a5e317575927389,
     type: 3}
-  m_icon: {fileID: 21300000, guid: 6b45b5b5de72ab6489c73d8e81825d59, type: 3}
+  m_icon: {fileID: 21300000, guid: b62cb0ca1ecd8df458538015280a9a0b, type: 3}
   m_pickUpSound: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   m_dropSound: {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_type: 1
