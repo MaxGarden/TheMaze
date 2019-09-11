@@ -49,7 +49,7 @@ public class GenerationAlgorithms
     public List<Point> createStartEndPoints()
     {
 
-        Point startPoint = new Point(Mathf.RoundToInt(Random.Range(3, _width)*0.2f), Mathf.RoundToInt(Random.Range(1, _height)*0.4f), _t1Elements.getElement(ElementsT1Collection.ElementsT1.StartPoint));
+        Point startPoint = new Point(Mathf.RoundToInt(Random.Range(5, _width/2)*0.5f), Mathf.RoundToInt(Random.Range(4, _height)*0.4f), _t1Elements.getElement(ElementsT1Collection.ElementsT1.StartPoint));
         Point endPoint;
         List<Point> points = new List<Point>();
         int xEndPoint, yEndPoint;

@@ -7,20 +7,20 @@ public class ElementsT1Collection
     private Dictionary<string, Color> elements = new Dictionary<string, Color>()
     {
 
-        {"Path", new Color32(1,1,1,1)  },
-        {"Wall", new Color32(0,0,0,1) },
+        {"Path", new Color32(255,255,255,255)  },
+        {"Wall", new Color32(0,0,0,255) },
  
-        {"SmallRoom", new Color32(0,200,0,1) },
-        {"MediumRoom", new Color32(0,200,200,1) },
-        {"LargeRoom", new Color32(200,0,200,1) },
+        {"SmallRoom", new Color32(0,200,0,255) },
+        {"MediumRoom", new Color32(0,200,200,255) },
+        {"LargeRoom", new Color32(200,0,200,255) },
 
-        {"RoomDoors_N", new Color32(200,0,0,159) },
-        {"RoomDoors_E", new Color32(200,0,0,191) },
-        {"RoomDoors_S", new Color32(200,0,0,223) },
-        {"RoomDoors_W", new Color32(200,0,0,1) },
+        {"RoomDoors_N", new Color32(200,0,159,255) },
+        {"RoomDoors_E", new Color32(200,0,191,255) },
+        {"RoomDoors_S", new Color32(200,0,223,255) },
+        {"RoomDoors_W", new Color32(200,0,1,255) },
 
-        {"StartPoint", new Color32(250,50,0,1) },
-        {"EndPoint", new Color32(250,200,0,1) }
+        {"StartPoint", new Color32(250,50,0,255) },
+        {"EndPoint", new Color32(250,200,0,255) }
     };
 
     public Color32 getElement(ElementsT1 element)
