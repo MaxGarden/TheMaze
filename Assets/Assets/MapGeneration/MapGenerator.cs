@@ -18,10 +18,12 @@ public class MapGenerator : MonoBehaviour
 
         mapSchema = generateTierOne(mapSchema);
 
+        saveMapToPNG(mapSchema, "MapTier1");
+
         mapSchema = translateFromTierOne(mapSchema);
 
 
-        saveMapToPNG(mapSchema);
+        saveMapToPNG(mapSchema, "Map");
 
         List<(byte type, byte id, byte rotation)> data = new List<(byte type, byte id, byte rotation)>();
         
@@ -105,11 +107,13 @@ public class MapGenerator : MonoBehaviour
                 }
 
                 //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
-                if(
-                    compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
-                    )
+                if(compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Path)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
+                    float trapChance = UnityEngine.Random.Range(0.0f, 2.0f);
+                    if (trapChance>1.95f)
+                        mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.SpikeTrap));
+                    else
+                        mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
                     continue;
                 }
 
@@ -189,10 +193,10 @@ public class MapGenerator : MonoBehaviour
         return mapSchema;
     }
 
-    public void saveMapToPNG(Texture2D mapSchema)
+    public void saveMapToPNG(Texture2D mapSchema, String fileName)
     {
         byte[] bytes = mapSchema.EncodeToPNG();
-        File.WriteAllBytes(Application.dataPath + "/../MapPreview.png", bytes);
+        File.WriteAllBytes(Application.dataPath + "/../" + fileName + ".png", bytes);
     }
 
     private bool compareColor32(Color32 c1, Color32 c2)
