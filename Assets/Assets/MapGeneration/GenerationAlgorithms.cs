@@ -34,9 +34,9 @@ public class GenerationAlgorithms
 
         updateMapSchema(startEndPoints);
 
-        updateMapSchema(createRooms(16));
+        updateMapSchema(createRooms(16)); //16
 
-        createPath(20);
+        createPath(20); // 20
 
         createPathFromTo( startPoint,  _rooms[_rooms.Count/2].GetDoors()[0].accessPoint);
         createPathFromTo( endPoint, _rooms[_rooms.Count / 4].GetDoors()[2].accessPoint);
@@ -108,7 +108,9 @@ public class GenerationAlgorithms
             {
                 endDoor = endRoom.GetDoors()[doorNumber];
             }
-            drawX(startDoor.accessPoint, endDoor.accessPoint);
+            createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
+
+            //drawX(startDoor.accessPoint, endDoor.accessPoint);
         }
 
         return points;
@@ -117,15 +119,47 @@ public class GenerationAlgorithms
     public void createPathFromTo(Point startPoint, Point endPoint)
     {
         drawX(startPoint, endPoint);
+        Point currentPoint = startPoint;
+        bool xDirect;
+        if (Random.Range(0.0f, 1.0f) > 0.5f)
+        {
+            currentPoint = drawX(currentPoint, endPoint);
+            xDirect = false;
+        }
+        else
+        {
+            currentPoint = drawY(currentPoint, endPoint);
+            xDirect = true;
+        }
+
+        bool done = false;
+
+        while (!done)
+        {
+            if (xDirect)
+            {
+                currentPoint = drawX(currentPoint, endPoint);
+                if (currentPoint.x == -1 && currentPoint.y == -1)
+                    done = true;
+                xDirect = false;
+            }
+            else
+            {
+                currentPoint = drawY(currentPoint, endPoint);
+                if (currentPoint.x == -1 && currentPoint.y == -1)
+                    done = true;
+                xDirect = true;
+            }
+        }
     }
 
-    private void drawX(Point startPoint, Point endPoint)
+    private Point drawX(Point startPoint, Point endPoint)
     {
         int x = startPoint.x;
         int y = startPoint.y;
         int unit = 1;
         List<Point> points = new List<Point>();
-
+        Point END_POINT = new Point(-1, -1);
         if (endPoint.x < startPoint.x)
             unit *= -1;
 
@@ -143,7 +177,10 @@ public class GenerationAlgorithms
                 )
             {
                 if(y != endPoint.y)
-                { drawY(new Point(x - unit, y), endPoint);
+                {
+                    //drawY(new Point(x - unit, y), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x - unit, y);
                     break;
                 }
                 break; // TODO
@@ -153,7 +190,9 @@ public class GenerationAlgorithms
             {
                 if(y != endPoint.y)
                 {
-                    drawY(new Point(x - unit, y), endPoint);
+                    //drawY(new Point(x - unit, y), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x - unit, y);
                     break;
                 }
                 break;
@@ -176,14 +215,16 @@ public class GenerationAlgorithms
 
         //points.Add(new Point(endDoors.accessPoint.x, endDoors.accessPoint.y, new Color(200 / 255f, 0, 200 / 255f, 1))); // tymczasowo
         updateMapSchema(points); // tymczasowo
+        return END_POINT;
     }
 
-    private void drawY(Point startPoint, Point endPoint)
+    private Point drawY(Point startPoint, Point endPoint)
     {
         int x = startPoint.x;
         int y = startPoint.y;
         int unit = 1;
         List<Point> points = new List<Point>();
+        Point END_POINT = new Point(-1, -1);
 
         if (endPoint.y < startPoint.y)
             unit *= -1;
@@ -201,7 +242,9 @@ public class GenerationAlgorithms
             {
                 if (x != endPoint.x)
                 {
-                    drawX(new Point(x, y - unit), endPoint);
+                    //drawX(new Point(x, y - unit), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x, y - unit);
                     break;
                 }
                 break; // TODO
@@ -211,7 +254,9 @@ public class GenerationAlgorithms
             {
                 if (x != endPoint.x)
                 {
-                    drawX(new Point(x, y - unit), endPoint);
+                    //drawX(new Point(x, y - unit), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x, y - unit);
                     break;
                 }
                 break;
@@ -232,6 +277,7 @@ public class GenerationAlgorithms
         }
 
         updateMapSchema(points); // tymczasowo
+        return END_POINT;
     }
 
     public List<Point> createRooms(int count)
