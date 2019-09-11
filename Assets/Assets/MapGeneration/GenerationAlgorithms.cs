@@ -286,11 +286,12 @@ public class GenerationAlgorithms
         Room room;
         for (int i = 1; i < count; i++)
         {
+            RoomsType type = (RoomsType)Random.Range(0, 4);
             do
             {
                 room = new Room(new Point(Random.Range(1, _width), Random.Range(1, _height), _t1Elements.getElement(ElementsT1Collection.ElementsT1.SmallRoom)),
                     RoomsSize.Small,
-                    RoomsType.Default);
+                    type);
                 room.build();
             } while (room.isCollision(_rooms, _width, _height) || isOccupied(room.getPoints()));
             _rooms.Add(room);
