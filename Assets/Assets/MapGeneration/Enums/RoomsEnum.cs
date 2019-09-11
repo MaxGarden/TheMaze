@@ -11,5 +11,9 @@ public enum RoomsSize
 
 public enum RoomsType
 {
-    Default
+    Default,
+    TShape,
+    SignShape,
+    FourPackShape,
+    SixPackShape
 }

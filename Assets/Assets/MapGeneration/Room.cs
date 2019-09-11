@@ -49,14 +49,13 @@ public class Room
     public List<Point> build()
     {
         ElementsT1Collection elementsT1 = new ElementsT1Collection();
-
-        switch(_size)
+        bool isOccupied;
+        switch (_size)
         {
             case RoomsSize.Small:
                 switch(_type)
                 {
                     case RoomsType.Default:
-                        bool isOccupied;
                         for (int i = _centerPoint.x - 1; i < _centerPoint.x + SMALL_SIZE; i++)
                             for (int j = _centerPoint.y - 1; j < _centerPoint.y + SMALL_SIZE; j++)
                                 _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)));
@@ -87,7 +86,67 @@ public class Room
                                 if (!isOccupied)
                                     _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.Wall)));
                             }
-                        
+                        break;
+
+                    case RoomsType.FourPackShape:
+                        for (int i = _centerPoint.x; i< _centerPoint.x + SMALL_SIZE; i++)
+                            for (int j = _centerPoint.y; j < _centerPoint.y + SMALL_SIZE; j++)
+                                _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)));
+                        _points.Add(new Point(_centerPoint.x, _centerPoint.y + 2, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N)));
+                        _doors.Add(new DoorElement(DirectionsEnum.North, true, new Point(_centerPoint.x, _centerPoint.y + 3)));
+
+                        _points.Add(new Point(_centerPoint.x + 2, _centerPoint.y, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_E)));
+                        _doors.Add(new DoorElement(DirectionsEnum.East, true, new Point(_centerPoint.x + 3, _centerPoint.y)));
+
+                        _doors.Add(new DoorElement(DirectionsEnum.East, false, new Point(_centerPoint.x  , _centerPoint.y - 3)));
+                        _doors.Add(new DoorElement(DirectionsEnum.East, false, new Point(_centerPoint.x - 3, _centerPoint.y)));
+                        for (int i = _centerPoint.x - SMALL_SIZE; i <= _centerPoint.x + SMALL_SIZE; i++)
+                            for (int j = _centerPoint.y - SMALL_SIZE; j <= _centerPoint.y + SMALL_SIZE; j++)
+                            {
+                                isOccupied = false;
+                                foreach (Point point in _points)
+                                {
+                                    if (point.x == i && point.y == j)
+                                    {
+                                        isOccupied = true;
+                                        break;
+                                    }
+                                }
+                                if (!isOccupied)
+                                    _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.Wall)));
+                            }
+                        break;
+                    default:
+                        for (int i = _centerPoint.x - 1; i < _centerPoint.x + SMALL_SIZE; i++)
+                            for (int j = _centerPoint.y - 1; j < _centerPoint.y + SMALL_SIZE; j++)
+                                _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)));
+                        _points.Add(new Point(_centerPoint.x, _centerPoint.y + 2, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N)));
+                        _doors.Add(new DoorElement(DirectionsEnum.North, true, new Point(_centerPoint.x, _centerPoint.y + 3)));
+
+                        _points.Add(new Point(_centerPoint.x + 2, _centerPoint.y, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_E)));
+                        _doors.Add(new DoorElement(DirectionsEnum.East, true, new Point(_centerPoint.x + 3, _centerPoint.y)));
+
+                        _points.Add(new Point(_centerPoint.x, _centerPoint.y - 2, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_S)));
+                        _doors.Add(new DoorElement(DirectionsEnum.South, true, new Point(_centerPoint.x, _centerPoint.y - 3)));
+
+                        _points.Add(new Point(_centerPoint.x - 2, _centerPoint.y, elementsT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_W)));
+                        _doors.Add(new DoorElement(DirectionsEnum.West, true, new Point(_centerPoint.x - 3, _centerPoint.y)));
+                        for (int i = _centerPoint.x - SMALL_SIZE; i <= _centerPoint.x + SMALL_SIZE; i++)
+                            for (int j = _centerPoint.y - SMALL_SIZE; j <= _centerPoint.y + SMALL_SIZE; j++)
+                            {
+                                isOccupied = false;
+                                foreach (Point point in _points)
+                                {
+
+                                    if (point.x == i && point.y == j)
+                                    {
+                                        isOccupied = true;
+                                        break;
+                                    }
+                                }
+                                if (!isOccupied)
+                                    _points.Add(new Point(i, j, elementsT1.getElement(ElementsT1Collection.ElementsT1.Wall)));
+                            }
                         break;
                 }
                 break;
