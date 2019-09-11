@@ -3,7 +3,7 @@ using UnityEngine;
 
 public sealed class Flashlight : UtilityEquipment
 {
-    public new FlashlightTemplate Template { get; private set; }
+    public new FlashlightTemplate Template => (FlashlightTemplate)base.Template;
 
     public event Action OnTurnStateChanged;
 
@@ -25,7 +25,7 @@ public sealed class Flashlight : UtilityEquipment
     {
         base.OnInitialize(template);
 
-        Template = (FlashlightTemplate)template;
+        ValidateTemplate<FlashlightTemplate>(template);
     }
 
     public bool TryTurnOn()

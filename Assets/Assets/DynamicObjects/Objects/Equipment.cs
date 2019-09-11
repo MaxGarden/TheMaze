@@ -10,7 +10,7 @@ public abstract class Equipment : InventoryObject
         Equipped
     }
 
-    public new EquipmentTemplate Template { get; private set; }
+    public new EquipmentTemplate Template => (EquipmentTemplate)base.Template;
 
     public EquipmentController Controller { get; private set; }
     public GameObject EquipmentRoot => Controller.gameObject;
@@ -35,7 +35,7 @@ public abstract class Equipment : InventoryObject
     {
         base.Initialize(template);
 
-        Template = (EquipmentTemplate)template;
+        ValidateTemplate<EquipmentTemplate>(template);
 
         OnInitialize(Template);
 

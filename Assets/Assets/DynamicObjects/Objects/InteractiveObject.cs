@@ -20,4 +20,11 @@ public class InteractiveObject : DynamicObject
 
         m_interactionCollider = Instantiate(Template.InteractionColliderPrefab, transform);
     }
+
+    protected void ValidateTemplate<TemplateType>(DynamicObjectTemplate template)
+        where TemplateType : InteractiveObjectTemplate
+    {
+        if (!(template is TemplateType))
+            throw new InvalidOperationException("Invalid template type!");
+    }
 }

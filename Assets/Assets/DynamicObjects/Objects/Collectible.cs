@@ -1,11 +1,11 @@
 ﻿public sealed class Collectible : InventoryObject
 {
-    public new CollectibleTemplate Template { get; private set; }
+    public new CollectibleTemplate Template => (CollectibleTemplate)base.Template;
 
     public override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
 
-        Template = (CollectibleTemplate)template;
+        ValidateTemplate<CollectibleTemplate>(template);
     }
 }
