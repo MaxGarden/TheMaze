@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpicesTemplate", menuName = "Templates/Spices Template")]
-public sealed class SpicesTemplate : DynamicObjectTemplate
+[CreateAssetMenu(fileName = "SpikesTemplate", menuName = "Templates/Spikes Template")]
+public sealed class SpikesTemplate : DynamicObjectTemplate
 {
-    [Header("Spices")]
+    [Header("Spikes")]
 
     [SerializeField]
-    private ISpicesCollisionProvider m_collisionProviderPrefab = null;
-    public ISpicesCollisionProvider CollisionProviderPrefab => m_collisionProviderPrefab;
+    private ISpikesCollisionProvider m_collisionProviderPrefab = null;
+    public ISpikesCollisionProvider CollisionProviderPrefab => m_collisionProviderPrefab;
 
     [SerializeField]
     private float m_collisionDamage = 30.0f;

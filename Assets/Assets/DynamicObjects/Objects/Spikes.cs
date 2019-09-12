@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 
-public class Spices : DynamicObject
+public class Spikes : DynamicObject
 {
-    public SpicesTemplate Template { get; private set; }
+    public SpikesTemplate Template { get; private set; }
 
     public bool AreShown { get; private set; } = true;
 
-    private ISpicesCollisionProvider m_spicesCollisionProvider;
+    private ISpikesCollisionProvider m_spikesCollisionProvider;
     private float m_lastCollisionTime = 0.0f;
 
     public override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
 
-        Template = (SpicesTemplate)template;
+        Template = (SpikesTemplate)template;
 
-        m_spicesCollisionProvider = Instantiate(Template.CollisionProviderPrefab, transform);
-        m_spicesCollisionProvider.OnCollision += OnSpicesCollision;
+        m_spikesCollisionProvider = Instantiate(Template.CollisionProviderPrefab, transform);
+        m_spikesCollisionProvider.OnCollision += OnSpikesCollision;
     }
 
     private void OnDestroy()
     {
-        if (m_spicesCollisionProvider)
-            m_spicesCollisionProvider.OnCollision -= OnSpicesCollision;
+        if (m_spikesCollisionProvider)
+            m_spikesCollisionProvider.OnCollision -= OnSpikesCollision;
     }
 
     public void Show()
@@ -35,7 +35,7 @@ public class Spices : DynamicObject
         AreShown = false;
     }
 
-    private void OnSpicesCollision(GameObject gameObject)
+    private void OnSpikesCollision(GameObject gameObject)
     {
         if (!AreShown)
             return;
@@ -47,10 +47,10 @@ public class Spices : DynamicObject
 
         var playerContext = gameObject.GetComponent<PlayerContext>();
         if (playerContext)
-            OnSpicesCollisionWithPlayer(playerContext);
+            OnSpikesCollisionWithPlayer(playerContext);
     }
 
-    private void OnSpicesCollisionWithPlayer(PlayerContext playerContext)
+    private void OnSpikesCollisionWithPlayer(PlayerContext playerContext)
     {
         playerContext.Health.Damage(Template.CollisionDamage);
 

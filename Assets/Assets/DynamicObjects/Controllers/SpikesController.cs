@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Spices))]
+[RequireComponent(typeof(Spikes))]
 [RequireComponent(typeof(Animator))]
-public sealed class SpicesController : ControllerBase
+public sealed class SpikesController : ControllerBase
 {
     [SerializeField]
     private string m_showTriggerName = "Show";
@@ -11,53 +11,53 @@ public sealed class SpicesController : ControllerBase
     [SerializeField]
     private string m_hideTriggerName = "Hide";
 
-    private Spices m_spices;
+    private Spikes m_spikes;
     private Animator m_animator;
 
-    private SpicesTemplate SpicesTemplate => m_spices.Template;
+    private SpikesTemplate SpikesTemplate => m_spikes.Template;
 
     protected override void Awake()
     {
         base.Awake();
 
-        m_spices = GetComponent<Spices>();
+        m_spikes = GetComponent<Spikes>();
         m_animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        StartCoroutine(SpicesCoroutine());
+        StartCoroutine(SpikesCoroutine());
     }
 
     public void Show()
     {
-        if (m_spices.AreShown)
+        if (m_spikes.AreShown)
             return;
 
-        m_spices.Show();
+        m_spikes.Show();
 
         m_animator.SetTrigger(m_showTriggerName);
-        TryPlayInteractionSound(SpicesTemplate.ShowSound);
+        TryPlayInteractionSound(SpikesTemplate.ShowSound);
     }
 
     public void Hide()
     {
-        if (!m_spices.AreShown)
+        if (!m_spikes.AreShown)
             return;
 
-        m_spices.Hide();
+        m_spikes.Hide();
 
         m_animator.SetTrigger(m_hideTriggerName);
-        TryPlayInteractionSound(SpicesTemplate.HideSound);
+        TryPlayInteractionSound(SpikesTemplate.HideSound);
     }
 
-    private IEnumerator SpicesCoroutine()
+    private IEnumerator SpikesCoroutine()
     {
         while(true)
         {
-            yield return new WaitForSeconds(SpicesTemplate.TimeWhenShownInSeconds);
+            yield return new WaitForSeconds(SpikesTemplate.TimeWhenShownInSeconds);
             Hide();
-            yield return new WaitForSeconds(SpicesTemplate.TimeWhenHiddenInSeconds);
+            yield return new WaitForSeconds(SpikesTemplate.TimeWhenHiddenInSeconds);
             Show();
         }
     }

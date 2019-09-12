@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 785c30f8afa503247bba62e27909964c, type: 3}
-  m_Name: TestSpicesTemplate
+  m_Name: TestSpikesTemplate
   m_EditorClassIdentifier: 
   m_collisionProviderPrefab: {fileID: 8775370188945413697, guid: dd192caef705e0546b2fc6bbc481a37f,
     type: 3}

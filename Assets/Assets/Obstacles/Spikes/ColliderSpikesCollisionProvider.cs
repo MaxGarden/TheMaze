@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class ColliderSpicesCollisionProvider : ISpicesCollisionProvider
+public class ColliderSpikesCollisionProvider : ISpikesCollisionProvider
 {
     private void OnObstacleHit(GameObject gameObject)
     {
-        OnSpicesCollision(gameObject);
+        OnSpikesCollision(gameObject);
     }
 }
