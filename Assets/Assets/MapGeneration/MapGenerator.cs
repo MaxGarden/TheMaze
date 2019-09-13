@@ -22,6 +22,8 @@ public class MapGenerator : MonoBehaviour
 
         mapSchema = translateFromTierOne(mapSchema);
 
+        mapSchema = reduceMap(mapSchema);
+
 
         saveMapToPNG(mapSchema, "Map");
 
@@ -187,6 +189,35 @@ public class MapGenerator : MonoBehaviour
                 {
                     mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.West)); // Closed Doors
                     continue;
+                }
+
+                
+            }
+
+        return mapSchema;
+    }
+
+    private Texture2D reduceMap(Texture2D mapSchema)
+    {
+        ElementsT1Collection elemT1 = new ElementsT1Collection();
+        ElementsCollection elem = new ElementsCollection();
+
+        for (int i = 0; i < mapSchema.width; i++)
+            for (int j = 0; j < mapSchema.height; j++)
+            {
+                if (i < mapSchema.width && i >= 0 && j < mapSchema.height && j >= 0)
+                {
+                    if ((compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j + 1), new Color32(255, 255, 254, 1))) &&
+                       (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j - 1), new Color32(255, 255, 254, 1))) &&
+                        (compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i + 1, j), new Color32(255, 255, 254, 1))) &&
+                        (compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i - 1, j), new Color32(255, 255, 254, 1))))
+                    {
+                        mapSchema.SetPixel(i, j, new Color32(255, 255, 254, 1));
+                    }
                 }
             }
 
