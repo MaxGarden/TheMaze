@@ -40,9 +40,15 @@ public class MapBuilder : MonoBehaviour
     //notation: (R: element type, G: element id, B: rotation)
     private List<(byte type, byte id, byte rotation)> map;
 
+    void Awake()
+    {
+        generate();
+    }
+
+
     public bool loadMap(List<(byte type, byte id, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
-        _map = null; // LOAD DEFAULT MAP
+        // _map = null; // LOAD DEFAULT MAP
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
             map = _map;
@@ -59,7 +65,6 @@ public class MapBuilder : MonoBehaviour
 
     public void generate()
     {
-
         MapGenerator generator = new MapGenerator();
         Map createdMap = generator.create();
         loadMap(createdMap.getData(), createdMap.getMapWidth(), createdMap.getMapHeight());
@@ -382,7 +387,7 @@ public class MapBuilder : MonoBehaviour
                             case 50:
                                 setPlayerSpawnPosition(pos);
                                 elementPath += "/Start";
-                                spawn(flashlightSpawner, pos, getRandomizedPosOffset(0.6f), new Vector3(0, getRandomizedRotationOffset(90.0f), 0), Vector3.zero);
+                                spawn(flashlightSpawner, pos, new Vector3(0,1,0), new Vector3(0, getRandomizedRotationOffset(90.0f), 0), Vector3.zero);
                                 break;
                             case 100:
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
@@ -567,9 +572,12 @@ public class MapBuilder : MonoBehaviour
 
     private void setPlayerSpawnPosition(Vector3 _position)
     {
-        _position.y += 1.0f;
+        _position.y += 1.5f;
         GameObject player = GameObject.Find("FPSController");
-        player.transform.position = mapPosition + _position;
+        if (player != null)
+        {
+            player.transform.position = mapPosition + _position;
+        }
     }
 
     private void setPlayerFinishPosition(Vector3 _position)
