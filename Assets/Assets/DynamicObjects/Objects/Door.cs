@@ -1,6 +1,6 @@
 ﻿public class Door : InteractiveObject
 {
-    public new DoorTemplate Template { get; private set; }
+    public new DoorTemplate Template => (DoorTemplate)base.Template;
 
     public bool IsLocked { get; private set; } = true;
     public bool IsOpened { get; private set; } = false;
@@ -9,7 +9,7 @@
     {
         base.Initialize(template);
 
-        Template = (DoorTemplate)template;
+        ValidateTemplate<DoorTemplate>(template);
 
         IsLocked = !!Template.RequiredCollectibleToOpen;
     }
