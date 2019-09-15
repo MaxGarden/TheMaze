@@ -38,7 +38,7 @@ public class MapBuilder : MonoBehaviour
 
     public bool loadMap(List<(byte type, byte id, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
-        //_map = null; // LOAD DEFAULT MAP
+        _map = null; // LOAD DEFAULT MAP
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
             map = _map;
@@ -188,35 +188,35 @@ public class MapBuilder : MonoBehaviour
                             case 10:
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Barrel";
-                                posOffset = getRandomizedPosOffset(0.7f);
+                                posOffset.x = -2.0f;
                                 rotOffset.y = getRandomizedRotationOffset(45.0f);
                                 scale = Vector3.zero;
                                 break;
                             case 20:
                                 spawn(prefabsPath + "/Floors/Floor_B", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Barrel";
-                                posOffset = getRandomizedPosOffset(0.7f);
+                                posOffset.x = -2.0f;
                                 rotOffset.y = getRandomizedRotationOffset(45.0f);
                                 scale = Vector3.zero;
                                 break;
                             case 30:
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Bucket";
-                                posOffset = getRandomizedPosOffset(0.7f);
+                                posOffset.x = -2.0f;
                                 rotOffset.y = getRandomizedRotationOffset(45.0f);
                                 scale *= 0.2f;
                                 break;
                             case 40:
                                 spawn(prefabsPath + "/Floors/Floor_B", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Bucket";
-                                posOffset = getRandomizedPosOffset(0.7f);
+                                posOffset.x = -2.0f;
                                 rotOffset.y = getRandomizedRotationOffset(45.0f);
                                 scale *= 0.2f;
                                 break;
                             case 50:
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Table_A";
-                                posOffset = getRandomizedPosOffset(0.5f);
+                                posOffset.x = -2.0f;
                                 rotOffset.y = getRandomizedRotationOffset(20.0f);
                                 scale = Vector3.zero;
                                 break;
@@ -236,7 +236,7 @@ public class MapBuilder : MonoBehaviour
                                 break;
                             case 80:
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
-                                posOffset = getRandomizedPosOffset(0.5f);
+                                posOffset.x = -1.8f;
                                 rotOffset.y = getRandomizedRotationOffset(20.0f);
                                 {
                                     Vector3 candlePos = posOffset + getRandomizedPosOffset(0.1f);
@@ -275,7 +275,7 @@ public class MapBuilder : MonoBehaviour
                             case 110:
                                 spawn(prefabsPath + "/Floors/Floor_B", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 elementPath += "/Table_A";
-                                posOffset = getRandomizedPosOffset(0.5f);
+                                posOffset.x = -1.8f;
                                 rotOffset.y = getRandomizedRotationOffset(20.0f);
                                 scale = Vector3.zero;
                                 break;
@@ -295,7 +295,7 @@ public class MapBuilder : MonoBehaviour
                                 break;
                             case 140:
                                 spawn(prefabsPath + "/Floors/Floor_B", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
-                                posOffset = getRandomizedPosOffset(0.5f);
+                                posOffset.x = -1.8f;
                                 rotOffset.y = getRandomizedRotationOffset(20.0f);
                                 {
                                     Vector3 candlePos = posOffset + getRandomizedPosOffset(0.1f);
