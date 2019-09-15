@@ -8,8 +8,8 @@ public class MapGenerator
 {
 
 
-    public int MAP_WIDTH = 60;
-    public int MAP_HEIGHT = 60;
+    public int MAP_WIDTH = 80;
+    public int MAP_HEIGHT = 80;
 
     public Map create()
     {
@@ -136,7 +136,10 @@ public class MapGenerator
                     mapSchema.GetPixel(i, j + 1) == elem.getFloors(ElementsCollection.Floors.Floor_A))
                     )
                 {
-                    mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.North)); // Open Arch
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.25f)
+                        mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.North)); // Open Arch
+                    else
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.North)); // Open rect
                     continue;
                 }
                 else if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_N)))
@@ -152,7 +155,10 @@ public class MapGenerator
                     (mapSchema.GetPixel(i + 1, j) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
                     mapSchema.GetPixel(i + 1, j) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.East)); // Open Arch
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.25f)
+                        mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.East)); // Open Arch
+                    else
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.East)); // Open rect
                     continue;
                 }
                 else if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_E)))
@@ -167,7 +173,10 @@ public class MapGenerator
                     (mapSchema.GetPixel(i, j-1) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
                     mapSchema.GetPixel(i, j-1) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.South)); // Open Arch
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.25f)
+                        mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.South)); // Open Arch
+                    else
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.South)); // Open rect
                     continue;
                 }
                 else if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_S)))
@@ -182,7 +191,10 @@ public class MapGenerator
                     (mapSchema.GetPixel(i - 1, j ) == elemT1.getElement(ElementsT1Collection.ElementsT1.Path) ||
                     mapSchema.GetPixel(i - 1, j) == elem.getFloors(ElementsCollection.Floors.Floor_A)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.West)); // Open Arch
+                    if(UnityEngine.Random.Range(0.0f,1.0f) > 0.25f)
+                        mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Arch_A, DirectionsEnum.West)); // Open Arch
+                    else
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.West)); // Open rect
                     continue;
                 }
                 else if (currentPixel.Equals(elemT1.getElement(ElementsT1Collection.ElementsT1.RoomDoors_W)))

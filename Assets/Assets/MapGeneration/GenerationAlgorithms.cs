@@ -34,9 +34,9 @@ public class GenerationAlgorithms
 
         updateMapSchema(startEndPoints);
 
-        updateMapSchema(createRooms(16)); //16
+        updateMapSchema(createRooms(25)); //16
 
-        createPath(20); // 20
+        createPath(35); // 20
 
         createPathFromTo( startPoint,  _rooms[_rooms.Count/2].GetDoors()[0].accessPoint);
         createPathFromTo( endPoint, _rooms[_rooms.Count / 4].GetDoors()[2].accessPoint);
@@ -91,24 +91,24 @@ public class GenerationAlgorithms
         {
             startRoomNumber = Random.Range(0, _rooms.Count);
             Room startRoom = _rooms[startRoomNumber];
-            doorNumber = Random.Range(0, 3);
-            if (startRoom.GetDoors()[doorNumber].isAvailable)
-            {
-                startDoor = startRoom.GetDoors()[doorNumber];
-            }
-
             do
+            {
+                doorNumber = Random.Range(0, 3);
+                startDoor = startRoom.GetDoors()[doorNumber];
+            } while (!startRoom.GetDoors()[doorNumber].isAvailable); 
+
+                do
             {
                 endRoomNumber = Random.Range(0, _rooms.Count);
             } while (endRoomNumber == startRoomNumber);
 
             Room endRoom = _rooms[endRoomNumber];
-            doorNumber = Random.Range(0, 3);
-            if (endRoom.GetDoors()[doorNumber].isAvailable)
+            do
             {
+                doorNumber = Random.Range(0, 3);
                 endDoor = endRoom.GetDoors()[doorNumber];
-            }
-            createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
+            } while (!endRoom.GetDoors()[doorNumber].isAvailable); 
+                createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
 
             //drawX(startDoor.accessPoint, endDoor.accessPoint);
         }
@@ -181,7 +181,6 @@ public class GenerationAlgorithms
                     //drawY(new Point(x - unit, y), endPoint);
                     updateMapSchema(points);
                     return new Point(x - unit, y);
-                    break;
                 }
                 break; // TODO
             }
@@ -193,7 +192,6 @@ public class GenerationAlgorithms
                     //drawY(new Point(x - unit, y), endPoint);
                     updateMapSchema(points);
                     return new Point(x - unit, y);
-                    break;
                 }
                 break;
                 // TODO
@@ -245,7 +243,6 @@ public class GenerationAlgorithms
                     //drawX(new Point(x, y - unit), endPoint);
                     updateMapSchema(points);
                     return new Point(x, y - unit);
-                    break;
                 }
                 break; // TODO
             }
@@ -257,7 +254,6 @@ public class GenerationAlgorithms
                     //drawX(new Point(x, y - unit), endPoint);
                     updateMapSchema(points);
                     return new Point(x, y - unit);
-                    break;
                 }
                 break;
                 // TODO
@@ -286,7 +282,7 @@ public class GenerationAlgorithms
         Room room;
         for (int i = 1; i < count; i++)
         {
-            RoomsType type = (RoomsType)Random.Range(0, 4);
+            RoomsType type = (RoomsType)Random.Range(0, 5);
             do
             {
                 room = new Room(new Point(Random.Range(1, _width), Random.Range(1, _height), _t1Elements.getElement(ElementsT1Collection.ElementsT1.SmallRoom)),
