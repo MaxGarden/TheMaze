@@ -84,7 +84,8 @@ public class ElementsCollection
             // Special
 
         {"StartPoint", new Color32(250,50,255,255) },
-        {"EndPoint", new Color32(250,200,255,255) }
+        {"EndPoint", new Color32(250,200,255,255) },
+        {"SpikeTrap", new Color32(250,100,255,255) }
     };
 
     public Color32 getWall(Walls wall, DirectionsEnum direction)
@@ -245,6 +246,9 @@ public class ElementsCollection
             case Special.EndPoint:
                 elementColor = elements["EndPoint"];
                 break;
+            case Special.SpikeTrap:
+                elementColor = elements["SpikeTrap"];
+                break;
         }
         return elementColor;
     }
@@ -285,6 +289,7 @@ public class ElementsCollection
     public enum Special
     {
         StartPoint,
-        EndPoint
+        EndPoint,
+        SpikeTrap
     }
 } 

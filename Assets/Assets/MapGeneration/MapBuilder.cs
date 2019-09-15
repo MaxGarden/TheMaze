@@ -19,6 +19,7 @@ public class MapBuilder : MonoBehaviour
     private int pixelNumber;
 
     public GameObject doorSpawner;
+    public GameObject spikesSpawner;
 
     private (byte type, byte id, byte rotation)[] defaultMap =
     {
@@ -26,7 +27,7 @@ public class MapBuilder : MonoBehaviour
     (1,0,159),(1,0,159),(0,100,159),(1,0,191),(0,0,191),(80,20,159),(80,20,159),(80,20,159),(0,20,255),
     (1,0,159),(0,0,159),(0,100,159),(60,0,223),(0,0,159),(60,150,159),(60,140,159),(60,160,159),(60,0,255),
     (0,0,191),(80,0,159),(80,0,191),(60,10,159),(60,30,159),(60,50,159),(60,60,191),(60,70,159),(0,20,255),
-    (20,40,191),(80,0,159),(80,0,191),(250,50,191),(80,0,191),(80,0,191),(80,0,191),(80,0,159),(60,0,255),
+    (20,40,191),(80,0,159),(250,100,191),(250,50,191),(80,0,191),(80,0,191),(80,0,191),(80,0,159),(60,0,255),
     (0,0,191),(80,0,159),(80,0,191),(80,0,159),(80,0,159),(80,0,159),(80,0,191),(80,0,159),(0,20,255),
     (0,0,159),(0,0,159),(0,80,159),(60,0,159),(0,100,159),(60,0,159),(0,40,159),(0,0,159),(0,0,159),
     (20,20,191),(250,200,159),(0,100,191),(0,100,191),(80,0,159),(0,100,191),(0,100,191),(80,0,159),(20,0,191),
@@ -37,6 +38,7 @@ public class MapBuilder : MonoBehaviour
 
     public bool loadMap(List<(byte type, byte id, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
+        //_map = null; // LOAD DEFAULT MAP
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
             map = _map;
@@ -363,6 +365,11 @@ public class MapBuilder : MonoBehaviour
                             case 50:
                                 setPlayerSpawnPosition(pos);
                                 elementPath += "/Start";
+                                break;
+                            case 100:
+                                spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
+                                pos.y -= 0.02f;
+                                spawn(spikesSpawner, pos, Vector3.zero, rotOffset, Vector3.zero);
                                 break;
                             case 200:
                                 setPlayerFinishPosition(pos);

@@ -18,10 +18,14 @@ public class MapGenerator : MonoBehaviour
 
         mapSchema = generateTierOne(mapSchema);
 
+        saveMapToPNG(mapSchema, "MapTier1");
+
         mapSchema = translateFromTierOne(mapSchema);
 
+        mapSchema = reduceMap(mapSchema);
 
-        saveMapToPNG(mapSchema);
+
+        saveMapToPNG(mapSchema, "Map");
 
         List<(byte type, byte id, byte rotation)> data = new List<(byte type, byte id, byte rotation)>();
         
@@ -105,11 +109,13 @@ public class MapGenerator : MonoBehaviour
                 }
 
                 //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
-                if(
-                    compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Path))
-                    )
+                if(compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.Path)))
                 {
-                    mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
+                    float trapChance = UnityEngine.Random.Range(0.0f, 2.0f);
+                    if (trapChance>1.95f)
+                        mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.SpikeTrap));
+                    else
+                        mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
                     continue;
                 }
 
@@ -184,15 +190,44 @@ public class MapGenerator : MonoBehaviour
                     mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Rec_Door_A, DirectionsEnum.West)); // Closed Doors
                     continue;
                 }
+
+                
             }
 
         return mapSchema;
     }
 
-    public void saveMapToPNG(Texture2D mapSchema)
+    private Texture2D reduceMap(Texture2D mapSchema)
+    {
+        ElementsT1Collection elemT1 = new ElementsT1Collection();
+        ElementsCollection elem = new ElementsCollection();
+
+        for (int i = 0; i < mapSchema.width; i++)
+            for (int j = 0; j < mapSchema.height; j++)
+            {
+                if (i < mapSchema.width && i >= 0 && j < mapSchema.height && j >= 0)
+                {
+                    if ((compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j + 1), new Color32(255, 255, 254, 1))) &&
+                       (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j - 1), new Color32(255, 255, 254, 1))) &&
+                        (compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i + 1, j), new Color32(255, 255, 254, 1))) &&
+                        (compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i - 1, j), new Color32(255, 255, 254, 1))))
+                    {
+                        mapSchema.SetPixel(i, j, new Color32(255, 255, 254, 1));
+                    }
+                }
+            }
+
+        return mapSchema;
+    }
+
+    public void saveMapToPNG(Texture2D mapSchema, String fileName)
     {
         byte[] bytes = mapSchema.EncodeToPNG();
-        File.WriteAllBytes(Application.dataPath + "/../MapPreview.png", bytes);
+        File.WriteAllBytes(Application.dataPath + "/../" + fileName + ".png", bytes);
     }
 
     private bool compareColor32(Color32 c1, Color32 c2)
