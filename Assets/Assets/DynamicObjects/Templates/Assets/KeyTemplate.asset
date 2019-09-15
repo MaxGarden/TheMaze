@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KeyTemplate
   m_EditorClassIdentifier: 
   m_name: Key
-  m_interactionColliderPrefab: {fileID: 3149213584988451549, guid: 9631f1415c635164facc7a9c0239004e,
+  m_interactionColliderPrefab: {fileID: 3161072361310914491, guid: 9631f1415c635164facc7a9c0239004e,
     type: 3}
   m_icon: {fileID: 21300000, guid: de92c934f77ed6e41b630e3a4f62466b, type: 3}
   m_pickUpSound: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
