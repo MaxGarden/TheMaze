@@ -20,6 +20,10 @@ public class MapBuilder : MonoBehaviour
 
     public GameObject doorSpawner;
     public GameObject spikesSpawner;
+    public GameObject medkitSpawner;
+    public GameObject flashlightSpawner;
+    public GameObject keySpawner;
+    public GameObject collectibleSpawner;
 
     private (byte type, byte id, byte rotation)[] defaultMap =
     {
@@ -28,7 +32,7 @@ public class MapBuilder : MonoBehaviour
     (1,0,159),(0,0,159),(0,100,159),(60,0,223),(0,0,159),(60,150,159),(60,140,159),(60,160,159),(60,0,255),
     (0,0,191),(80,0,159),(80,0,191),(60,10,159),(60,30,159),(60,50,159),(60,60,191),(60,70,159),(0,20,255),
     (20,40,191),(80,0,159),(250,100,191),(250,50,191),(80,0,191),(80,0,191),(80,0,191),(80,0,159),(60,0,255),
-    (0,0,191),(80,0,159),(80,0,191),(80,0,159),(80,0,159),(80,0,159),(80,0,191),(80,0,159),(0,20,255),
+    (0,0,191),(250,130,191),(250,125,191),(80,0,159),(80,0,159),(80,0,159),(80,0,191),(80,0,159),(0,20,255),
     (0,0,159),(0,0,159),(0,80,159),(60,0,159),(0,100,159),(60,0,159),(0,40,159),(0,0,159),(0,0,159),
     (20,20,191),(250,200,159),(0,100,191),(0,100,191),(80,0,159),(0,100,191),(0,100,191),(80,0,159),(20,0,191),
     (0,0,159),(0,0,159),(1,0,159),(1,0,159),(60,0,159),(1,0,159),(1,0,159),(60,0,159),(0,0,159)
@@ -370,6 +374,18 @@ public class MapBuilder : MonoBehaviour
                                 spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
                                 pos.y -= 0.02f;
                                 spawn(spikesSpawner, pos, Vector3.zero, rotOffset, Vector3.zero);
+                                break;
+                            case 125:
+                                spawn(prefabsPath + "/Floors/Floor_A", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
+                                posOffset = getRandomizedPosOffset(0.7f);
+                                rotOffset.y = getRandomizedRotationOffset(20.0f);
+                                spawn(medkitSpawner, pos, Vector3.zero, rotOffset, Vector3.zero);
+                                break;
+                            case 130:
+                                spawn(prefabsPath + "/Floors/Floor_B", pos, new Vector3(0, 0.01f, 0), rotOffset, new Vector3(gridSize, 0.5f, gridSize));
+                                posOffset = getRandomizedPosOffset(0.7f);
+                                rotOffset.y = getRandomizedRotationOffset(90.0f);
+                                spawn(medkitSpawner, pos, posOffset, rotOffset, Vector3.zero);
                                 break;
                             case 200:
                                 setPlayerFinishPosition(pos);
