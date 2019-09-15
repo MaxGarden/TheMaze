@@ -62,10 +62,6 @@ public class ElementsCollection
         {"Rec_Door_C_S", new Color32(20,60,223,255) },
         {"Rec_Door_C_W", new Color32(20,60,255,255) },
 
-            // Stairs
-
-        // TODO
-
             // Props
 
         // Torch + Wall
@@ -73,6 +69,38 @@ public class ElementsCollection
         {"Torch_E", new Color32(60,0,191,255) },
         {"Torch_S", new Color32(60,0,223,255) },
         {"Torch_W", new Color32(60,0,255,255) },
+        {"BarrelFloorA_N", new Color32(60,10,159,255) },
+        {"BarrelFloorA_E", new Color(60,10,191,255) },
+        {"BarrelFloorA_S", new Color(60,10,223,255) },
+        {"BarrelFloorA_W", new Color(60,10,255,255) },
+        {"BarrelFloorB_N", new Color32(60,20,159, 255) },
+        {"BarrelFloorB_E", new Color32(60,20,191, 255) },
+        {"BarrelFloorB_S", new Color32(60,20,223, 255) },
+        {"BarrelFloorB_W", new Color32(60,20,255, 255) },
+        {"BucketFloorA_N", new Color32(60,30,159,255) },
+        {"BucketFloorA_E", new Color32(60,30,191,255) },
+        {"BucketFloorA_S", new Color32(60,30,223,255) },
+        {"BucketFloorA_W", new Color32(60,30,255,255) },
+        {"BucketFloorB_N", new Color32(60,40,159,255) },
+        {"BucketFloorB_E", new Color32(60,40,191,255) },
+        {"BucketFloorB_S", new Color32(60,40,223,255) },
+        {"BucketFloorB_W", new Color32(60,40,255,255) },
+        {"TableAFloorA_N", new Color32(60,50,159,255) },
+        {"TableAFloorA_E", new Color32(60,50,191,255) },
+        {"TableAFloorA_S", new Color32(60,50,223,255) },
+        {"TableAFloorA_W", new Color32(60,50,255,255) },
+        {"TableAFloorB_N", new Color32(60,110,159,255) },
+        {"TableAFloorB_E", new Color32(60,110,191,255) },
+        {"TableAFloorB_S", new Color32(60,110,223,255) },
+        {"TableAFloorB_W", new Color32(60,110,255,255) },
+        {"TableACandleFloorA_N", new Color32(60,80,159,255) },
+        {"TableACandleFloorA_E", new Color32(60,80,191,255) },
+        {"TableACandleFloorA_S", new Color32(60,80,223,255) },
+        {"TableACandleFloorA_W", new Color32(60,80,255,255) },
+        {"TableACandleFloorB_N", new Color32(60,140,159,255) },
+        {"TableACandleFloorB_E", new Color32(60,140,191,255) },
+        {"TableACandleFloorB_S", new Color32(60,140,223,255) },
+        {"TableACandleFloorB_W", new Color32(60,140,255,255) },
 
             // Floors
 
@@ -196,7 +224,7 @@ public class ElementsCollection
         return elementColor;
     }
 
-    public Color32 getProp(Props prop, DirectionsEnum direction)
+    public Color32 getProp(Props prop)
     {
         Color32 elementColor = new Color32(100, 100, 100, 255);
         switch (prop)
@@ -213,6 +241,104 @@ public class ElementsCollection
             case Props.Torch_W:
                 elementColor = elements["Torch_W"];
                 break;
+            case Props.BarrelFloorA_N:
+                elementColor = elements["BarrelFloorA_N"];
+                break;
+            case Props.BarrelFloorA_E:
+                elementColor = elements["BarrelFloorA_E"];
+                break;
+            case Props.BarrelFloorA_S:
+                elementColor = elements["BarrelFloorA_S"];
+                break;
+            case Props.BarrelFloorA_W:
+                elementColor = elements["BarrelFloorA_W"];
+                break;
+            case Props.BarrelFloorB_N:
+                elementColor = elements["BarrelFloorB_N"];
+                break;
+            case Props.BarrelFloorB_E:
+                elementColor = elements["BarrelFloorB_E"];
+                break;
+            case Props.BarrelFloorB_S:
+                elementColor = elements["BarrelFloorB_S"];
+                break;
+            case Props.BarrelFloorB_W:
+                elementColor = elements["BarrelFloorB_W"];
+                break;
+            case Props.BucketFloorA_N:
+                elementColor = elements["BucketFloorA_N"];
+                break;
+            case Props.BucketFloorA_E:
+                elementColor = elements["BucketFloorA_E"];
+                break;
+            case Props.BucketFloorA_S:
+                elementColor = elements["BucketFloorA_S"];
+                break;
+            case Props.BucketFloorA_W:
+                elementColor = elements["BucketFloorA_W"];
+                break;
+            case Props.BucketFloorB_N:
+                elementColor = elements["BucketFloorB_N"];
+                break;
+            case Props.BucketFloorB_E:
+                elementColor = elements["BucketFloorB_E"];
+                break;
+            case Props.BucketFloorB_S:
+                elementColor = elements["BucketFloorB_S"];
+                break;
+            case Props.BucketFloorB_W:
+                elementColor = elements["BucketFloorB_W"];
+                break;
+            case Props.TableACandleFloorB_N:
+                elementColor = elements["TableACandleFloorB_N"];
+                break;
+            case Props.TableACandleFloorB_E:
+                elementColor = elements["TableACandleFloorB_E"];
+                break;
+            case Props.TableACandleFloorB_S:
+                elementColor = elements["TableACandleFloorB_S"];
+                break;
+            case Props.TableACandleFloorB_W:
+                elementColor = elements["TableACandleFloorB_W"];
+                break;
+            case Props.TableAFloorB_N:
+                elementColor = elements["TableAFloorB_N"];
+                break;
+            case Props.TableAFloorB_E:
+                elementColor = elements["TableAFloorB_E"];
+                break;
+            case Props.TableAFloorB_S:
+                elementColor = elements["TableAFloorB_S"];
+                break;
+            case Props.TableAFloorB_W:
+                elementColor = elements["TableAFloorB_W"];
+                break;
+            case Props.TableAFloorA_N:
+                elementColor = elements["TableAFloorA_N"];
+                break;
+            case Props.TableAFloorA_E:
+                elementColor = elements["TableAFloorA_E"];
+                break;
+            case Props.TableAFloorA_S:
+                elementColor = elements["TableAFloorA_S"];
+                break;
+            case Props.TableAFloorA_W:
+                elementColor = elements["TableAFloorA_W"];
+                break;
+            case Props.TableACandleFloorA_N:
+                elementColor = elements["TableACandleFloorA_N"];
+                break;
+            case Props.TableACandleFloorA_E:
+                elementColor = elements["TableACandleFloorA_E"];
+                break;
+            case Props.TableACandleFloorA_S:
+                elementColor = elements["TableACandleFloorA_S"];
+                break;
+            case Props.TableACandleFloorA_W:
+                elementColor = elements["TableACandleFloorA_W"];
+                break;
+
+
         }
         return elementColor;
     }
@@ -276,7 +402,39 @@ public class ElementsCollection
         Torch_N,
         Torch_E,
         Torch_S,
-        Torch_W
+        Torch_W,
+        BarrelFloorA_N,
+        BarrelFloorA_E,
+        BarrelFloorA_S,
+        BarrelFloorA_W,
+        BarrelFloorB_N,
+        BarrelFloorB_E,
+        BarrelFloorB_S,
+        BarrelFloorB_W,
+        BucketFloorB_N,
+        BucketFloorB_E,
+        BucketFloorB_S,
+        BucketFloorB_W,
+        BucketFloorA_N,
+        BucketFloorA_E,
+        BucketFloorA_S,
+        BucketFloorA_W,
+        TableAFloorB_N,
+        TableAFloorB_E,
+        TableAFloorB_S,
+        TableAFloorB_W,
+        TableAFloorA_N,
+        TableAFloorA_E,
+        TableAFloorA_S,
+        TableAFloorA_W,
+        TableACandleFloorB_N,
+        TableACandleFloorB_E,
+        TableACandleFloorB_S,
+        TableACandleFloorB_W,
+        TableACandleFloorA_N,
+        TableACandleFloorA_E,
+        TableACandleFloorA_S,
+        TableACandleFloorA_W,
     }
 
     public enum Floors

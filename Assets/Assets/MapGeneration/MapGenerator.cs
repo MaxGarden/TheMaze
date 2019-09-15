@@ -70,7 +70,7 @@ public class MapGenerator
                        compareColor32(mapSchema.GetPixel(i, j + 1), elem.getFloors(ElementsCollection.Floors.Floor_A)))
                     {
                         if (torchChance > 0.95f)
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_N, DirectionsEnum.North));
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_N));
                         else
                             mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North));
                         continue;
@@ -80,7 +80,7 @@ public class MapGenerator
                         compareColor32(mapSchema.GetPixel(i+1, j), elem.getFloors(ElementsCollection.Floors.Floor_A)))
                     {
                         if (torchChance > 0.95f)
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_E, DirectionsEnum.East));
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_E));
                         else
                             mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.East));
                         continue;
@@ -90,7 +90,7 @@ public class MapGenerator
                         compareColor32(mapSchema.GetPixel(i, j - 1), elem.getFloors(ElementsCollection.Floors.Floor_A)))
                     {
                         if (torchChance > 0.95f)
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_S, DirectionsEnum.South));
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_S));
                         else
                             mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.South));
                         continue;
@@ -100,7 +100,7 @@ public class MapGenerator
                         compareColor32(mapSchema.GetPixel(i - 1, j), elem.getFloors(ElementsCollection.Floors.Floor_A)))
                     {
                         if (torchChance > 0.95f)
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_W, DirectionsEnum.West));
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.Torch_W));
                         else
                             mapSchema.SetPixel(i, j, elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.West));
                         continue;
@@ -113,15 +113,184 @@ public class MapGenerator
                 {
                     float trapChance = UnityEngine.Random.Range(0.0f, 2.0f);
                     if (trapChance>1.95f)
+                    { 
                         mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.SpikeTrap));
-                    else
+                        continue;
+                    }
+                    else 
+                    {
+                            if( compareColor32(mapSchema.GetPixel(i,j+1),elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                               compareColor32(mapSchema.GetPixel(i+1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                               compareColor32(mapSchema.GetPixel(i,j+1),elem.getWall(ElementsCollection.Walls.Wall_A,DirectionsEnum.North)) &&
+                               compareColor32(mapSchema.GetPixel(i+1,j), elem.getWall(ElementsCollection.Walls.Wall_A,DirectionsEnum.East)))
+                            {
+                                if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorA_N));
+                                    continue;
+                                }
+                                else
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_E));
+                                    continue;
+                                }
+                            }
+
+                            if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                                compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                                compareColor32(mapSchema.GetPixel(i, j + 1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North)) &&
+                                compareColor32(mapSchema.GetPixel(i - 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.West)))
+                            {
+                                if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorA_N));
+                                    continue;
+                                }
+                                else
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_W));
+                                    continue;
+                                }
+                            }
+
+                            if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                                compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                                compareColor32(mapSchema.GetPixel(i, j - 1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.South)) &&
+                                compareColor32(mapSchema.GetPixel(i + 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.East)))
+                            {
+                                if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorA_S));
+                                    continue;
+                                }
+                                else
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_E));
+                                    continue;
+                                }
+                            }
+
+                            if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                                compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                                compareColor32(mapSchema.GetPixel(i, j - 1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.South)) &&
+                                compareColor32(mapSchema.GetPixel(i - 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.West)))
+                            {
+                                if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorA_S));
+                                    continue;
+                                }
+                                else
+                                {
+                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_W));
+                                    continue;
+                                }
+                            }
+
+                    }
                         mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
                     continue;
                 }
 
-                //if (currentPixel == elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom))
+                    // Small room and decorations
                 if(compareColor32(currentPixel, elemT1.getElement(ElementsT1Collection.ElementsT1.SmallRoom)))
                 {
+                    if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                    {
+                        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_N));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_E));
+                        continue;
+                    }
+                    else
+                    {
+                        if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.7f)
+                        {
+                            if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_N));
+                            else
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_E));
+                            continue;
+                        }
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                    {
+                        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_N));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_W));
+                        continue;
+                    }
+                    else
+                    {
+                        if(compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) && 
+                       UnityEngine.Random.Range(0.0f,1.0f) > 0.7f)
+                        {
+                            if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_N));
+                            else
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_W));
+                            continue;
+                        }
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                    {
+                        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_S));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_E));
+                        continue;
+                    }
+                    else
+                    {
+                        if(compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) && 
+                       UnityEngine.Random.Range(0.0f,1.0f) > 0.7f)
+                        {
+                            if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_S));
+                            else
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_E));
+                            continue;
+                        }
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                    {
+                        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_S));
+                        else
+                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_W));
+                        continue;
+                    }
+                    else
+                    {
+                        if(compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) && 
+                       UnityEngine.Random.Range(0.0f,1.0f) > 0.7f)
+                        {
+                            if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_S));
+                            else
+                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_W));
+                            continue;
+                        }
+                    }
+
                     mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_B));
                     continue;
                 }
