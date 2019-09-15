@@ -34,7 +34,7 @@ public class GenerationAlgorithms
 
         updateMapSchema(startEndPoints);
 
-        updateMapSchema(createRooms(25)); //16
+        updateMapSchema(createRooms(30)); //16
 
         createPath(35); // 20
 
