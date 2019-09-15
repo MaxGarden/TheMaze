@@ -38,8 +38,22 @@ public class GenerationAlgorithms
 
         createPath(35); // 20
 
-        createPathFromTo( startPoint,  _rooms[_rooms.Count/2].GetDoors()[0].accessPoint);
-        createPathFromTo( endPoint, _rooms[_rooms.Count / 4].GetDoors()[2].accessPoint);
+
+        // Path from startPoint/endPoint to room
+
+        Room roomStartAccess = _rooms[_rooms.Count / 2];
+        Room roomEndAccess = _rooms[_rooms.Count / 4];
+        int doorNumber;
+        do
+        {
+            doorNumber = Random.Range(0, 3);
+        } while (!roomStartAccess.GetDoors()[doorNumber].isAvailable);
+        createPathFromTo( startPoint, roomStartAccess.GetDoors()[doorNumber].accessPoint);
+        do
+        {
+            doorNumber = Random.Range(0, 3);
+        } while (!roomStartAccess.GetDoors()[doorNumber].isAvailable);
+        createPathFromTo( endPoint, roomEndAccess.GetDoors()[doorNumber].accessPoint);
 
         fillRestPoints();
 
