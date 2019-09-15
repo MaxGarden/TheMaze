@@ -34,9 +34,9 @@ public class GenerationAlgorithms
 
         updateMapSchema(startEndPoints);
 
-        updateMapSchema(createRooms(16));
+        updateMapSchema(createRooms(25)); //16
 
-        createPath(20);
+        createPath(35); // 20
 
         createPathFromTo( startPoint,  _rooms[_rooms.Count/2].GetDoors()[0].accessPoint);
         createPathFromTo( endPoint, _rooms[_rooms.Count / 4].GetDoors()[2].accessPoint);
@@ -91,24 +91,26 @@ public class GenerationAlgorithms
         {
             startRoomNumber = Random.Range(0, _rooms.Count);
             Room startRoom = _rooms[startRoomNumber];
-            doorNumber = Random.Range(0, 3);
-            if (startRoom.GetDoors()[doorNumber].isAvailable)
-            {
-                startDoor = startRoom.GetDoors()[doorNumber];
-            }
-
             do
+            {
+                doorNumber = Random.Range(0, 3);
+                startDoor = startRoom.GetDoors()[doorNumber];
+            } while (!startRoom.GetDoors()[doorNumber].isAvailable); 
+
+                do
             {
                 endRoomNumber = Random.Range(0, _rooms.Count);
             } while (endRoomNumber == startRoomNumber);
 
             Room endRoom = _rooms[endRoomNumber];
-            doorNumber = Random.Range(0, 3);
-            if (endRoom.GetDoors()[doorNumber].isAvailable)
+            do
             {
+                doorNumber = Random.Range(0, 3);
                 endDoor = endRoom.GetDoors()[doorNumber];
-            }
-            drawX(startDoor.accessPoint, endDoor.accessPoint);
+            } while (!endRoom.GetDoors()[doorNumber].isAvailable); 
+                createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
+
+            //drawX(startDoor.accessPoint, endDoor.accessPoint);
         }
 
         return points;
@@ -117,15 +119,47 @@ public class GenerationAlgorithms
     public void createPathFromTo(Point startPoint, Point endPoint)
     {
         drawX(startPoint, endPoint);
+        Point currentPoint = startPoint;
+        bool xDirect;
+        if (Random.Range(0.0f, 1.0f) > 0.5f)
+        {
+            currentPoint = drawX(currentPoint, endPoint);
+            xDirect = false;
+        }
+        else
+        {
+            currentPoint = drawY(currentPoint, endPoint);
+            xDirect = true;
+        }
+
+        bool done = false;
+
+        while (!done)
+        {
+            if (xDirect)
+            {
+                currentPoint = drawX(currentPoint, endPoint);
+                if (currentPoint.x == -1 && currentPoint.y == -1)
+                    done = true;
+                xDirect = false;
+            }
+            else
+            {
+                currentPoint = drawY(currentPoint, endPoint);
+                if (currentPoint.x == -1 && currentPoint.y == -1)
+                    done = true;
+                xDirect = true;
+            }
+        }
     }
 
-    private void drawX(Point startPoint, Point endPoint)
+    private Point drawX(Point startPoint, Point endPoint)
     {
         int x = startPoint.x;
         int y = startPoint.y;
         int unit = 1;
         List<Point> points = new List<Point>();
-
+        Point END_POINT = new Point(-1, -1);
         if (endPoint.x < startPoint.x)
             unit *= -1;
 
@@ -143,8 +177,10 @@ public class GenerationAlgorithms
                 )
             {
                 if(y != endPoint.y)
-                { drawY(new Point(x - unit, y), endPoint);
-                    break;
+                {
+                    //drawY(new Point(x - unit, y), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x - unit, y);
                 }
                 break; // TODO
             }
@@ -153,8 +189,9 @@ public class GenerationAlgorithms
             {
                 if(y != endPoint.y)
                 {
-                    drawY(new Point(x - unit, y), endPoint);
-                    break;
+                    //drawY(new Point(x - unit, y), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x - unit, y);
                 }
                 break;
                 // TODO
@@ -176,14 +213,16 @@ public class GenerationAlgorithms
 
         //points.Add(new Point(endDoors.accessPoint.x, endDoors.accessPoint.y, new Color(200 / 255f, 0, 200 / 255f, 1))); // tymczasowo
         updateMapSchema(points); // tymczasowo
+        return END_POINT;
     }
 
-    private void drawY(Point startPoint, Point endPoint)
+    private Point drawY(Point startPoint, Point endPoint)
     {
         int x = startPoint.x;
         int y = startPoint.y;
         int unit = 1;
         List<Point> points = new List<Point>();
+        Point END_POINT = new Point(-1, -1);
 
         if (endPoint.y < startPoint.y)
             unit *= -1;
@@ -201,8 +240,9 @@ public class GenerationAlgorithms
             {
                 if (x != endPoint.x)
                 {
-                    drawX(new Point(x, y - unit), endPoint);
-                    break;
+                    //drawX(new Point(x, y - unit), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x, y - unit);
                 }
                 break; // TODO
             }
@@ -211,8 +251,9 @@ public class GenerationAlgorithms
             {
                 if (x != endPoint.x)
                 {
-                    drawX(new Point(x, y - unit), endPoint);
-                    break;
+                    //drawX(new Point(x, y - unit), endPoint);
+                    updateMapSchema(points);
+                    return new Point(x, y - unit);
                 }
                 break;
                 // TODO
@@ -232,6 +273,7 @@ public class GenerationAlgorithms
         }
 
         updateMapSchema(points); // tymczasowo
+        return END_POINT;
     }
 
     public List<Point> createRooms(int count)
@@ -240,11 +282,12 @@ public class GenerationAlgorithms
         Room room;
         for (int i = 1; i < count; i++)
         {
+            RoomsType type = (RoomsType)Random.Range(0, 5);
             do
             {
                 room = new Room(new Point(Random.Range(1, _width), Random.Range(1, _height), _t1Elements.getElement(ElementsT1Collection.ElementsT1.SmallRoom)),
                     RoomsSize.Small,
-                    RoomsType.Default);
+                    type);
                 room.build();
             } while (room.isCollision(_rooms, _width, _height) || isOccupied(room.getPoints()));
             _rooms.Add(room);
