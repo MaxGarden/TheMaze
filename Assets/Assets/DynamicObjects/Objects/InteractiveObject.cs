@@ -8,9 +8,14 @@ public class InteractiveObject : DynamicObject
     private Collider m_interactionCollider;
     public GameObject InteractionRoot => m_interactionCollider.gameObject;
 
+    protected virtual Type TemplateType { get; }
+
     public override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
+
+        if(!TemplateType.IsAssignableFrom(template.GetType()))
+            throw new InvalidOperationException("Invalid template type!");
 
         Template = (InteractiveObjectTemplate)template;
 
@@ -19,12 +24,5 @@ public class InteractiveObject : DynamicObject
             throw new InvalidOperationException("Interaction collider prefab cannot be null!");
 
         m_interactionCollider = Instantiate(Template.InteractionColliderPrefab, transform);
-    }
-
-    protected void ValidateTemplate<TemplateType>(DynamicObjectTemplate template)
-        where TemplateType : InteractiveObjectTemplate
-    {
-        if (!(template is TemplateType))
-            throw new InvalidOperationException("Invalid template type!");
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class EquipmentControllerBase : EquipmentController
 {
@@ -9,11 +10,16 @@ public abstract class EquipmentControllerBase : EquipmentController
 
     protected Inventory Inventory { get; private set; }
 
+    protected abstract Type DataModelType { get; }
+
     [SerializeField]
     private float m_dropThrowForce = 8.0f;
 
     public override void Initialize(Equipment equipment)
     {
+        if(!DataModelType.IsAssignableFrom(equipment.GetType()))
+            throw new InvalidOperationException("Invalid data model type!");
+
         Equipment = equipment;
         OriginalEquipmentParentTransform = Equipment.transform.parent.transform;
     }

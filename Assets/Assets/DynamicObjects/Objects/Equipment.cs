@@ -10,6 +10,7 @@ public abstract class Equipment : InventoryObject
         Equipped
     }
 
+    protected override Type TemplateType => typeof(EquipmentTemplate);
     public new EquipmentTemplate Template => (EquipmentTemplate)base.Template;
 
     public EquipmentController Controller { get; private set; }
@@ -34,8 +35,6 @@ public abstract class Equipment : InventoryObject
     public sealed override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
-
-        ValidateTemplate<EquipmentTemplate>(template);
 
         OnInitialize(Template);
 

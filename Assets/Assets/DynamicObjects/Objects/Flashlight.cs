@@ -3,6 +3,7 @@ using UnityEngine;
 
 public sealed class Flashlight : UtilityEquipment
 {
+    protected override Type TemplateType => typeof(FlashlightTemplate);
     public new FlashlightTemplate Template => (FlashlightTemplate)base.Template;
 
     public event Action OnTurnStateChanged;
@@ -19,13 +20,6 @@ public sealed class Flashlight : UtilityEquipment
             m_isTurnedOn = value;
             OnTurnStateChanged?.Invoke();
         }
-    }
-
-    protected override void OnInitialize(EquipmentTemplate template)
-    {
-        base.OnInitialize(template);
-
-        ValidateTemplate<FlashlightTemplate>(template);
     }
 
     public bool TryTurnOn()

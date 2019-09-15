@@ -1,5 +1,8 @@
-﻿public class Door : InteractiveObject
+﻿using System;
+
+public class Door : InteractiveObject
 {
+    protected override Type TemplateType => typeof(DoorTemplate);
     public new DoorTemplate Template => (DoorTemplate)base.Template;
 
     public bool IsLocked { get; private set; } = true;
@@ -8,8 +11,6 @@
     public override void Initialize(DynamicObjectTemplate template)
     {
         base.Initialize(template);
-
-        ValidateTemplate<DoorTemplate>(template);
 
         IsLocked = !!Template.RequiredCollectibleToOpen;
     }

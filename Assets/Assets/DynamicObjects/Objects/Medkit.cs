@@ -2,14 +2,8 @@
 
 public sealed class Medkit : UtilityEquipment
 {
+    protected override Type TemplateType => typeof(MedkitTemplate);
     public new MedkitTemplate Template => (MedkitTemplate)base.Template;
-
-    protected override void OnInitialize(EquipmentTemplate template)
-    {
-        base.OnInitialize(template);
-
-        ValidateTemplate<MedkitTemplate>(template);
-    }
 
     public bool Heal(Health health)
     {

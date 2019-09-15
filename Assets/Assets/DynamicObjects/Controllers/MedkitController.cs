@@ -2,15 +2,9 @@
 
 public sealed class MedkitController : UtilityEquipmentController
 {
-    public new Medkit Equipment { get; private set; }
+    protected override Type DataModelType => typeof(Medkit);
+    public new Medkit Equipment => (Medkit)base.Equipment;
     public new MedkitTemplate EquipmentTemplate => Equipment.Template;
-
-    public override void Initialize(Equipment equipment)
-    {
-        base.Initialize(equipment);
-
-        Equipment = (Medkit)equipment;
-    }
 
     public override void OnUse()
     {

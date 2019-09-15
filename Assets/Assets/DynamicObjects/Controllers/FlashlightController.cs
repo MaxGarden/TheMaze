@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Light))]
 public sealed class FlashlightController : UtilityEquipmentController
 {
-    public new Flashlight Equipment { get; private set; }
+    protected override Type DataModelType => typeof(Flashlight);
+    public new Flashlight Equipment => (Flashlight)base.Equipment;
     public new FlashlightTemplate EquipmentTemplate => Equipment.Template;
 
     private Light m_light = null;
@@ -19,7 +21,6 @@ public sealed class FlashlightController : UtilityEquipmentController
     {
         base.Initialize(equipment);
 
-        Equipment = (Flashlight)equipment;
         Equipment.OnTurnStateChanged += OnTurnStateChanged;
 
         InitializeLight();
