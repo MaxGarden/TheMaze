@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class MapGenerator
+public class MapGenerator 
 {
 
 
     public int MAP_WIDTH = 80;
     public int MAP_HEIGHT = 80;
+    public int coinsGenerated = 0;
+    public int requiredCoins;
+    public int doorsAvailable = 5;
+    public int keysAvailable = 5 * 2;
 
     public Map create()
     {
@@ -39,6 +43,9 @@ public class MapGenerator
                 data.Add( (Convert.ToByte(currentPixel.r), Convert.ToByte(currentPixel.g) , Convert.ToByte(currentPixel.b)) );
             }
         }
+
+
+        requiredCoins = Mathf.RoundToInt(coinsGenerated * 0.75f);
 
         return new Map(data,MAP_WIDTH,MAP_HEIGHT);
 
@@ -148,7 +155,7 @@ public class MapGenerator
                                 }
                                 else
                                 {
-                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_W));
+                                    mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.FlashlightTableCFloorA_W));
                                     continue;
                                 }
                             }
@@ -165,7 +172,7 @@ public class MapGenerator
                                 }
                                 else
                                 {
-                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_E));
+                                    mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.MedkitFloorA));
                                     continue;
                                 }
                             }
@@ -177,18 +184,79 @@ public class MapGenerator
                             {
                                 if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
                                 {
-                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorA_S));
+                                mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.FlashlightTableCFloorA_S));
                                     continue;
                                 }
                                 else
                                 {
-                                    mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorA_W));
+                                    mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.FlashlightTableCFloorA_W));
                                     continue;
                                 }
                             }
 
                     }
-                        mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.95f)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.CoinFloorA));
+                        coinsGenerated++;
+                        continue;
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i, j - 1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North)) &&
+                       compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) && 
+                       UnityEngine.Random.Range(0.0f, 2.0f) > 1.95f && doorsAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Key_Door, DirectionsEnum.East));
+                        doorsAvailable--;
+                        continue;
+                    }
+
+                    if (compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
+                       compareColor32(mapSchema.GetPixel(i - 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.East)) && 
+                       UnityEngine.Random.Range(0.0f, 2.0f) > 1.95f && doorsAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getDoors(ElementsCollection.Doors.Key_Door, DirectionsEnum.North));
+                        doorsAvailable--;
+                        continue;
+                    }
+
+                    if ((compareColor32(mapSchema.GetPixel(i , j+1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j+1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.South))) &&
+                        UnityEngine.Random.Range(0.0f, 1.0f) > 0.95f && keysAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleKey_N));
+                        keysAvailable--;
+                        continue;
+                    }
+
+                    if ((compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i + 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.West))) &&
+                        UnityEngine.Random.Range(0.0f, 1.0f) > 0.95f && keysAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleKey_E));
+                        keysAvailable--;
+                        continue;
+                    }
+
+                    if ((compareColor32(mapSchema.GetPixel(i, j -1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i, j-1), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.North))) &&
+                        UnityEngine.Random.Range(0.0f, 1.0f) > 0.95f && keysAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleKey_S));
+                        keysAvailable--;
+                        continue;
+                    }
+
+                    if ((compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) ||
+                        compareColor32(mapSchema.GetPixel(i - 1, j), elem.getWall(ElementsCollection.Walls.Wall_A, DirectionsEnum.East))) && 
+                        UnityEngine.Random.Range(0.0f,1.0f) >0.95f && keysAvailable > 0)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleKey_W));
+                        keysAvailable--;
+                        continue;
+                    }
+
+                    mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_A));
                     continue;
                 }
 
@@ -197,10 +265,10 @@ public class MapGenerator
                 {
                     if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
                        compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
-                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.7f)
                     {
                         if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_N));
+                            mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.MedkitFloorB));
                         else
                             mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_E));
                         continue;
@@ -214,19 +282,19 @@ public class MapGenerator
                             if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
                                 mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_N));
                             else
-                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_E));
+                                mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.FlashlightTableCFloorB_E));
                             continue;
                         }
                     }
 
                     if (compareColor32(mapSchema.GetPixel(i, j + 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
                        compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
-                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.7f)
                     {
                         if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
                             mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_N));
                         else
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_W));
+                            mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.FlashlightTableCFloorB_W));
                         continue;
                     }
                     else
@@ -238,14 +306,14 @@ public class MapGenerator
                             if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
                                 mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BarrelFloorB_N));
                             else
-                                mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.BucketFloorB_W));
+                                mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.MedkitFloorB));
                             continue;
                         }
                     }
 
                     if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
                        compareColor32(mapSchema.GetPixel(i + 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
-                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.7f)
                     {
                         if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
                             mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_S));
@@ -269,12 +337,12 @@ public class MapGenerator
 
                     if (compareColor32(mapSchema.GetPixel(i, j - 1), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
                        compareColor32(mapSchema.GetPixel(i - 1, j), elemT1.getElement(ElementsT1Collection.ElementsT1.Wall)) &&
-                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.8f)
+                       UnityEngine.Random.Range(0.0f, 1.0f) > 0.7f)
                     {
                         if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f)
                             mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableACandleFloorB_S));
                         else
-                            mapSchema.SetPixel(i, j, elem.getProp(ElementsCollection.Props.TableAFloorB_W));
+                            mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.MedkitFloorB));
                         continue;
                     }
                     else
@@ -291,7 +359,13 @@ public class MapGenerator
                         }
                     }
 
-                    mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_B));
+                    if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.85f)
+                    {
+                        mapSchema.SetPixel(i, j, elem.getSpecial(ElementsCollection.Special.CoinFloorB));
+                        coinsGenerated++;
+                    }
+                    else
+                        mapSchema.SetPixel(i, j, elem.getFloors(ElementsCollection.Floors.Floor_B));
                     continue;
                 }
 

@@ -55,6 +55,10 @@ public class GenerationAlgorithms
         } while (!roomStartAccess.GetDoors()[doorNumber].isAvailable);
         createPathFromTo( endPoint, roomEndAccess.GetDoors()[doorNumber].accessPoint);
 
+        checkAllRooms();
+
+
+
         fillRestPoints();
 
         return _mapSchema;
@@ -124,7 +128,6 @@ public class GenerationAlgorithms
             } while (!endRoom.GetDoors()[doorNumber].isAvailable); 
                 createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
 
-            //drawX(startDoor.accessPoint, endDoor.accessPoint);
         }
 
         return points;
@@ -360,4 +363,59 @@ public class GenerationAlgorithms
             _mapSchema.SetPixel(point.x, point.y, point.color);
     }
 
+    private void checkAllRooms()
+    {
+        bool hasConnect;
+        int x, y;
+        int doorNumber;
+        int endRoomNumber;
+        DoorElement startDoor, endDoor;
+        foreach ( Room room in _rooms)
+        {
+            x = room.getCenterPoint().x;
+            y = room.getCenterPoint().y;
+            hasConnect = false;
+            if (room.GetDoors()[0].isAvailable && compareColor32(_mapSchema.GetPixel(x, y + 3), _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path)))
+                hasConnect = true;
+            if (room.GetDoors()[1].isAvailable && compareColor32(_mapSchema.GetPixel(x + 3, y), _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path)))
+                hasConnect = true;
+            if (room.GetDoors()[2].isAvailable && compareColor32(_mapSchema.GetPixel(x, y - 3), _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path)))
+                hasConnect = true;
+            if (room.GetDoors()[3].isAvailable && compareColor32(_mapSchema.GetPixel(x - 3, y), _t1Elements.getElement(ElementsT1Collection.ElementsT1.Path)))
+                hasConnect = true;
+            
+            if(!hasConnect)
+            {
+                do
+                {
+                    doorNumber = Random.Range(0, 3);
+                    startDoor = room.GetDoors()[doorNumber];
+                } while (!room.GetDoors()[doorNumber].isAvailable);
+
+                do
+                {
+                    endRoomNumber = Random.Range(0, _rooms.Count);
+                } while (endRoomNumber == _rooms.IndexOf(room));
+
+                Room endRoom = _rooms[endRoomNumber];
+                do
+                {
+                    doorNumber = Random.Range(0, 3);
+                    endDoor = endRoom.GetDoors()[doorNumber];
+                } while (!endRoom.GetDoors()[doorNumber].isAvailable);
+                createPathFromTo(startDoor.accessPoint, endDoor.accessPoint);
+
+            }
+        }
+    }
+
+    private bool compareColor32(Color32 c1, Color32 c2)
+    {
+        if (c1.a == c2.a &&
+            c1.r == c2.r &&
+            c1.g == c2.g &&
+            c1.b == c2.b)
+            return true;
+        else return false;
+    }
 }

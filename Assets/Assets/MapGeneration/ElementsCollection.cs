@@ -62,6 +62,11 @@ public class ElementsCollection
         {"Rec_Door_C_S", new Color32(20,60,223,255) },
         {"Rec_Door_C_W", new Color32(20,60,255,255) },
 
+        // Key_Door
+        {"Key_Door_N", new Color32(20,80,159,255) },
+        {"Key_Door_E", new Color32(20,80,191,255) },
+        {"Key_Door_S", new Color32(20,80,223,255) },
+        {"Key_Door_W", new Color32(20,80,255,255) },
             // Props
 
         // Torch + Wall
@@ -101,6 +106,10 @@ public class ElementsCollection
         {"TableACandleFloorB_E", new Color32(60,140,191,255) },
         {"TableACandleFloorB_S", new Color32(60,140,223,255) },
         {"TableACandleFloorB_W", new Color32(60,140,255,255) },
+        {"TableACandleKey_N", new Color32(60,170,159,255) },
+        {"TableACandleKey_E", new Color32(60,170,191,255) },
+        {"TableACandleKey_S", new Color32(60,170,223,255) },
+        {"TableACandleKey_W", new Color32(60,170,255,255) },
 
             // Floors
 
@@ -113,7 +122,19 @@ public class ElementsCollection
 
         {"StartPoint", new Color32(250,50,255,255) },
         {"EndPoint", new Color32(250,200,255,255) },
-        {"SpikeTrap", new Color32(250,100,255,255) }
+        {"SpikeTrap", new Color32(250,100,255,255) },
+        {"MedkitFloorA", new Color32(250,125,25,255) },
+        {"MedkitFloorB", new Color32(250,130,255,255)},
+        {"FlashlightTableCFloorA_N", new Color32(250,150,159,255) },
+        {"FlashlightTableCFloorA_E", new Color32(250,150,191,255) },
+        {"FlashlightTableCFloorA_S", new Color32(250,150,223,255) },
+        {"FlashlightTableCFloorA_W", new Color32(250,150,255,255) },
+        {"FlashlightTableCFloorB_N", new Color32(250,155,159,255) },
+        {"FlashlightTableCFloorB_E", new Color32(250,155,191,255) },
+        {"FlashlightTableCFloorB_S", new Color32(250,155,223,255) },
+        {"FlashlightTableCFloorB_W", new Color32(250,155,255,255) },
+        {"CoinFloorA", new Color32(250,180,255,255) },
+        {"CoinFloorB", new Color32(250,190,255,255) }
     };
 
     public Color32 getWall(Walls wall, DirectionsEnum direction)
@@ -219,6 +240,16 @@ public class ElementsCollection
                     elementColor = elements["Rec_Door_C_S"];
                 if (direction == DirectionsEnum.West)
                     elementColor = elements["Rec_Door_C_W"];
+                break;
+            case Doors.Key_Door:
+                if (direction == DirectionsEnum.North)
+                    elementColor = elements["Key_Door_N"];
+                if (direction == DirectionsEnum.East)
+                    elementColor = elements["Key_Door_E"];
+                if (direction == DirectionsEnum.South)
+                    elementColor = elements["Key_Door_S"];
+                if (direction == DirectionsEnum.West)
+                    elementColor = elements["Key_Door_W"];
                 break;
         }
         return elementColor;
@@ -337,7 +368,18 @@ public class ElementsCollection
             case Props.TableACandleFloorA_W:
                 elementColor = elements["TableACandleFloorA_W"];
                 break;
-
+            case Props.TableACandleKey_N:
+                elementColor = elements["TableACandleKey_N"];
+                break;
+            case Props.TableACandleKey_E:
+                elementColor = elements["TableACandleKey_E"];
+                break;
+            case Props.TableACandleKey_S:
+                elementColor = elements["TableACandleKey_S"];
+                break;
+            case Props.TableACandleKey_W:
+                elementColor = elements["TableACandleKey_W"];
+                break;
 
         }
         return elementColor;
@@ -375,6 +417,42 @@ public class ElementsCollection
             case Special.SpikeTrap:
                 elementColor = elements["SpikeTrap"];
                 break;
+            case Special.MedkitFloorA:
+                elementColor = elements["MedkitFloorA"];
+                break;
+            case Special.MedkitFloorB:
+                elementColor = elements["MedkitFloorB"];
+                break;
+            case Special.FlashlightTableCFloorA_N:
+                elementColor = elements["FlashlightTableCFloorA_N"];
+                break;
+            case Special.FlashlightTableCFloorA_E:
+                elementColor = elements["FlashlightTableCFloorA_E"];
+                break;
+            case Special.FlashlightTableCFloorA_S:
+                elementColor = elements["FlashlightTableCFloorA_S"];
+                break;
+            case Special.FlashlightTableCFloorA_W:
+                elementColor = elements["FlashlightTableCFloorA_W"];
+                break;
+            case Special.FlashlightTableCFloorB_N:
+                elementColor = elements["FlashlightTableCFloorB_N"];
+                break;
+            case Special.FlashlightTableCFloorB_E:
+                elementColor = elements["FlashlightTableCFloorB_E"];
+                break;
+            case Special.FlashlightTableCFloorB_S:
+                elementColor = elements["FlashlightTableCFloorB_S"];
+                break;
+            case Special.FlashlightTableCFloorB_W:
+                elementColor = elements["FlashlightTableCFloorB_W"];
+                break;
+            case Special.CoinFloorA:
+                elementColor = elements["CoinFloorA"];
+                break;
+            case Special.CoinFloorB:
+                elementColor = elements["CoinFloorB"];
+                break;
         }
         return elementColor;
     }
@@ -394,7 +472,8 @@ public class ElementsCollection
     {
         Rec_Door_A,
         Arch_Door_B,
-        Rec_Door_C
+        Rec_Door_C,
+        Key_Door
     }
 
     public enum Props
@@ -435,6 +514,11 @@ public class ElementsCollection
         TableACandleFloorA_E,
         TableACandleFloorA_S,
         TableACandleFloorA_W,
+        
+        TableACandleKey_N,
+        TableACandleKey_E,
+        TableACandleKey_S,
+        TableACandleKey_W
     }
 
     public enum Floors
@@ -448,6 +532,18 @@ public class ElementsCollection
     {
         StartPoint,
         EndPoint,
-        SpikeTrap
+        SpikeTrap,
+        MedkitFloorA,
+        MedkitFloorB,
+        FlashlightTableCFloorA_N,
+        FlashlightTableCFloorA_E,
+        FlashlightTableCFloorA_S,
+        FlashlightTableCFloorA_W,
+        FlashlightTableCFloorB_N,
+        FlashlightTableCFloorB_E,
+        FlashlightTableCFloorB_S,
+        FlashlightTableCFloorB_W,
+        CoinFloorA,
+        CoinFloorB
     }
 } 
