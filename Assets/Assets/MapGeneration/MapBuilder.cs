@@ -49,7 +49,7 @@ public class MapBuilder : MonoBehaviour
 
     public bool loadMap(List<(byte type, byte id, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
-        _map = null; // LOAD DEFAULT MAP
+        //_map = null; // LOAD DEFAULT MAP
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
             map = _map;
