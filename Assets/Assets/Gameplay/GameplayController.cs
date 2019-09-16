@@ -26,6 +26,8 @@ public sealed class GameplayController : MonoBehaviour
     private AudioClip m_gameOverSound = null;
 
     public GameplayCondition CurrentWinCondition => m_conditions
+        .Where(condition => !condition.DetermineIfFulfilled())
+        .OrderByDescending(condition => condition.Priority)
         .FirstOrDefault(condition => condition.ConditionType == GameplayCondition.Type.Win);
 
     private void Awake()

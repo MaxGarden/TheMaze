@@ -8,6 +8,8 @@ public abstract class GameplayCondition : MonoBehaviour
         Fail
     }
 
+    public virtual int Priority => 0;
+
     public abstract Type ConditionType { get; }
     public abstract bool DetermineIfFulfilled();
 
