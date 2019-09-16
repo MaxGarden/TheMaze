@@ -19,6 +19,7 @@ public class MapBuilder : MonoBehaviour
     private int pixelNumber;
 
     public GameObject doorSpawner;
+    public GameObject lockedDoorSpawner;
     public GameObject spikesSpawner;
     public GameObject medkitSpawner;
     public GameObject flashlightSpawner;
@@ -48,7 +49,7 @@ public class MapBuilder : MonoBehaviour
 
     public bool loadMap(List<(byte type, byte id, byte rotation)> _map, int _mapWidth, int _mapHeight)
     {
-        // _map = null; // LOAD DEFAULT MAP
+        _map = null; // LOAD DEFAULT MAP
         if(_map != null && _mapWidth > 0 && _mapHeight > 0)
         {
             map = _map;
@@ -167,6 +168,20 @@ public class MapBuilder : MonoBehaviour
                                 scale.y = 0.5f;
                                 posOffset.y += 0.01f;
                                 elementPath += "/Floors/Floor_C";
+                                break;
+                            case 80:
+                                spawn(prefabsPath + "/Doorways/Doorway_A", pos, posOffset, rotOffset, new Vector3(1.0f, gridSize, gridSize + scaleMargin));
+                                spawn(lockedDoorSpawner, pos, new Vector3(0, 0, 1.2f), rotOffset, Vector3.zero);
+                                scale.y = 0.5f;
+                                posOffset.y += 0.01f;
+                                elementPath += "/Floors/Floor_A";
+                                break;
+                            case 100:
+                                spawn(prefabsPath + "/Doorways/Doorway_A", pos, posOffset, rotOffset, new Vector3(1.0f, gridSize, gridSize + scaleMargin));
+                               spawn(doorSpawner, pos, new Vector3(0, 0, 1.2f), rotOffset, Vector3.zero);
+                                scale.y = 0.5f;
+                                posOffset.y += 0.01f;
+                                elementPath += "/Floors/Floor_A";
                                 break;
                         }
                         break;
