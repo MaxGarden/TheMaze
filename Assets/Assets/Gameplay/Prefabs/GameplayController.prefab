@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4149456819889042073}
+  - {fileID: 8829329118215472905}
   m_Father: {fileID: 8800093856842461386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,6 +118,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2e013b0b987c04398a72d7a539cabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5333421063792387302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8829329118215472905}
+  - component: {fileID: 5341375514633499725}
+  m_Layer: 0
+  m_Name: CollectCollectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8829329118215472905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333421063792387302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6170065843851845806}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5341375514633499725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333421063792387302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd74ccf393dac14a998ac9e9a994423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_collectibleTemplate: {fileID: 11400000, guid: 29d71854fc1d6a94399853e360d66f19,
+    type: 2}
+  m_requiredCollectiblesCount: 5
 --- !u!1 &6676847617814884216
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,5 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hudCanvas: {fileID: 0}
+  m_victoryCanvas: {fileID: 0}
+  m_victorySound: {fileID: 0}
   m_gameOverCanvas: {fileID: 0}
   m_gameOverSound: {fileID: 0}
