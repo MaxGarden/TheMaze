@@ -25,6 +25,9 @@ public sealed class GameplayController : MonoBehaviour
     [SerializeField]
     private AudioClip m_gameOverSound = null;
 
+    public GameplayCondition CurrentWinCondition => m_conditions
+        .FirstOrDefault(condition => condition.ConditionType == GameplayCondition.Type.Win);
+
     private void Awake()
     {
         if (Instance)
