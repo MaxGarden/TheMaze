@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(Door))]
 [RequireComponent(typeof(Animator))]
-public sealed class DoorController : ControllerBase
+public sealed class DoorController : DynamicObjectController
 {
     [SerializeField]
     private string m_openTriggerName = "Open";

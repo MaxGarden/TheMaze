@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Spikes))]
 [RequireComponent(typeof(Animator))]
-public sealed class SpikesController : ControllerBase
+public sealed class SpikesController : DynamicObjectController
 {
     [SerializeField]
     private string m_showTriggerName = "Show";

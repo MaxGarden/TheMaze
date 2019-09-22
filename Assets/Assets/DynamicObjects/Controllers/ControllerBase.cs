@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ControllerBase : MonoBehaviour
+public abstract class DynamicObjectController : MonoBehaviour
 {
     private AudioSource m_audioSource = null;
 
