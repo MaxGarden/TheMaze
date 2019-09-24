@@ -1,0 +1,78 @@
+\hypertarget{class_interaction_handler}{}\section{Interaction\+Handler Class Reference}
+\label{class_interaction_handler}\index{Interaction\+Handler@{Interaction\+Handler}}
+Inheritance diagram for Interaction\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_interaction_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract string \mbox{\hyperlink{class_interaction_handler_acdd154cb8b276e122915412b3b7274d3}{Calculate\+Interaction\+Description}} (\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}} context)
+\item 
+abstract void \mbox{\hyperlink{class_interaction_handler_ae240fb919621a4e6d5e3dc6130c809d0}{Interact}} (\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}} context)
+\item 
+virtual bool \mbox{\hyperlink{class_interaction_handler_aa6e40ea3f53f5f2a900fd25cf84c8b7f}{Is\+Custom\+Interaction}} (\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}} context)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_interaction_handler_adbbb312d562d3060de296f6da5c97631}{Awake}} ()
+\item 
+void \mbox{\hyperlink{class_interaction_handler_aecb9eb68b09058f64831e337022868d5}{Play\+Interaction\+Sound}} (Audio\+Clip clip)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interaction_handler_adbbb312d562d3060de296f6da5c97631}\label{class_interaction_handler_adbbb312d562d3060de296f6da5c97631}} 
+\index{Interaction\+Handler@{Interaction\+Handler}!Awake@{Awake}}
+\index{Awake@{Awake}!Interaction\+Handler@{Interaction\+Handler}}
+\subsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily virtual void Interaction\+Handler.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_door_interaction_handler_ae1d36b6037ec736fed8b528e5125f1be}{Door\+Interaction\+Handler}}, \mbox{\hyperlink{class_pick_up_interaction_handler_a679468740f0c76cf96acef5315bccb6d}{Pick\+Up\+Interaction\+Handler}}, and \mbox{\hyperlink{class_push_interaction_handler_a5e962d17b817f70e1376ca9f3091c326}{Push\+Interaction\+Handler}}.
+
+\mbox{\Hypertarget{class_interaction_handler_acdd154cb8b276e122915412b3b7274d3}\label{class_interaction_handler_acdd154cb8b276e122915412b3b7274d3}} 
+\index{Interaction\+Handler@{Interaction\+Handler}!Calculate\+Interaction\+Description@{Calculate\+Interaction\+Description}}
+\index{Calculate\+Interaction\+Description@{Calculate\+Interaction\+Description}!Interaction\+Handler@{Interaction\+Handler}}
+\subsubsection{\texorpdfstring{Calculate\+Interaction\+Description()}{CalculateInteractionDescription()}}
+{\footnotesize\ttfamily abstract string Interaction\+Handler.\+Calculate\+Interaction\+Description (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}}}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_door_interaction_handler_a946244bed82fef5c376529a64fcc9f06}{Door\+Interaction\+Handler}}, \mbox{\hyperlink{class_pick_up_interaction_handler_ab989c9d6c0e2f7849c7c6cbf7b0827fd}{Pick\+Up\+Interaction\+Handler}}, and \mbox{\hyperlink{class_single_interaction_handler_a79e3c1727bf6f3f9068c6d15bf394b41}{Single\+Interaction\+Handler}}.
+
+\mbox{\Hypertarget{class_interaction_handler_ae240fb919621a4e6d5e3dc6130c809d0}\label{class_interaction_handler_ae240fb919621a4e6d5e3dc6130c809d0}} 
+\index{Interaction\+Handler@{Interaction\+Handler}!Interact@{Interact}}
+\index{Interact@{Interact}!Interaction\+Handler@{Interaction\+Handler}}
+\subsubsection{\texorpdfstring{Interact()}{Interact()}}
+{\footnotesize\ttfamily abstract void Interaction\+Handler.\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}}}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_door_interaction_handler_ab4099b8368bb7d8cb8e0d8ed0795e9b9}{Door\+Interaction\+Handler}}, \mbox{\hyperlink{class_pick_up_interaction_handler_a4f55440deca34467164222fbbed1c409}{Pick\+Up\+Interaction\+Handler}}, and \mbox{\hyperlink{class_push_interaction_handler_af820f5de9628e2f527d5d0f35afc01d7}{Push\+Interaction\+Handler}}.
+
+\mbox{\Hypertarget{class_interaction_handler_aa6e40ea3f53f5f2a900fd25cf84c8b7f}\label{class_interaction_handler_aa6e40ea3f53f5f2a900fd25cf84c8b7f}} 
+\index{Interaction\+Handler@{Interaction\+Handler}!Is\+Custom\+Interaction@{Is\+Custom\+Interaction}}
+\index{Is\+Custom\+Interaction@{Is\+Custom\+Interaction}!Interaction\+Handler@{Interaction\+Handler}}
+\subsubsection{\texorpdfstring{Is\+Custom\+Interaction()}{IsCustomInteraction()}}
+{\footnotesize\ttfamily virtual bool Interaction\+Handler.\+Is\+Custom\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction_context}{Interaction\+Context}}}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_door_interaction_handler_a2621737500ee61f39f1873cf2353831c}{Door\+Interaction\+Handler}}.
+
+\mbox{\Hypertarget{class_interaction_handler_aecb9eb68b09058f64831e337022868d5}\label{class_interaction_handler_aecb9eb68b09058f64831e337022868d5}} 
+\index{Interaction\+Handler@{Interaction\+Handler}!Play\+Interaction\+Sound@{Play\+Interaction\+Sound}}
+\index{Play\+Interaction\+Sound@{Play\+Interaction\+Sound}!Interaction\+Handler@{Interaction\+Handler}}
+\subsubsection{\texorpdfstring{Play\+Interaction\+Sound()}{PlayInteractionSound()}}
+{\footnotesize\ttfamily void Interaction\+Handler.\+Play\+Interaction\+Sound (\begin{DoxyParamCaption}\item[{Audio\+Clip}]{clip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Interaction/\mbox{\hyperlink{_interaction_handler_8cs}{Interaction\+Handler.\+cs}}\end{DoxyCompactItemize}

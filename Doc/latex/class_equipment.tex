@@ -1,0 +1,132 @@
+\hypertarget{class_equipment}{}\section{Equipment Class Reference}
+\label{class_equipment}\index{Equipment@{Equipment}}
+Inheritance diagram for Equipment\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_equipment}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment\+State}} \{ \mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaae599161956d626eda4cb0a5ffb85271c}{Equipment\+State.\+Idle}}, 
+\mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa7bf2d26eab899c413218b729d4d914b7}{Equipment\+State.\+Stored}}, 
+\mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa90ebbe94b8f35de8bc27c3a110aac495}{Equipment\+State.\+Equipped}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sealed override void \mbox{\hyperlink{class_equipment_a4ba8229a93cd0f2872f7249fbbb56c23}{Initialize}} (\mbox{\hyperlink{class_dynamic_object_template}{Dynamic\+Object\+Template}} template)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+new \mbox{\hyperlink{class_equipment_template}{Equipment\+Template}} \mbox{\hyperlink{class_equipment_a691c8de53afa564d0b1a0f1adb0978b7}{Template}} =$>$ (\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}})base.\+Template
+\item 
+Game\+Object \mbox{\hyperlink{class_equipment_ae1c5b53dfef7c8e2a86c40d72bc5db62}{Equipment\+Root}} =$>$ Controller.\+game\+Object
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{class_equipment_ae9932146aba24d5a614d1eb8ab415e10}{On\+Initialize}} (\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}} template)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+override Type \mbox{\hyperlink{class_equipment_a6058f9d92aff36decfed5b34776aebb4}{Template\+Type}} =$>$ typeof(\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}})
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_equipment_controller}{Equipment\+Controller}} \mbox{\hyperlink{class_equipment_ac684d7d827057b05d24be2fc46bac14d}{Controller}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment\+State}} \mbox{\hyperlink{class_equipment_a90acccabae34547f69244d203cecdaf0}{State}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}\label{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}} 
+\index{Equipment@{Equipment}!Equipment\+State@{Equipment\+State}}
+\index{Equipment\+State@{Equipment\+State}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Equipment\+State}{EquipmentState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment.\+Equipment\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Idle@{Idle}!Equipment@{Equipment}}\index{Equipment@{Equipment}!Idle@{Idle}}}\mbox{\Hypertarget{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaae599161956d626eda4cb0a5ffb85271c}\label{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaae599161956d626eda4cb0a5ffb85271c}} 
+Idle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Stored@{Stored}!Equipment@{Equipment}}\index{Equipment@{Equipment}!Stored@{Stored}}}\mbox{\Hypertarget{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa7bf2d26eab899c413218b729d4d914b7}\label{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa7bf2d26eab899c413218b729d4d914b7}} 
+Stored&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Equipped@{Equipped}!Equipment@{Equipment}}\index{Equipment@{Equipment}!Equipped@{Equipped}}}\mbox{\Hypertarget{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa90ebbe94b8f35de8bc27c3a110aac495}\label{class_equipment_a8b3877398e5be5b420818b99ad7f0bcaa90ebbe94b8f35de8bc27c3a110aac495}} 
+Equipped&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_equipment_a4ba8229a93cd0f2872f7249fbbb56c23}\label{class_equipment_a4ba8229a93cd0f2872f7249fbbb56c23}} 
+\index{Equipment@{Equipment}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily sealed override void Equipment.\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_dynamic_object_template}{Dynamic\+Object\+Template}}}]{template }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_dynamic_object_a51dc678c061bc3a5eb60c3d96a1ef506}{Dynamic\+Object}}.
+
+\mbox{\Hypertarget{class_equipment_ae9932146aba24d5a614d1eb8ab415e10}\label{class_equipment_ae9932146aba24d5a614d1eb8ab415e10}} 
+\index{Equipment@{Equipment}!On\+Initialize@{On\+Initialize}}
+\index{On\+Initialize@{On\+Initialize}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{On\+Initialize()}{OnInitialize()}}
+{\footnotesize\ttfamily abstract void Equipment.\+On\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}}}]{template }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_utility_equipment_a1b8bbcd0b373613156c289e68fcc3a99}{Utility\+Equipment}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_equipment_ae1c5b53dfef7c8e2a86c40d72bc5db62}\label{class_equipment_ae1c5b53dfef7c8e2a86c40d72bc5db62}} 
+\index{Equipment@{Equipment}!Equipment\+Root@{Equipment\+Root}}
+\index{Equipment\+Root@{Equipment\+Root}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Equipment\+Root}{EquipmentRoot}}
+{\footnotesize\ttfamily Game\+Object Equipment.\+Equipment\+Root =$>$ Controller.\+game\+Object}
+
+\mbox{\Hypertarget{class_equipment_a691c8de53afa564d0b1a0f1adb0978b7}\label{class_equipment_a691c8de53afa564d0b1a0f1adb0978b7}} 
+\index{Equipment@{Equipment}!Template@{Template}}
+\index{Template@{Template}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Template}{Template}}
+{\footnotesize\ttfamily new \mbox{\hyperlink{class_equipment_template}{Equipment\+Template}} Equipment.\+Template =$>$ (\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}})base.\+Template}
+
+\mbox{\Hypertarget{class_equipment_a6058f9d92aff36decfed5b34776aebb4}\label{class_equipment_a6058f9d92aff36decfed5b34776aebb4}} 
+\index{Equipment@{Equipment}!Template\+Type@{Template\+Type}}
+\index{Template\+Type@{Template\+Type}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Template\+Type}{TemplateType}}
+{\footnotesize\ttfamily override Type Equipment.\+Template\+Type =$>$ typeof(\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_equipment_ac684d7d827057b05d24be2fc46bac14d}\label{class_equipment_ac684d7d827057b05d24be2fc46bac14d}} 
+\index{Equipment@{Equipment}!Controller@{Controller}}
+\index{Controller@{Controller}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{Controller}{Controller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_equipment_controller}{Equipment\+Controller}} Equipment.\+Controller\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_equipment_a90acccabae34547f69244d203cecdaf0}\label{class_equipment_a90acccabae34547f69244d203cecdaf0}} 
+\index{Equipment@{Equipment}!State@{State}}
+\index{State@{State}!Equipment@{Equipment}}
+\subsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment\+State}} Equipment.\+State\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Dynamic\+Objects/\+Objects/\mbox{\hyperlink{_equipment_8cs}{Equipment.\+cs}}\end{DoxyCompactItemize}

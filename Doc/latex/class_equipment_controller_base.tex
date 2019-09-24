@@ -1,0 +1,150 @@
+\hypertarget{class_equipment_controller_base}{}\section{Equipment\+Controller\+Base Class Reference}
+\label{class_equipment_controller_base}\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+Inheritance diagram for Equipment\+Controller\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_equipment_controller_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_equipment_controller_base_a2bd9dfc6d920c98460436504145ebe6f}{Initialize}} (\mbox{\hyperlink{class_equipment}{Equipment}} equipment)
+\item 
+sealed override void \mbox{\hyperlink{class_equipment_controller_base_a357889ef978abc906de8d5b36b26d613}{On\+Picked\+Up}} (\mbox{\hyperlink{class_inventory}{Inventory}} inventory)
+\item 
+sealed override void \mbox{\hyperlink{class_equipment_controller_base_a8d45225cd0b3e6e07dec3eda588b7df1}{On\+Drop}} ()
+\item 
+sealed override void \mbox{\hyperlink{class_equipment_controller_base_a6518be3369d4118d4617c70c70fad38e}{On\+Equipped}} ()
+\item 
+sealed override void \mbox{\hyperlink{class_equipment_controller_base_aa98a3869354632bcc5dfe5e9103ccaed}{On\+Stored}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_equipment_template}{Equipment\+Template}} \mbox{\hyperlink{class_equipment_controller_base_a343cc31c7be0c62538f9b1aadea60c46}{Equipment\+Template}} =$>$ \mbox{\hyperlink{class_equipment_a691c8de53afa564d0b1a0f1adb0978b7}{Equipment.\+Template}}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_equipment_controller_base_a324ae128d6b938e23a6d1c4a33c370c4}{On\+State\+Changed}} (\mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment.\+Equipment\+State}} state)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_equipment}{Equipment}} \mbox{\hyperlink{class_equipment_controller_base_a0e82e00ee75a3fcdbaa60e624d4d2032}{Equipment}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Transform \mbox{\hyperlink{class_equipment_controller_base_a15d98115cdcca7c633694d14a22248f3}{Original\+Equipment\+Parent\+Transform}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_inventory}{Inventory}} \mbox{\hyperlink{class_equipment_controller_base_a170ba5776e92e8968f26805a9c3c3eb2}{Inventory}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+abstract Type \mbox{\hyperlink{class_equipment_controller_base_ae45c22292ae69bb37f6b2bb1fbbb219a}{Data\+Model\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_equipment_controller_base_a2bd9dfc6d920c98460436504145ebe6f}\label{class_equipment_controller_base_a2bd9dfc6d920c98460436504145ebe6f}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily override void Equipment\+Controller\+Base.\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_equipment}{Equipment}}}]{equipment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_equipment_controller_a7eeee15beb95a3111424c83de2aa809b}{Equipment\+Controller}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_flashlight_controller_a3bc506518b599e1f8af7dfacb2180b35}{Flashlight\+Controller}}.
+
+\mbox{\Hypertarget{class_equipment_controller_base_a8d45225cd0b3e6e07dec3eda588b7df1}\label{class_equipment_controller_base_a8d45225cd0b3e6e07dec3eda588b7df1}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!On\+Drop@{On\+Drop}}
+\index{On\+Drop@{On\+Drop}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{On\+Drop()}{OnDrop()}}
+{\footnotesize\ttfamily sealed override void Equipment\+Controller\+Base.\+On\+Drop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_equipment_controller_a27bdee4dd8690d8f72a7c7941104bb83}{Equipment\+Controller}}.
+
+\mbox{\Hypertarget{class_equipment_controller_base_a6518be3369d4118d4617c70c70fad38e}\label{class_equipment_controller_base_a6518be3369d4118d4617c70c70fad38e}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!On\+Equipped@{On\+Equipped}}
+\index{On\+Equipped@{On\+Equipped}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{On\+Equipped()}{OnEquipped()}}
+{\footnotesize\ttfamily sealed override void Equipment\+Controller\+Base.\+On\+Equipped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_equipment_controller_acba8245d13e2339ef752de1945e21752}{Equipment\+Controller}}.
+
+\mbox{\Hypertarget{class_equipment_controller_base_a357889ef978abc906de8d5b36b26d613}\label{class_equipment_controller_base_a357889ef978abc906de8d5b36b26d613}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!On\+Picked\+Up@{On\+Picked\+Up}}
+\index{On\+Picked\+Up@{On\+Picked\+Up}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{On\+Picked\+Up()}{OnPickedUp()}}
+{\footnotesize\ttfamily sealed override void Equipment\+Controller\+Base.\+On\+Picked\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inventory}{Inventory}}}]{inventory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_equipment_controller_a4e0b167b8b3365bb6711b19195143fb6}{Equipment\+Controller}}.
+
+\mbox{\Hypertarget{class_equipment_controller_base_a324ae128d6b938e23a6d1c4a33c370c4}\label{class_equipment_controller_base_a324ae128d6b938e23a6d1c4a33c370c4}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!On\+State\+Changed@{On\+State\+Changed}}
+\index{On\+State\+Changed@{On\+State\+Changed}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{On\+State\+Changed()}{OnStateChanged()}}
+{\footnotesize\ttfamily virtual void Equipment\+Controller\+Base.\+On\+State\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_equipment_a8b3877398e5be5b420818b99ad7f0bca}{Equipment.\+Equipment\+State}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_flashlight_controller_a80535a2da68630caac6deddcce5d388e}{Flashlight\+Controller}}.
+
+\mbox{\Hypertarget{class_equipment_controller_base_aa98a3869354632bcc5dfe5e9103ccaed}\label{class_equipment_controller_base_aa98a3869354632bcc5dfe5e9103ccaed}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!On\+Stored@{On\+Stored}}
+\index{On\+Stored@{On\+Stored}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{On\+Stored()}{OnStored()}}
+{\footnotesize\ttfamily sealed override void Equipment\+Controller\+Base.\+On\+Stored (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_equipment_controller_a93e833692f74ffcda9f56f15e5f4e63d}{Equipment\+Controller}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_equipment_controller_base_a343cc31c7be0c62538f9b1aadea60c46}\label{class_equipment_controller_base_a343cc31c7be0c62538f9b1aadea60c46}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Equipment\+Template@{Equipment\+Template}}
+\index{Equipment\+Template@{Equipment\+Template}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Equipment\+Template}{EquipmentTemplate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_equipment_template}{Equipment\+Template}} Equipment\+Controller\+Base.\+Equipment\+Template =$>$ \mbox{\hyperlink{class_equipment_a691c8de53afa564d0b1a0f1adb0978b7}{Equipment.\+Template}}}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_equipment_controller_base_ae45c22292ae69bb37f6b2bb1fbbb219a}\label{class_equipment_controller_base_ae45c22292ae69bb37f6b2bb1fbbb219a}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Data\+Model\+Type@{Data\+Model\+Type}}
+\index{Data\+Model\+Type@{Data\+Model\+Type}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Data\+Model\+Type}{DataModelType}}
+{\footnotesize\ttfamily abstract Type Equipment\+Controller\+Base.\+Data\+Model\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_equipment_controller_base_a0e82e00ee75a3fcdbaa60e624d4d2032}\label{class_equipment_controller_base_a0e82e00ee75a3fcdbaa60e624d4d2032}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Equipment@{Equipment}}
+\index{Equipment@{Equipment}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Equipment}{Equipment}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_equipment}{Equipment}} Equipment\+Controller\+Base.\+Equipment\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_equipment_controller_base_a170ba5776e92e8968f26805a9c3c3eb2}\label{class_equipment_controller_base_a170ba5776e92e8968f26805a9c3c3eb2}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Inventory@{Inventory}}
+\index{Inventory@{Inventory}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Inventory}{Inventory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_inventory}{Inventory}} Equipment\+Controller\+Base.\+Inventory\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_equipment_controller_base_a15d98115cdcca7c633694d14a22248f3}\label{class_equipment_controller_base_a15d98115cdcca7c633694d14a22248f3}} 
+\index{Equipment\+Controller\+Base@{Equipment\+Controller\+Base}!Original\+Equipment\+Parent\+Transform@{Original\+Equipment\+Parent\+Transform}}
+\index{Original\+Equipment\+Parent\+Transform@{Original\+Equipment\+Parent\+Transform}!Equipment\+Controller\+Base@{Equipment\+Controller\+Base}}
+\subsubsection{\texorpdfstring{Original\+Equipment\+Parent\+Transform}{OriginalEquipmentParentTransform}}
+{\footnotesize\ttfamily Transform Equipment\+Controller\+Base.\+Original\+Equipment\+Parent\+Transform\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Dynamic\+Objects/\+Controllers/\mbox{\hyperlink{_equipment_controller_base_8cs}{Equipment\+Controller\+Base.\+cs}}\end{DoxyCompactItemize}

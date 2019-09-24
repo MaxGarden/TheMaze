@@ -1,0 +1,120 @@
+\hypertarget{class_gameplay_condition}{}\section{Gameplay\+Condition Class Reference}
+\label{class_gameplay_condition}\index{Gameplay\+Condition@{Gameplay\+Condition}}
+Inheritance diagram for Gameplay\+Condition\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_gameplay_condition}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}{Type}} \{ \mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702a119eac47719cc9be7b99124712e229da}{Type.\+Win}}, 
+\mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702aceaa0734f0b3c738120c67344d8f3ec1}{Type.\+Fail}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract bool \mbox{\hyperlink{class_gameplay_condition_a7788119247b929ae43f7c134767e589e}{Determine\+If\+Fulfilled}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_gameplay_condition_ac7d724206816d7bfd2e584d2c9de624c}{Priority}} =$>$ 0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_gameplay_condition_ae40b690b7dbe3977bcd4429b7bf95afb}{Register\+Events}} ()
+\item 
+virtual void \mbox{\hyperlink{class_gameplay_condition_a70bf44c9b6395036a59c58611578cac6}{Unregister\+Events}} ()
+\item 
+void \mbox{\hyperlink{class_gameplay_condition_a7a2aee3d10c9b6e7a77b5bdf447e65bd}{Recalculate\+Fulfillment}} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+abstract \mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}{Type}} \mbox{\hyperlink{class_gameplay_condition_a5e18277f580329a304d95c2f920bde47}{Condition\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}\label{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Type@{Type}}
+\index{Type@{Type}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}{Gameplay\+Condition.\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Win@{Win}!Gameplay\+Condition@{Gameplay\+Condition}}\index{Gameplay\+Condition@{Gameplay\+Condition}!Win@{Win}}}\mbox{\Hypertarget{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702a119eac47719cc9be7b99124712e229da}\label{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702a119eac47719cc9be7b99124712e229da}} 
+Win&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Fail@{Fail}!Gameplay\+Condition@{Gameplay\+Condition}}\index{Gameplay\+Condition@{Gameplay\+Condition}!Fail@{Fail}}}\mbox{\Hypertarget{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702aceaa0734f0b3c738120c67344d8f3ec1}\label{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702aceaa0734f0b3c738120c67344d8f3ec1}} 
+Fail&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gameplay_condition_a7788119247b929ae43f7c134767e589e}\label{class_gameplay_condition_a7788119247b929ae43f7c134767e589e}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Determine\+If\+Fulfilled@{Determine\+If\+Fulfilled}}
+\index{Determine\+If\+Fulfilled@{Determine\+If\+Fulfilled}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Determine\+If\+Fulfilled()}{DetermineIfFulfilled()}}
+{\footnotesize\ttfamily abstract bool Gameplay\+Condition.\+Determine\+If\+Fulfilled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_collect_collectibles_condition_af61a1a03224942635451d7d63a886adf}{Collect\+Collectibles\+Condition}}, \mbox{\hyperlink{class_trigger_finish_tag_condition_a2093b9932e1b90d51e5f6c25caeec514}{Trigger\+Finish\+Tag\+Condition}}, and \mbox{\hyperlink{class_death_condition_a175822d80f10b8ec4ccadca271197530}{Death\+Condition}}.
+
+\mbox{\Hypertarget{class_gameplay_condition_a7a2aee3d10c9b6e7a77b5bdf447e65bd}\label{class_gameplay_condition_a7a2aee3d10c9b6e7a77b5bdf447e65bd}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Recalculate\+Fulfillment@{Recalculate\+Fulfillment}}
+\index{Recalculate\+Fulfillment@{Recalculate\+Fulfillment}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Recalculate\+Fulfillment()}{RecalculateFulfillment()}}
+{\footnotesize\ttfamily void Gameplay\+Condition.\+Recalculate\+Fulfillment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_gameplay_condition_ae40b690b7dbe3977bcd4429b7bf95afb}\label{class_gameplay_condition_ae40b690b7dbe3977bcd4429b7bf95afb}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Register\+Events@{Register\+Events}}
+\index{Register\+Events@{Register\+Events}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Register\+Events()}{RegisterEvents()}}
+{\footnotesize\ttfamily virtual void Gameplay\+Condition.\+Register\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_collect_collectibles_condition_aaf2fbca5108425f47cd8628fd36bef43}{Collect\+Collectibles\+Condition}}, \mbox{\hyperlink{class_trigger_finish_tag_condition_a3c0f0bfe28375ed9c3c9f42c916b473f}{Trigger\+Finish\+Tag\+Condition}}, and \mbox{\hyperlink{class_death_condition_a6cb1fe3d0a6eb7df7c91df62bd549b46}{Death\+Condition}}.
+
+\mbox{\Hypertarget{class_gameplay_condition_a70bf44c9b6395036a59c58611578cac6}\label{class_gameplay_condition_a70bf44c9b6395036a59c58611578cac6}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Unregister\+Events@{Unregister\+Events}}
+\index{Unregister\+Events@{Unregister\+Events}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Unregister\+Events()}{UnregisterEvents()}}
+{\footnotesize\ttfamily virtual void Gameplay\+Condition.\+Unregister\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_collect_collectibles_condition_adfbda80d4c99e54f20ae0e511654a80d}{Collect\+Collectibles\+Condition}}, \mbox{\hyperlink{class_trigger_finish_tag_condition_a53d94c37b0464e8c450bbc4800ff62d5}{Trigger\+Finish\+Tag\+Condition}}, and \mbox{\hyperlink{class_death_condition_ad6c07ec8151eb65a0ef1844853b526a0}{Death\+Condition}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gameplay_condition_ac7d724206816d7bfd2e584d2c9de624c}\label{class_gameplay_condition_ac7d724206816d7bfd2e584d2c9de624c}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Priority@{Priority}}
+\index{Priority@{Priority}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Priority}{Priority}}
+{\footnotesize\ttfamily virtual int Gameplay\+Condition.\+Priority =$>$ 0}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_gameplay_condition_a5e18277f580329a304d95c2f920bde47}\label{class_gameplay_condition_a5e18277f580329a304d95c2f920bde47}} 
+\index{Gameplay\+Condition@{Gameplay\+Condition}!Condition\+Type@{Condition\+Type}}
+\index{Condition\+Type@{Condition\+Type}!Gameplay\+Condition@{Gameplay\+Condition}}
+\subsubsection{\texorpdfstring{Condition\+Type}{ConditionType}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}{Type}} Gameplay\+Condition.\+Condition\+Type\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gameplay/\+Conditions/\mbox{\hyperlink{_gameplay_condition_8cs}{Gameplay\+Condition.\+cs}}\end{DoxyCompactItemize}

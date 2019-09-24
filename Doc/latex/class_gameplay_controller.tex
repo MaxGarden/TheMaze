@@ -1,0 +1,79 @@
+\hypertarget{class_gameplay_controller}{}\section{Gameplay\+Controller Class Reference}
+\label{class_gameplay_controller}\index{Gameplay\+Controller@{Gameplay\+Controller}}
+Inheritance diagram for Gameplay\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_gameplay_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_gameplay_controller_abb7793cefa2ef8e6ccf602755a1b4c60}{Register\+Condition}} (\mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}} condition)
+\item 
+void \mbox{\hyperlink{class_gameplay_controller_aec5100ce654fbef3c650d9a404b6f684}{Unregister\+Condition}} (\mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}} condition)
+\item 
+void \mbox{\hyperlink{class_gameplay_controller_ad54b80a1e76c02f2c09652f2700189bf}{On\+Condition\+Changed}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}} \mbox{\hyperlink{class_gameplay_controller_ad705d003de8ec360b4c215e244f6b3d0}{Current\+Win\+Condition}}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_gameplay_controller}{Gameplay\+Controller}} \mbox{\hyperlink{class_gameplay_controller_a0bb024792ce1b463dbcba91fc99b7533}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gameplay_controller_ad54b80a1e76c02f2c09652f2700189bf}\label{class_gameplay_controller_ad54b80a1e76c02f2c09652f2700189bf}} 
+\index{Gameplay\+Controller@{Gameplay\+Controller}!On\+Condition\+Changed@{On\+Condition\+Changed}}
+\index{On\+Condition\+Changed@{On\+Condition\+Changed}!Gameplay\+Controller@{Gameplay\+Controller}}
+\subsubsection{\texorpdfstring{On\+Condition\+Changed()}{OnConditionChanged()}}
+{\footnotesize\ttfamily void Gameplay\+Controller.\+On\+Condition\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameplay_controller_abb7793cefa2ef8e6ccf602755a1b4c60}\label{class_gameplay_controller_abb7793cefa2ef8e6ccf602755a1b4c60}} 
+\index{Gameplay\+Controller@{Gameplay\+Controller}!Register\+Condition@{Register\+Condition}}
+\index{Register\+Condition@{Register\+Condition}!Gameplay\+Controller@{Gameplay\+Controller}}
+\subsubsection{\texorpdfstring{Register\+Condition()}{RegisterCondition()}}
+{\footnotesize\ttfamily void Gameplay\+Controller.\+Register\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}}}]{condition }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameplay_controller_aec5100ce654fbef3c650d9a404b6f684}\label{class_gameplay_controller_aec5100ce654fbef3c650d9a404b6f684}} 
+\index{Gameplay\+Controller@{Gameplay\+Controller}!Unregister\+Condition@{Unregister\+Condition}}
+\index{Unregister\+Condition@{Unregister\+Condition}!Gameplay\+Controller@{Gameplay\+Controller}}
+\subsubsection{\texorpdfstring{Unregister\+Condition()}{UnregisterCondition()}}
+{\footnotesize\ttfamily void Gameplay\+Controller.\+Unregister\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}}}]{condition }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gameplay_controller_ad705d003de8ec360b4c215e244f6b3d0}\label{class_gameplay_controller_ad705d003de8ec360b4c215e244f6b3d0}} 
+\index{Gameplay\+Controller@{Gameplay\+Controller}!Current\+Win\+Condition@{Current\+Win\+Condition}}
+\index{Current\+Win\+Condition@{Current\+Win\+Condition}!Gameplay\+Controller@{Gameplay\+Controller}}
+\subsubsection{\texorpdfstring{Current\+Win\+Condition}{CurrentWinCondition}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gameplay_condition}{Gameplay\+Condition}} Gameplay\+Controller.\+Current\+Win\+Condition}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=> m\_conditions
+        .Where(condition => !condition.DetermineIfFulfilled())
+        .OrderByDescending(condition => condition.Priority)
+        .FirstOrDefault(condition => condition.ConditionType == 
+      \mbox{\hyperlink{class_gameplay_condition}{GameplayCondition}}.\mbox{\hyperlink{class_gameplay_condition_af7549fe9ce5328062dab831d05ca9702}{Type}}.Win)
+\end{DoxyCode}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_gameplay_controller_a0bb024792ce1b463dbcba91fc99b7533}\label{class_gameplay_controller_a0bb024792ce1b463dbcba91fc99b7533}} 
+\index{Gameplay\+Controller@{Gameplay\+Controller}!Instance@{Instance}}
+\index{Instance@{Instance}!Gameplay\+Controller@{Gameplay\+Controller}}
+\subsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gameplay_controller}{Gameplay\+Controller}} Gameplay\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Gameplay/\mbox{\hyperlink{_gameplay_controller_8cs}{Gameplay\+Controller.\+cs}}\end{DoxyCompactItemize}
